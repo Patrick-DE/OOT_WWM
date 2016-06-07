@@ -1,4 +1,4 @@
-package demoSourceCode;
+package zDemoSourceCode;
 
 public class Timer {
 
