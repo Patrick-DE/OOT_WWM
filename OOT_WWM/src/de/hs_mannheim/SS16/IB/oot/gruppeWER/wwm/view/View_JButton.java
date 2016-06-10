@@ -24,14 +24,14 @@ public class View_JButton extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		loadImage();
-		setForeground(Color.RED);
+		setForeground(Color.WHITE);
 	}
 	View_JButton() {
 		super();
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		loadImage();
-		setForeground(Color.RED);
+		setForeground(Color.WHITE);
 	}
 	
 	View_JButton(Icon icon) {
