@@ -13,7 +13,7 @@ public abstract class WWMView implements Observer {
 	protected WWMModel model;
 	protected WWMController controller;
 
-	//MARK: - Constructor
+	//MARK: - Methods
 	WWMView(WWMModel model, WWMController controller) {
 		this.model = model;
 		this.controller = controller;
@@ -21,42 +21,85 @@ public abstract class WWMView implements Observer {
 		model.addObserver(this);
 	}
 
-	//MARK: - Abstract Methods
+	//MARK: - Methods
+	/**
+	 * set the question in the question window
+	 * @param question
+	 */
 	public abstract void setQuestion(Model_Question question);
 
+	/**
+	 * display the audience joker
+	 */
 	public abstract void displayAudienceJoker();
 
+	/**
+	 * display the telephone joker
+	 */
 	public abstract void displayTelephoneJoker();
 
+	/**
+	 * display the fifty-fifty joker
+	 */
 	public abstract void displayFiftyFiftyJoker();
 
+	/**
+	 * display the save-game window
+	 */
 	public abstract void displaySaveDialog();
 
+	/**
+	 * display the load screen
+	 */
 	public abstract void displayLoadDialog();
 	
+	/**
+	 * display the question window 
+	 */
 	public abstract void displayGameWindow();
 	
+	/**
+	 * display the high-score window
+	 */
 	public abstract void displayHighScoreWindow();
 	
+	/**
+	 * display the exit dialog
+	 */
 	public abstract void displayExitDialog();
 	
+	/**
+	 * display the drop out dialog
+	 */
 	public abstract void displayDropOutDialog();
 	
+	/**
+	 * display the false answer screen
+	 */
 	public abstract void displayFalseAnswerDialog();
 	
+	/**
+	 * display the end-of-game window
+	 */
 	public abstract void displayEndOfGameDialog();
 	
+	/**
+	 * display the main menu
+	 */
 	public abstract void displayMainMenu();
 	
-	//MARK: - Methods (don't need to be implemented by extension classes)
 	@Override public void update(Observable o, Object arg) {
-		if (!model.getGameFinishedStatus()) {
-			if (model.getGameStatus()) {
-				setQuestion(model.getQuestionAtIndex(model.getQuestionIndex()));
-				displayGameWindow();
-			} else
+		if (!model.getGameFinishedStatus()) { // if game is running
+			setQuestion(model.getQuestionAtIndex(model.getQuestionIndex())); // set the next question
+			displayGameWindow();
+		} else if (model.gameStarted()){ // game was valid
+			if (model.getGameEndFalseAnswer()) // if game ended with a false answer
 				displayFalseAnswerDialog();
-		} else
 			displayEndOfGameDialog();
+		} else {
+			displayMainMenu();
+		}
+		
 	}
+	
 }

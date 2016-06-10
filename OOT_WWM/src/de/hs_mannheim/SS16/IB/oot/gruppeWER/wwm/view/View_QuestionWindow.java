@@ -7,11 +7,14 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_Question;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import java.awt.GridBagLayout;
-import javax.swing.JProgressBar;
+import java.awt.GridLayout;
+
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -23,20 +26,20 @@ public class View_QuestionWindow extends JPanel {
 	private JButton btnAnswer2;
 	private JButton btnAnswer3;
 	private JButton btnAnswer4;
-	private JButton btnTelefon;
+	private JButton btnTelephone;
 	private JButton buttonFiftyFifty;
-	private JButton btnPublikum;
-	private JButton btnAussteigen;
+	private JButton btnAudience;
+	private JButton btnDropOut;
 	private boolean fiftyFiftyUsed = false;
 	private View_QuestionPanel questionTextPanel;
 	private View_GameInfoPanel paneGameInfo;
 	private WWMModel model;
 
-	//MARK: - Assets
+	//MARK: - Constructor
 	public View_QuestionWindow(WWMController controller, WWMModel model) {
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.rowHeights = new int[] {1, 30, 30, 30, 30};
+		gridBagLayout.rowHeights = new int[] {0, 20, 20, 30};
 		gridBagLayout.columnWidths = new int[] {1, 1};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
@@ -44,118 +47,107 @@ public class View_QuestionWindow extends JPanel {
 		
 		paneGameInfo = new View_GameInfoPanel(model);
 		GridBagConstraints gbc_paneGameInfo = new GridBagConstraints();
-		gbc_paneGameInfo.gridwidth = 0;
+		gbc_paneGameInfo.gridwidth = 1;
 		gbc_paneGameInfo.weightx = 1.0;
 		gbc_paneGameInfo.fill = GridBagConstraints.BOTH;
-		gbc_paneGameInfo.weighty = 0.02;
-		gbc_paneGameInfo.insets = new Insets(0, 0, 5, 0);
+		gbc_paneGameInfo.weighty = 0;
+		gbc_paneGameInfo.insets = new Insets(0, 0, 0, 0);
 		gbc_paneGameInfo.gridx = 0;
 		gbc_paneGameInfo.gridy = 0;
 		add(paneGameInfo, gbc_paneGameInfo);
 		
-		
-		questionTextPanel = new View_QuestionPanel(model.getAnswerTime());
+		questionTextPanel = new View_QuestionPanel(model.getAnswerTime(),1);
 		questionTextPanel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
 		gbc_labelQuestion.gridwidth = 0;
-		gbc_labelQuestion.weighty = 0.8;
+		gbc_labelQuestion.weighty = 1;
 		gbc_labelQuestion.weightx = 1.0;
-		gbc_labelQuestion.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuestion.insets = new Insets(0, 0, 0, 0);
 		gbc_labelQuestion.gridx = 0;
 		gbc_labelQuestion.gridy = 1;
 		add(questionTextPanel, gbc_labelQuestion);
 		
+		JPanel answerPanel = new JPanel(new GridLayout(2, 2));
+		
 		btnAnswer1 = new View_JButton();
 		btnAnswer1.setActionCommand("Antwort1");
 		btnAnswer1.addActionListener(controller);
-		GridBagConstraints gbc_lblAnswer1 = new GridBagConstraints();
-		gbc_lblAnswer1.fill = GridBagConstraints.BOTH;
-		gbc_lblAnswer1.weightx = 0.5;
-		gbc_lblAnswer1.weighty = 0.3;
-		gbc_lblAnswer1.insets = new Insets(0, 0, 0, 0);
-		gbc_lblAnswer1.gridx = 0;
-		gbc_lblAnswer1.gridy = 2;
-		add(btnAnswer1, gbc_lblAnswer1);
+		answerPanel.add(btnAnswer1);
 		
 		btnAnswer2 = new View_JButton();
 		btnAnswer2.setActionCommand("Antwort2");
 		btnAnswer2.addActionListener(controller);
-		GridBagConstraints gbc_lblAnswer2 = new GridBagConstraints();
-		gbc_lblAnswer2.fill = GridBagConstraints.BOTH;
-		gbc_lblAnswer2.weightx = 0.5;
-		gbc_lblAnswer2.weighty = 0.3;
-		gbc_lblAnswer2.insets = new Insets(0, 0, 0, 0);
-		gbc_lblAnswer2.gridx = 1;
-		gbc_lblAnswer2.gridy = 2;
-		add(btnAnswer2, gbc_lblAnswer2);
+		answerPanel.add(btnAnswer2);
 		
 		btnAnswer3 = new View_JButton();
 		btnAnswer3.setActionCommand("Antwort3");
 		btnAnswer3.addActionListener(controller);
-		GridBagConstraints gbc_lblAnswer3 = new GridBagConstraints();
-		gbc_lblAnswer3.fill = GridBagConstraints.BOTH;
-		gbc_lblAnswer3.weightx = 0.5;
-		gbc_lblAnswer3.weighty = 0.3;
-		gbc_lblAnswer3.insets = new Insets(0, 0, 0, 0);
-		gbc_lblAnswer3.gridx = 0;
-		gbc_lblAnswer3.gridy = 3;
-		add(btnAnswer3, gbc_lblAnswer3);
+		answerPanel.add(btnAnswer3);
 		
 		btnAnswer4 = new View_JButton();
 		btnAnswer4.setActionCommand("Antwort4");
 		btnAnswer4.addActionListener(controller);
-		GridBagConstraints gbc_lblAnswer4 = new GridBagConstraints();
-		gbc_lblAnswer4.fill = GridBagConstraints.BOTH;
-		gbc_lblAnswer4.weighty = 0.3;
-		gbc_lblAnswer4.weightx = 0.5;
-		gbc_lblAnswer4.insets = new Insets(0, 0, 0, 0);
-		gbc_lblAnswer4.gridx = 1;
-		gbc_lblAnswer4.gridy = 3;
-		add(btnAnswer4, gbc_lblAnswer4);
+		answerPanel.add(btnAnswer4);
+		
+		GridBagConstraints gbc_answerPanel = new GridBagConstraints();
+		gbc_answerPanel.fill = GridBagConstraints.BOTH;
+		gbc_answerPanel.gridwidth = 0;
+		gbc_answerPanel.gridheight = 1;
+		gbc_answerPanel.weighty = 0.6;
+		gbc_answerPanel.weightx = 1.0;
+		gbc_answerPanel.insets = new Insets(0, 0, 0, 0);
+		gbc_answerPanel.gridx = 0;
+		gbc_answerPanel.gridy = 2;
+		add(answerPanel, gbc_answerPanel);
 		
 		JPanel buttonSpace = new JPanel();
 		GridBagConstraints gbc_buttonSpace = new GridBagConstraints();
-		gbc_buttonSpace.gridwidth = 0;
-		gbc_buttonSpace.weighty = 0.025;
+		gbc_buttonSpace.fill = GridBagConstraints.HORIZONTAL;
+		gbc_buttonSpace.gridwidth = 2;
+		gbc_buttonSpace.weighty = 0.2;
 		gbc_buttonSpace.weightx = 1.0;
 		gbc_buttonSpace.gridx = 0;
-		gbc_buttonSpace.gridy = 4;
+		gbc_buttonSpace.gridy = 3;
 		add(buttonSpace, gbc_buttonSpace);
 		
-		btnTelefon = new View_JButton("Telefon");
-		btnTelefon.addActionListener(controller);
-		buttonSpace.add(btnTelefon);
+		btnTelephone = new View_JButton(new ImageIcon("data/Joker_Telefon.png"));
+		btnTelephone.addActionListener(controller);
+		btnTelephone.setActionCommand("Telefon");
+		buttonSpace.add(btnTelephone);
 		
-		buttonFiftyFifty = new View_JButton("50/50");
+		buttonFiftyFifty = new View_JButton(new ImageIcon("data/Joker_50_50.png"));
 		buttonFiftyFifty.addActionListener(controller);
+		buttonFiftyFifty.setActionCommand("50/50");
 		buttonSpace.add(buttonFiftyFifty);
 		
-		btnPublikum = new View_JButton("Publikum");
-		btnPublikum.addActionListener(controller);
-		buttonSpace.add(btnPublikum);
+		btnAudience = new View_JButton(new ImageIcon("data/Joker_Publikum.png"));
+		btnAudience.addActionListener(controller);
+		btnAudience.setActionCommand("Publikum");
+		buttonSpace.add(btnAudience);
 		
-		btnAussteigen = new View_JButton("Aussteigen");
-		btnAussteigen.addActionListener(controller);
-		buttonSpace.add(btnAussteigen);
+		btnDropOut = new View_JButton("Aussteigen");
+		btnDropOut.addActionListener(controller);
+		buttonSpace.add(btnDropOut);
 	}
 	
 	//MARK: - Methods
 	public void setQuestion (Model_Question question) {
-		if (model.telephone.getStatus())
-			btnTelefon.setEnabled(false);
-		if (model.fiftyFifty.getStatus())
+		paneGameInfo.repaint();
+		paneGameInfo.animationRestart();
+		if (model.getTelephoneStatus())
+			btnTelephone.setEnabled(false);
+		if (model.getFiftyFiftyStatus())
 			buttonFiftyFifty.setEnabled(false);
-		if (model.audience.getStatus())
-			btnPublikum.setEnabled(false);
+		if (model.getAudienceStatus())
+			btnAudience.setEnabled(false);
 		if (fiftyFiftyUsed) {
 			fiftyFiftyUsed = false;
-			btnAnswer1.setForeground(Color.BLACK);
-			btnAnswer2.setForeground(Color.BLACK);
-			btnAnswer3.setForeground(Color.BLACK);
-			btnAnswer4.setForeground(Color.BLACK);
+			btnAnswer1.setForeground(Color.RED);
+			btnAnswer2.setForeground(Color.RED);
+			btnAnswer3.setForeground(Color.RED);
+			btnAnswer4.setForeground(Color.RED);
 		}
-		paneGameInfo.animationRestart();
 		questionTextPanel.setText("<HTML><BODY>" + question.getQuestionText() + "</BODY></HTML>");
 		questionTextPanel.animationRestart();
 		btnAnswer1.setText("<HTML><BODY>" + question.getAnswerAtIndex(1) + "</BODY></HTML>");
@@ -178,9 +170,17 @@ public class View_QuestionWindow extends JPanel {
 		}
 	}
 	public void setAudienceJokerUsed () {
-		btnPublikum.setEnabled(false);
+		btnAudience.setEnabled(false);
 	}
 	public void setTelephoneJokerUsed() {
-		btnTelefon.setEnabled(false);
+		btnTelephone.setEnabled(false);
+	}
+	public void updateQuestionWindow () {
+		if (!model.getAudienceStatus())
+			btnAudience.setEnabled(true);
+		if (!model.getFiftyFiftyStatus())
+			buttonFiftyFifty.setEnabled(true);
+		if (!model.getTelephoneStatus())
+			btnTelephone.setEnabled(true);
 	}
 }

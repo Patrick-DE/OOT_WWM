@@ -2,55 +2,65 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import javax.swing.JPanel;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_HighScoreEntry;
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_HighScoreEntry;
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
-
 import java.awt.GridLayout;
+import javax.swing.SwingConstants;
 
 public class View_HighScoreWindow extends JPanel {
 	
 	//MARK: - Assets
-	private JTextArea textAreaHighScore;
 	private WWMModel model;
+	private JLabel lblQuestioncount;
+	private JLabel lblTime_1;
+	private JLabel lblName_1;
 	
 	//MARK: - Constructor
 	public View_HighScoreWindow(WWMModel model) {
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0};
+		gridBagLayout.rowHeights = new int[]{0, 80};
+		gridBagLayout.columnWeights = new double[]{1.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0};
 		setLayout(gridBagLayout);
 		
-		JLabel lblName = new JLabel("Name");
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.weighty = 0.1;
-		gbc_lblName.weightx = 0.5;
-		gbc_lblName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 0;
-		add(lblName, gbc_lblName);
+		JPanel panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 0, 0);
+		gbc_panel_1.weightx = 0;
+		gbc_panel_1.weighty = 0;
+		gbc_panel_1.weighty = 0.0;
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 0;
+		add(panel_1, gbc_panel_1);
+		panel_1.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		JLabel lblZeit = new JLabel("Zeit");
-		GridBagConstraints gbc_lblZeit = new GridBagConstraints();
-		gbc_lblZeit.weighty = 0.1;
-		gbc_lblZeit.weightx = 0.5;
-		gbc_lblZeit.insets = new Insets(0, 0, 5, 0);
-		gbc_lblZeit.gridx = 1;
-		gbc_lblZeit.gridy = 0;
-		add(lblZeit, gbc_lblZeit);
+		JLabel lblName = new JLabel("Name");
+		lblName.setVerticalAlignment(SwingConstants.TOP);
+		lblName.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblName);
+		
+		JLabel lblTime = new JLabel("Zeit (s)");
+		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTime.setVerticalAlignment(SwingConstants.TOP);
+		panel_1.add(lblTime);
+		
+		JLabel lblQuestionamount = new JLabel("Frageanzahl");
+		lblQuestionamount.setVerticalAlignment(SwingConstants.TOP);
+		lblQuestionamount.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblQuestionamount);
 		
 		JPanel panelHighScore = new JPanel();
 		GridBagConstraints gbc_panelHighScore = new GridBagConstraints();
@@ -64,13 +74,43 @@ public class View_HighScoreWindow extends JPanel {
 		panelHighScore.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(null);
 		panelHighScore.add(scrollPane);
 		
-		textAreaHighScore = new JTextArea();
-		scrollPane.setViewportView(textAreaHighScore);
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		panel.setLayout(new GridLayout(0, 3, 0, 0));
 		
+		lblName_1 = new JLabel("",JLabel.CENTER);
+		lblName_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblName_1.setVerticalAlignment(SwingConstants.TOP);
+		lblName_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblName_1);
+		
+		lblTime_1 = new JLabel("");
+		lblTime_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTime_1.setVerticalAlignment(SwingConstants.TOP);
+		lblTime_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblTime_1);
+		
+		lblQuestioncount = new JLabel("");
+		lblQuestioncount.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblQuestioncount.setVerticalAlignment(SwingConstants.TOP);
+		lblQuestioncount.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblQuestioncount);
+	}
+	
+	//MARK: - Methods
+	public void updateHighScoreWindow () {	
 		ArrayList<Model_HighScoreEntry> highScoreList = model.getHighScoreEntries();
-		for (Model_HighScoreEntry entry: highScoreList)
-			textAreaHighScore.append(entry.getName() + " " + entry.getQuestionIndex() + " " + entry.getPlayTime() + "s\n");
+		String name = "", time = "", count = "";
+		for (Model_HighScoreEntry entrie: highScoreList) {
+			name += entrie.getName() + "<br>";
+			time += entrie.getPlayTime() + "<br>";
+			count += entrie.getQuestionIndex() + "<br>";
+		}
+		lblQuestioncount.setText("<HTML><BODY><div style='text-align: center;'><br>" + count + "</BODY></HTML>");;
+		lblTime_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + time + "</BODY></HTML>");;
+		lblName_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + name + "</BODY></HTML>");;
 	}
 }

@@ -29,14 +29,14 @@ public class View_EndOfGameWindow extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblHerzlichenGlckwunsch = new JLabel("Herzlichen Glückwunsch!");
+		JLabel lblCong = new JLabel("Herzlichen Glückwunsch!");
 		GridBagConstraints gbc_lblHerzlichenGlckwunsch = new GridBagConstraints();
 		gbc_lblHerzlichenGlckwunsch.weighty = 0.3;
 		gbc_lblHerzlichenGlckwunsch.gridwidth = 0;
 		gbc_lblHerzlichenGlckwunsch.insets = new Insets(0, 0, 5, 0);
 		gbc_lblHerzlichenGlckwunsch.gridx = 0;
 		gbc_lblHerzlichenGlckwunsch.gridy = 0;
-		add(lblHerzlichenGlckwunsch, gbc_lblHerzlichenGlckwunsch);
+		add(lblCong, gbc_lblHerzlichenGlckwunsch);
 		lblEuro = new JLabel("Sie haben " + model.getPrice() + "€ gewonnen!");
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
 		gbc_lblEuro.weighty = 0.3;
@@ -61,8 +61,8 @@ public class View_EndOfGameWindow extends JPanel {
 		textField.addActionListener(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
-				model.highScoreAddEntrie(textField.getText(), (int) model.getGameTime());
-				
+				if (textField.getText().length() > 1)
+					model.highScoreAddEntrie(textField.getText(), (int) model.getGameTime()); 
 			}
 		});
 		GridBagConstraints gbc_textField = new GridBagConstraints();

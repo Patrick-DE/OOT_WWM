@@ -3,6 +3,8 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -12,7 +14,6 @@ import javax.swing.KeyStroke;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_Question;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
-
 import java.awt.CardLayout;
 
 public class WWMMainView extends WWMView {
@@ -33,16 +34,13 @@ public class WWMMainView extends WWMView {
 		initialize();
 	}
 
-	//MARK: - Initializer Methods
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	//MARK: - Methods
 	private void initialize() {
 		frmWwm = new JFrame();
 		frmWwm.setTitle("WWM");
 		frmWwm.setBounds(100, 100, 450, 300);
 		frmWwm.setSize(600, 400);
-		frmWwm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmWwm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		card = new CardLayout();
 		frmWwm.getContentPane().setLayout(card);
 		menu = new View_MainMenu(model,controller);
@@ -60,7 +58,7 @@ public class WWMMainView extends WWMView {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-		loadWindow = new View_LoadWindow(model, "");
+		loadWindow = new View_LoadWindow(model);
 		loadWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
@@ -80,9 +78,12 @@ public class WWMMainView extends WWMView {
 		frmWwm.getContentPane().add(loadWindow, "loadWindow");
 		frmWwm.getContentPane().add(highScoreWindow, "highScoreWindow");
 		frmWwm.setVisible(true);
+		frmWwm.addWindowListener(new WindowAdapter() {
+			@Override public void windowClosing(WindowEvent e) {
+				new View_ExitDialogue(controller);
+			}
+		});
 	}
-
-	//MARK: - Methods
 	@Override public void setQuestion(Model_Question question) {
 		questionWindow.setQuestion(question);
 	}
@@ -94,19 +95,25 @@ public class WWMMainView extends WWMView {
 		questionWindow.setTelephoneJokerUsed();
 		
 	}
+
 	@Override public void displayFiftyFiftyJoker() {
 		questionWindow.useFiftyFiftyJoker(model.getFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
+
 	@Override public void displaySaveDialog() {
+		saveWindow.updateSaveWindow();
 		card.show(frmWwm.getContentPane(), "saveWindow");
 	}
 	@Override public void displayLoadDialog() {
+		loadWindow.updateLoadWindow();
 		card.show(frmWwm.getContentPane(), "loadWindow");
 	}
 	@Override public void displayGameWindow() {
+		questionWindow.updateQuestionWindow();
 		card.show(frmWwm.getContentPane(), "questionWindow");
 	}
 	@Override public void displayHighScoreWindow() {
+		highScoreWindow.updateHighScoreWindow();
 		card.show(frmWwm.getContentPane(), "highScoreWindow");
 	}
 	@Override public void displayExitDialog() {
@@ -117,14 +124,13 @@ public class WWMMainView extends WWMView {
 	}
 	@Override public void displayFalseAnswerDialog() {
 		new View_FalseAnswerDialogue();
-		displayEndOfGameDialog();
 	}
 	@Override public void displayEndOfGameDialog() {
-		System.out.println("endOFgame");
 		endGameWindow = new View_EndOfGameWindow(model);
 		endGameWindow.registerKeyboardAction(new ActionListener() {
 			
-			@Override public void actionPerformed(ActionEvent e) {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				card.first(frmWwm.getContentPane());
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);

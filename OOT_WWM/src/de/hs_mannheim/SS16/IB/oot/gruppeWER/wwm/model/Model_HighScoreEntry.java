@@ -2,7 +2,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
 
 import java.io.Serializable;
 
-public class Model_HighScoreEntry implements Comparable, Serializable {
+public class Model_HighScoreEntry implements Comparable, Serializable{
 
 	//MARK: - Assets
 	private String name;
@@ -15,7 +15,7 @@ public class Model_HighScoreEntry implements Comparable, Serializable {
 		this.questionIndex = index;
 		this.gameTimeInSeconds = seconds;
 	}
-
+	
 	//MARK: - Methods
 	@Override public int compareTo(Object o) {
 		Model_HighScoreEntry otherHS = (Model_HighScoreEntry) o; 
@@ -38,8 +38,8 @@ public class Model_HighScoreEntry implements Comparable, Serializable {
 	}
 	public int getQuestionIndex() {
 		return this.questionIndex;
-	}
+	}	
 	public long getPlayTime() {
 		return this.gameTimeInSeconds;
-	}
+	}	
 }

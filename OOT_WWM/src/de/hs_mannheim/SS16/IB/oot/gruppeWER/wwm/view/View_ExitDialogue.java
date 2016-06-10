@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
@@ -43,36 +42,36 @@ public class View_ExitDialogue extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnAbbrechen = new JButton("Abrechen");
-				btnAbbrechen.addActionListener(new ActionListener() {
+				JButton btnCancel = new View_JButton("Abrechen");
+				btnCancel.addActionListener(new ActionListener() {
 					
 					@Override public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				buttonPane.add(btnAbbrechen);
-				getRootPane().setDefaultButton(btnAbbrechen);
+				buttonPane.add(btnCancel);
+				getRootPane().setDefaultButton(btnCancel);
 			}
 			{
-				JButton btnSpeichern = new JButton("Speichern");
-				btnSpeichern.addActionListener(new ActionListener() {
+				JButton btnSave = new View_JButton("Speichern");
+				btnSave.addActionListener(new ActionListener() {
 					
 					@Override public void actionPerformed(ActionEvent e) {
 						controller.actionPerformed(new ActionEvent(this, 123456, "Speichern"));
 						dispose();
 					}
 				});
-				buttonPane.add(btnSpeichern);
+				buttonPane.add(btnSave);
 			}
 			{
-				JButton btnBeenden = new JButton("Beenden");
-				btnBeenden.addActionListener(new ActionListener() {
+				JButton btnExit = new View_JButton("Beenden");
+				btnExit.addActionListener(new ActionListener() {
 					
 					@Override public void actionPerformed(ActionEvent e) {
 						System.exit(0);
 					}
 				});
-				buttonPane.add(btnBeenden);
+				buttonPane.add(btnExit);
 			}
 		}
 		pack();

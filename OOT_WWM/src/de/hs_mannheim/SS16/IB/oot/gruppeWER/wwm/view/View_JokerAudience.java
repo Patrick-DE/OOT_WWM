@@ -24,8 +24,7 @@ public class View_JokerAudience extends JDialog {
 	private static final long serialVersionUID = 1599703298634307780L;
 	private final JPanel contentPanel = new JPanel();
 
-	
-	//MARK: - Constructor
+	//MARK: - Assets
 	public View_JokerAudience(int[] audienceResults) {
 		setAlwaysOnTop(true);
 		setBounds(100, 100, 450, 300);
@@ -179,11 +178,10 @@ public class View_JokerAudience extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new View_JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					
-					@Override
-					public void actionPerformed(ActionEvent e) {
+					@Override public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});

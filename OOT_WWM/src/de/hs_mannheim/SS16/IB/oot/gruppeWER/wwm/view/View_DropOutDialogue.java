@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 
 public class View_DropOutDialogue extends JDialog {
-	
+
 	//MARK: - Assets
 	private final JPanel contentPanel = new JPanel();
 
@@ -39,28 +39,26 @@ public class View_DropOutDialogue extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnNein = new JButton("Nein");
-				btnNein.addActionListener(new ActionListener() {
+				JButton btnNo = new View_JButton("Nein");
+				btnNo.addActionListener(new ActionListener() {
 					
-					@Override
-					public void actionPerformed(ActionEvent e) {
+					@Override public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				buttonPane.add(btnNein);
-				getRootPane().setDefaultButton(btnNein);
+				buttonPane.add(btnNo);
+				getRootPane().setDefaultButton(btnNo);
 			}
 			{
-				JButton btnJa = new JButton("Ja");
-				btnJa.addActionListener(new ActionListener() {
+				JButton btnYes = new View_JButton("Ja");
+				btnYes.addActionListener(new ActionListener() {
 					
-					@Override
-					public void actionPerformed(ActionEvent e) {
+					@Override public void actionPerformed(ActionEvent e) {
 						model.setGameEnd();
 						dispose();
 					}
 				});
-				buttonPane.add(btnJa);
+				buttonPane.add(btnYes);
 			}
 		}
 		pack();

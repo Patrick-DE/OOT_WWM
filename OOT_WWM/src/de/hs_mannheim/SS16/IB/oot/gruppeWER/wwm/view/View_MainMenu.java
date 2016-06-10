@@ -8,20 +8,18 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class View_MainMenu extends JPanel {
-	//MARK: - Constructor
-	private JButton btnWeiterspielen;
-	private JButton btnNeuesSpiel;
-	private JButton btnSpeichern;
-	private JButton btnLaden;
-	private JButton btnBestenliste;
-	private JButton btnBeenden;
+	
+	//MARK: - Assets
+	private JButton btnContinue;
+	private JButton btnNewGame;
+	private JButton btnSave;
+	private JButton btnLoad;
+	private JButton btnHighScore;
+	private JButton btnExit;
 	private WWMModel model;
 
 	//MARK: - Constructor
@@ -37,7 +35,7 @@ public class View_MainMenu extends JPanel {
 		JPanel panelMainImage = new JPanel();
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
-		gbc_panelMainImage.insets = new Insets(0, 0, 5, 0);
+		gbc_panelMainImage.insets = new Insets(0, 0, 0, 0);
 		gbc_panelMainImage.gridx = 0;
 		gbc_panelMainImage.gridy = 0;
 		add(panelMainImage, gbc_panelMainImage);
@@ -52,37 +50,37 @@ public class View_MainMenu extends JPanel {
 		panelMainMenuButtons.setLayout(new GridLayout(6, 1, 0, 0));
 		
 		
-		btnWeiterspielen = new View_JButton("Weiterspielen");
-		btnWeiterspielen.addActionListener(controller);
-		panelMainMenuButtons.add(btnWeiterspielen);
+		btnContinue = new View_JButton("Weiterspielen");
+		btnContinue.addActionListener(controller);
+		panelMainMenuButtons.add(btnContinue);
 		
-		btnNeuesSpiel = new View_JButton("Neues Spiel");
-		btnNeuesSpiel.addActionListener(controller);
-		panelMainMenuButtons.add(btnNeuesSpiel);
+		btnNewGame = new View_JButton("Neues Spiel");
+		btnNewGame.addActionListener(controller);
+		panelMainMenuButtons.add(btnNewGame);
 		
-		btnSpeichern = new View_JButton("Speichern");
-		btnSpeichern.addActionListener(controller);
-		panelMainMenuButtons.add(btnSpeichern);
+		btnSave = new View_JButton("Speichern");
+		btnSave.addActionListener(controller);
+		panelMainMenuButtons.add(btnSave);
 		
-		btnLaden = new View_JButton("Laden");
-		btnLaden.addActionListener(controller);
-		panelMainMenuButtons.add(btnLaden);
+		btnLoad = new View_JButton("Laden");
+		btnLoad.addActionListener(controller);
+		panelMainMenuButtons.add(btnLoad);
 		
-		btnBestenliste = new View_JButton("Bestenliste");
-		btnBestenliste.addActionListener(controller);
-		panelMainMenuButtons.add(btnBestenliste);
+		btnHighScore = new View_JButton("Bestenliste");
+		btnHighScore.addActionListener(controller);
+		panelMainMenuButtons.add(btnHighScore);
 		
-		btnBeenden = new View_JButton("Beenden");
-		btnBeenden.addActionListener(controller);
-		panelMainMenuButtons.add(btnBeenden);
+		btnExit = new View_JButton("Beenden");
+		btnExit.addActionListener(controller);
+		panelMainMenuButtons.add(btnExit);
 		updateMenuButtons();
 	}
 	
 	//MARK: - Methods
 	public void updateMenuButtons() {
 		if (!model.gameStarted())
-			btnWeiterspielen.setEnabled(false);
+			btnContinue.setEnabled(false);
 		else 
-			btnWeiterspielen.setEnabled(true);
+			btnContinue.setEnabled(true);
 	}
 }

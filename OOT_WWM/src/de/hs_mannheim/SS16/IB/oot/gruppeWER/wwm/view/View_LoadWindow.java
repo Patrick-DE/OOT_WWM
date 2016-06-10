@@ -11,7 +11,6 @@ import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
@@ -19,22 +18,21 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 public class View_LoadWindow extends JPanel implements ActionListener{
 
 	//MARK: - Assets
-	private JButton btnLadestelle1;
-	private JButton btnLadestelle2;
-	private JButton btnLadestelle3;
-	private JButton btnLadestelle4;
-	private JButton btnLadestelle5;
-	private JButton btnLadestelle6;
-	private JButton btnLadestelle7;
-	private JButton btnLadestelle8;
+	private static final long serialVersionUID = 394076361918986893L;
+	private JButton btnLoadButton1;
+	private JButton btnLoadButton2;
+	private JButton btnLoadButton3;
+	private JButton btnLoadButton4;
+	private JButton btnLoadButton5;
+	private JButton btnLoadButton6;
+	private JButton btnLoadButton7;
+	private JButton btnLoadButton8;
 	private WWMModel model;
-	private String path;
 
 	
 	//MARK: - Constructor
-	public View_LoadWindow(WWMModel model, String path) {
+	public View_LoadWindow(WWMModel model) {
 		this.model = model;
-		this.path = path;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
@@ -42,13 +40,13 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblWhleDieSpeicherstelle = new JLabel("Wähle die Ladestelle aus:");
+		JLabel lblChooseGameSave = new JLabel("Wähle die Ladestelle aus:");
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
 		gbc_lblWhleDieSpeicherstelle.gridx = 0;
 		gbc_lblWhleDieSpeicherstelle.gridy = 0;
-		add(lblWhleDieSpeicherstelle, gbc_lblWhleDieSpeicherstelle);
+		add(lblChooseGameSave, gbc_lblWhleDieSpeicherstelle);
 		
 		JPanel panelSave = new JPanel();
 		GridBagConstraints gbc_panelSave = new GridBagConstraints();
@@ -59,73 +57,83 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		
-		btnLadestelle1 = new View_JButton("Ladestelle 1");
-		btnLadestelle1.setActionCommand("1");
-		if (loadGameExists(path, 1))
-			btnLadestelle1.setForeground(Color.BLUE);
-		btnLadestelle1.addActionListener(this);
-		panelSave.add(btnLadestelle1);
+		btnLoadButton1 = new View_JButton("Ladestelle 1");
+		btnLoadButton1.setActionCommand("1");
+		btnLoadButton1.addActionListener(this);
+		panelSave.add(btnLoadButton1);
 		
-		btnLadestelle2 = new View_JButton("Ladestelle 2");
-		btnLadestelle2.setActionCommand("2");
-		if (loadGameExists(path, 2))
-			btnLadestelle2.setForeground(Color.BLUE);
-		btnLadestelle2.addActionListener(this);
-		panelSave.add(btnLadestelle2);
+		btnLoadButton2 = new View_JButton("Ladestelle 2");
+		btnLoadButton2.setActionCommand("2");
+		btnLoadButton2.addActionListener(this);
+		panelSave.add(btnLoadButton2);
 		
-		btnLadestelle3 = new View_JButton("Ladestelle 3");
-		btnLadestelle3.setActionCommand("3");
-		if (loadGameExists(path, 3))
-			btnLadestelle3.setForeground(Color.BLUE);
-		btnLadestelle3.addActionListener(this);
-		panelSave.add(btnLadestelle3);
+		btnLoadButton3 = new View_JButton("Ladestelle 3");
+		btnLoadButton3.setActionCommand("3");
+		btnLoadButton3.addActionListener(this);
+		panelSave.add(btnLoadButton3);
 		
-		btnLadestelle4 = new View_JButton("Ladestelle 4");
-		btnLadestelle4.setActionCommand("4");
-		if (loadGameExists(path, 4))
-			btnLadestelle4.setForeground(Color.BLUE);
-		btnLadestelle4.addActionListener(this);
-		panelSave.add(btnLadestelle4);
+		btnLoadButton4 = new View_JButton("Ladestelle 4");
+		btnLoadButton4.setActionCommand("4");
+		btnLoadButton4.addActionListener(this);
+		panelSave.add(btnLoadButton4);
 		
-		btnLadestelle5 = new View_JButton("Ladestelle 5");
-		btnLadestelle5.setActionCommand("5");
-		if (loadGameExists(path, 5))
-			btnLadestelle5.setForeground(Color.BLUE);
-		btnLadestelle5.addActionListener(this);
-		panelSave.add(btnLadestelle5);
+		btnLoadButton5 = new View_JButton("Ladestelle 5");
+		btnLoadButton5.setActionCommand("5");
+		btnLoadButton5.addActionListener(this);
+		panelSave.add(btnLoadButton5);
 		
-		btnLadestelle6 = new View_JButton("Ladestelle 6");
-		btnLadestelle6.setActionCommand("6");
-		if (loadGameExists(path, 6))
-			btnLadestelle6.setForeground(Color.BLUE);
-		btnLadestelle6.addActionListener(this);
-		panelSave.add(btnLadestelle6);
+		btnLoadButton6 = new View_JButton("Ladestelle 6");
+		btnLoadButton6.setActionCommand("6");
+		btnLoadButton6.addActionListener(this);
+		panelSave.add(btnLoadButton6);
 		
-		btnLadestelle7 = new View_JButton("Ladestelle 7");
-		btnLadestelle7.setActionCommand("7");
-		if (loadGameExists(path, 7))
-			btnLadestelle7.setForeground(Color.BLUE);
-		btnLadestelle7.addActionListener(this);
-		panelSave.add(btnLadestelle7);
+		btnLoadButton7 = new View_JButton("Ladestelle 7");
+		btnLoadButton7.setActionCommand("7");
+		btnLoadButton7.addActionListener(this);
+		panelSave.add(btnLoadButton7);
 		
-		btnLadestelle8 = new View_JButton("Ladestelle 8");
-		btnLadestelle8.setActionCommand("8");
-		if (loadGameExists(path, 8))
-			btnLadestelle8.setForeground(Color.BLUE);
-		btnLadestelle8.addActionListener(this);
-		panelSave.add(btnLadestelle8);
+		btnLoadButton8 = new View_JButton("Ladestelle 8");
+		btnLoadButton8.setActionCommand("8");
+		btnLoadButton8.addActionListener(this);
+		panelSave.add(btnLoadButton8);
 	}
-
+	
 	//MARK: - Methods
 	@Override public void actionPerformed(ActionEvent e) {
 		int loadIndex = Integer.parseInt(e.getActionCommand());
-		if (loadGameExists(path, loadIndex)) {
-			model.loadQuestionsFromSaveGame(path, loadIndex);
+		if (loadGameExists(loadIndex)) {
+			model.loadQuestionsFromSaveGame(loadIndex);
 		}
 	}
-	private boolean loadGameExists (String parentPath, int index) {
-		if (new File (parentPath + "save/game" + index + ".wwm").exists())
+	private boolean loadGameExists (int index) {
+		if (new File ("save/game" + index + ".wwm").exists())
 			return true;
 		return false;
+	}
+	public void updateLoadWindow() {
+		btnLoadButton1.setForeground(Color.RED);
+		btnLoadButton2.setForeground(Color.RED);
+		btnLoadButton3.setForeground(Color.RED);
+		btnLoadButton4.setForeground(Color.RED);
+		btnLoadButton5.setForeground(Color.RED);
+		btnLoadButton6.setForeground(Color.RED);
+		btnLoadButton7.setForeground(Color.RED);
+		btnLoadButton8.setForeground(Color.RED);
+		if (loadGameExists(1))
+			btnLoadButton1.setForeground(Color.GREEN);
+		if (loadGameExists(2))
+			btnLoadButton2.setForeground(Color.GREEN);
+		if (loadGameExists(3))
+			btnLoadButton3.setForeground(Color.GREEN);
+		if (loadGameExists(4))
+			btnLoadButton4.setForeground(Color.GREEN);
+		if (loadGameExists(5))
+			btnLoadButton5.setForeground(Color.GREEN);
+		if (loadGameExists(6))
+			btnLoadButton6.setForeground(Color.GREEN);
+		if (loadGameExists(7))
+			btnLoadButton7.setForeground(Color.GREEN);
+		if (loadGameExists(8))
+			btnLoadButton8.setForeground(Color.GREEN);
 	}
 }

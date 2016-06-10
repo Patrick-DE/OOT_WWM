@@ -13,27 +13,37 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.JButton;
+
 public class View_JButton extends JButton {
 
 	//MARK: - Assets
+	private static final long serialVersionUID = 945286255842321281L;
 	private BufferedImage image, imageDe;
 	
 	//MARK: - Constructor
-	View_JButton (String label) {
+	View_JButton(String label) {
 		super(label);
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		loadImage();
-		setForeground(Color.WHITE);
+		setForeground(Color.RED);
 	}
 	View_JButton() {
 		super();
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		loadImage();
-		setForeground(Color.WHITE);
+		setForeground(Color.RED);
 	}
-	
 	View_JButton(Icon icon) {
 		super(icon);
 		setContentAreaFilled(false);

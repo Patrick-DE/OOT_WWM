@@ -26,9 +26,7 @@ public class WWMController implements ActionListener {
 	}
 	@Override public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getActionCommand().equals("Neues Spiel")) {
-			if (model.gameStarted())
-				model.gameRestart();
-			model.setQuestionsFromFile("");
+			model.gameRestart();
 			for (WWMView view : views)
 				view.displayGameWindow();
 		} else if (arg0.getActionCommand().equals("Weiterspielen")) {
@@ -70,7 +68,7 @@ public class WWMController implements ActionListener {
 		}
 	}
 	public static void main(String[] args) {
-		WWMModel model = new WWMModel("");
+		WWMModel model = new WWMModel();
 		WWMController controller = new WWMController(model);
 		WWMView view = new WWMMainView(model, controller);
 	}

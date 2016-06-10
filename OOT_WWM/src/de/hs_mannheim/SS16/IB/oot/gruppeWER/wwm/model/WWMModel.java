@@ -1,17 +1,14 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,24 +22,27 @@ public class WWMModel extends Observable {
 	private ArrayList<Model_Question> questions;
 	private ArrayList<Integer> prices;
 	private ArrayList<Model_HighScoreEntry> highScoreEntries;
-	public Model_Joker fiftyFifty = new Model_JokerFiftyFifty(), audience = new Model_JokerAudience(), telephone = new Model_JokerTelephone();
+	private Model_Joker fiftyFifty = new Model_JokerFiftyFifty();
+	private	Model_Joker audience = new Model_JokerAudience();
+	private Model_Joker telephone = new Model_JokerTelephone();
 	private int questionIndex = -1;
-	private boolean gameEndFalseAnswer = false, gameStarted = false, gameEndAllGreen = false, gameEnd = true;
 	private int questionAnswerTimeInSeconds = 30;
 	private int gameQuestionAmount = 15;
 	private Timer questionTimer;
 
 	private long startTime, gameTimeAlreadyRunning = 0, gameEndTime;
+	
+	private boolean gameStart = false, gameEnd = false, gameEndFalseAnswer = false, gameEndRightAnswer = false;
 
 	//MARK: - Constructor
-	/**
-	 * Creates a new WWMModel object
-	 */
-	public WWMModel(String path) {
+	public WWMModel() {
 		loadMainData();
 	}
 
 	//MARK: - Methods
+	/**
+	 * Loads the main data (prices and high score entry)
+	 */
 	public void loadMainData() {
 		highScoreEntries = new ArrayList<Model_HighScoreEntry>();
 		prices = new ArrayList<Integer>();
@@ -68,7 +68,12 @@ public class WWMModel extends Observable {
 			e.printStackTrace();
 		}
 	}
-	public void setQuestionsFromFile(String path) {
+
+	/**
+	 * loads the question from the question files
+	 * @param path String the file path of the jar- (normal "")
+	 */
+	public void setQuestionsFromFile() {
 		startTime = System.currentTimeMillis();
 		questions = new ArrayList<Model_Question>();
 		ArrayList<Model_Question> questionsEasy = new ArrayList<Model_Question>(), questionsMiddle = new ArrayList<Model_Question>(),
@@ -77,19 +82,19 @@ public class WWMModel extends Observable {
 
 		try {
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(path + "data/fragenEinfach.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/fragenEinfach.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsEasy.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 0));
 			fileReader.close();
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(path + "data/fragenMittel.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/fragenMittel.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsMiddle.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 1));
 			fileReader.close();
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(path + "data/fragenSchwer.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/fragenSchwer.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsHard.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 2));
@@ -119,14 +124,15 @@ public class WWMModel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-
-	public void loadQuestionsFromSaveGame(String path, int loadIndex) {
+	public void loadQuestionsFromSaveGame(int loadIndex) {
+		if ( questionTimer != null)
+			questionTimer.cancel();
 		try {
 			ObjectInputStream loadInput = new ObjectInputStream(
-					new FileInputStream(path + "save/game" + loadIndex + ".wwm"));
+					new FileInputStream("save/game" + loadIndex + ".wwm"));
 			questions = (ArrayList<Model_Question>) loadInput.readObject();
 			if (questions == null)
-				setQuestionsFromFile(path);
+				setQuestionsFromFile();
 			questionIndex = (int) loadInput.readInt();
 			questionIndex = (questionIndex == -2) ? -1 : questionIndex;
 			gameTimeAlreadyRunning = (long) loadInput.readLong();
@@ -137,6 +143,10 @@ public class WWMModel extends Observable {
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		gameStart = true;
+		gameEnd = false;
+		gameEndFalseAnswer = false;
+		gameEndRightAnswer = false;
 		game();
 		setChanged();
 		notifyObservers();
@@ -164,8 +174,6 @@ public class WWMModel extends Observable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		setChanged();
-//		notifyObservers();
 	}
 	public Model_Question getQuestionAtIndex(int index) {
 		return questions.get(index);
@@ -188,6 +196,15 @@ public class WWMModel extends Observable {
 		telephone.setStatus(true);
 		return ((Model_JokerTelephone) telephone).getTelephonAnswer(question);
 	}
+	public boolean getFiftyFiftyStatus () {
+		return fiftyFifty.getStatus();
+	}
+	public boolean getTelephoneStatus () {
+		return telephone.getStatus();
+	}
+	public boolean getAudienceStatus () {
+		return audience.getStatus();
+	}
 	public int getQuestionIndex() {
 		return questionIndex;
 	}
@@ -199,26 +216,15 @@ public class WWMModel extends Observable {
 		} else {
 			calculateGameRunningTime();
 			gameEndFalseAnswer = true;
-			gameEnd = false;
 			setChanged();
 			notifyObservers();
 		}
-	}	
-	public boolean getGameEndStatus() {
-		return this.gameEnd;
-	}
-	public void setStarted() {
-		this.gameStarted = true;
 	}
 	public boolean gameStarted() {
-		return this.gameStarted;
-	}
-	public boolean getGameStatus() {
-		return !gameEndFalseAnswer;
+		return this.gameStart;
 	}
 	public void game() {
-		if (!gameStarted())
-			setStarted();
+		gameStart = true;
 		questionIndex++;
 		if (questionIndex < gameQuestionAmount) {
 			questionTimer = new Timer();
@@ -235,14 +241,16 @@ public class WWMModel extends Observable {
 			setChanged();
 			notifyObservers();
 		} else {
-			gameEndAllGreen = true;
+			gameEndRightAnswer = true;
 			calculateGameRunningTime();
 			setChanged();
 			notifyObservers();
 		}
 	}
 	public boolean getGameFinishedStatus() {
-		return this.gameEndAllGreen;
+		if (gameEndRightAnswer || gameEndFalseAnswer)
+			return true;
+		return false;
 	}
 	public int getAnswerTime() {
 		return this.questionAnswerTimeInSeconds;
@@ -253,14 +261,15 @@ public class WWMModel extends Observable {
 	public long getGameTime() {
 		return gameEndTime;
 	}
+
 	public int getPricesAtPos(int index) {
 		return prices.get(index);
 	}
 	public int getAmountOfQuestions() {
 		return gameQuestionAmount;
 	}
-	@SuppressWarnings("unchecked")
 	public void highScoreAddEntrie(String name, int timeInSeconds) {
+		gameStart = false;
 		highScoreEntries.add(new Model_HighScoreEntry(name, questionIndex, timeInSeconds));
 		Collections.sort(highScoreEntries);
 		try {
@@ -277,7 +286,7 @@ public class WWMModel extends Observable {
 		return highScoreEntries;
 	}
 	public void setGameEnd() {
-		gameEndAllGreen = true;
+		gameEndRightAnswer = true;
 		calculateGameRunningTime();
 		setChanged();
 		notifyObservers();
@@ -293,10 +302,29 @@ public class WWMModel extends Observable {
 			return 1000000;
 	}
 	public void gameRestart() {
+		if ( questionTimer != null)
+			questionTimer.cancel();
+		resetAudienceJoker();
+		resetFiftyFiftyJoker();
+		resetTelephoneJoker();
 		gameEndFalseAnswer = false;
-		gameStarted = false;
-		gameEndAllGreen = false;
-		gameEnd = true;
+		gameStart = false;
+		gameEndRightAnswer = false;
+		gameEnd = false;
+		loadMainData();
 		questionIndex = -1;
+		setQuestionsFromFile();
+	}
+	private void resetTelephoneJoker () {
+		this.telephone.setStatus(false);
+	}
+	private void resetAudienceJoker () {
+		this.audience.setStatus(false);
+	}
+	private void resetFiftyFiftyJoker () {
+		this.fiftyFifty.setStatus(false);
+	}
+	public boolean getGameEndFalseAnswer () {
+		return this.gameEndFalseAnswer;
 	}
 }

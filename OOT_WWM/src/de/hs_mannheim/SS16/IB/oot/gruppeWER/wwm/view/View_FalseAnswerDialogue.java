@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class View_FalseAnswerDialogue extends JDialog {
-	
+
 	//MARK: - Assets
 	private final JPanel contentPanel = new JPanel();
 
@@ -27,16 +27,16 @@ public class View_FalseAnswerDialogue extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		{
-			JLabel lblFalscheAntwort = new JLabel("Falsche Antwort!");
-			lblFalscheAntwort.setHorizontalAlignment(SwingConstants.CENTER);
-			contentPanel.add(lblFalscheAntwort);
+			JLabel lblFalseAnswer = new JLabel("Falsche Antwort!");
+			lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
+			contentPanel.add(lblFalseAnswer);
 		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new View_JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					
 					@Override public void actionPerformed(ActionEvent e) {
