@@ -102,7 +102,6 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 		btnSaveButton8.setActionCommand("8");
 		btnSaveButton8.addActionListener(this);
 		panelSave.add(btnSaveButton8);
-
 	}
 
 	//MARK: - Methods

@@ -160,13 +160,13 @@ public class View_QuestionWindow extends JPanel {
 		fiftyFiftyUsed = true;
 		for (int i = 0; i < jokerResults.length; i++) {
 			if (jokerResults[i] == 1)
-				btnAnswer1.setForeground(Color.BLUE);
+				btnAnswer1.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 2)
-				btnAnswer2.setForeground(Color.BLUE);
+				btnAnswer2.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 3)
-				btnAnswer3.setForeground(Color.BLUE);
+				btnAnswer3.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 4)
-				btnAnswer4.setForeground(Color.BLUE);
+				btnAnswer4.setForeground(Color.GRAY);
 		}
 	}
 	public void setAudienceJokerUsed () {

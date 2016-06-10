@@ -68,7 +68,6 @@ public class WWMModel extends Observable {
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * loads the question from the question files
 	 * @param path String the file path of the jar- (normal "")
@@ -230,8 +229,7 @@ public class WWMModel extends Observable {
 			questionTimer = new Timer();
 			questionTimer.schedule(new TimerTask() {
 
-				@Override
-				public void run() {
+				@Override public void run() {
 					gameEndFalseAnswer = true;
 					calculateGameRunningTime();
 					setChanged();
@@ -261,7 +259,6 @@ public class WWMModel extends Observable {
 	public long getGameTime() {
 		return gameEndTime;
 	}
-
 	public int getPricesAtPos(int index) {
 		return prices.get(index);
 	}

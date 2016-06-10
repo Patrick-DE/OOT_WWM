@@ -27,62 +27,50 @@ public abstract class WWMView implements Observer {
 	 * @param question
 	 */
 	public abstract void setQuestion(Model_Question question);
-
 	/**
 	 * display the audience joker
 	 */
 	public abstract void displayAudienceJoker();
-
 	/**
 	 * display the telephone joker
 	 */
 	public abstract void displayTelephoneJoker();
-
 	/**
 	 * display the fifty-fifty joker
 	 */
 	public abstract void displayFiftyFiftyJoker();
-
 	/**
 	 * display the save-game window
 	 */
 	public abstract void displaySaveDialog();
-
 	/**
 	 * display the load screen
 	 */
 	public abstract void displayLoadDialog();
-	
 	/**
 	 * display the question window 
 	 */
 	public abstract void displayGameWindow();
-	
 	/**
 	 * display the high-score window
 	 */
 	public abstract void displayHighScoreWindow();
-	
 	/**
 	 * display the exit dialog
 	 */
 	public abstract void displayExitDialog();
-	
 	/**
 	 * display the drop out dialog
 	 */
 	public abstract void displayDropOutDialog();
-	
 	/**
 	 * display the false answer screen
 	 */
 	public abstract void displayFalseAnswerDialog();
-	
 	/**
 	 * display the end-of-game window
 	 */
 	public abstract void displayEndOfGameDialog();
-	
 	/**
 	 * display the main menu
 	 */
@@ -98,8 +86,6 @@ public abstract class WWMView implements Observer {
 			displayEndOfGameDialog();
 		} else {
 			displayMainMenu();
-		}
-		
-	}
-	
+		}	
+	}	
 }
