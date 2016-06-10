@@ -24,7 +24,7 @@ public class Model_HighScoreEntry implements Comparable, Serializable{
 		else if (this.questionIndex < otherHS.getQuestionIndex())
 			return 1;
 		else {
-			if (this.getPlayTime() < otherHS.getQuestionIndex())
+			if (this.getPlayTime() < otherHS.getPlayTime())
 				return -1;
 			else if (this.getPlayTime() > otherHS.getPlayTime())
 				return 1;
