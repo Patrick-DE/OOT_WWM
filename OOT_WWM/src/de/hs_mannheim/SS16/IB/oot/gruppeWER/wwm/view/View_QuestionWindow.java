@@ -143,10 +143,16 @@ public class View_QuestionWindow extends JPanel {
 			btnAudience.setEnabled(false);
 		if (fiftyFiftyUsed) {
 			fiftyFiftyUsed = false;
-			btnAnswer1.setForeground(Color.RED);
-			btnAnswer2.setForeground(Color.RED);
-			btnAnswer3.setForeground(Color.RED);
-			btnAnswer4.setForeground(Color.RED);
+			
+			btnAnswer1.setEnabled(true);
+			btnAnswer2.setEnabled(true);
+			btnAnswer3.setEnabled(true);
+			btnAnswer4.setEnabled(true);
+			
+//			btnAnswer1.setForeground(Color.WHITE);
+//			btnAnswer2.setForeground(Color.WHITE);
+//			btnAnswer3.setForeground(Color.WHITE);
+//			btnAnswer4.setForeground(Color.WHITE);
 		}
 		questionTextPanel.setText("<HTML><BODY>" + question.getQuestionText() + "</BODY></HTML>");
 		questionTextPanel.animationRestart();
@@ -160,13 +166,17 @@ public class View_QuestionWindow extends JPanel {
 		fiftyFiftyUsed = true;
 		for (int i = 0; i < jokerResults.length; i++) {
 			if (jokerResults[i] == 1)
-				btnAnswer1.setForeground(Color.GRAY);
+				btnAnswer1.setEnabled(false);
+				//btnAnswer1.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 2)
-				btnAnswer2.setForeground(Color.GRAY);
+				btnAnswer2.setEnabled(false);
+				//btnAnswer2.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 3)
-				btnAnswer3.setForeground(Color.GRAY);
+				btnAnswer3.setEnabled(false);
+				//btnAnswer3.setForeground(Color.GRAY);
 			else if (jokerResults[i] == 4)
-				btnAnswer4.setForeground(Color.GRAY);
+				btnAnswer4.setEnabled(false);
+				//btnAnswer4.setForeground(Color.GRAY);
 		}
 	}
 	public void setAudienceJokerUsed () {

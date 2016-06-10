@@ -31,7 +31,7 @@ public class View_GameInfoPanel extends JPanel {
 	//MARK: - Constructor
 	public View_GameInfoPanel(WWMModel model) {
 		try {
-			background = ImageIO.read(new File("data/questionBar.png"));
+			background = ImageIO.read(new File("data/Status_Backdrop.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
