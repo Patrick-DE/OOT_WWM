@@ -32,6 +32,7 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 	
 	//MARK: - Constructor
 	public View_LoadWindow(WWMModel model) {
+		this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
@@ -41,6 +42,8 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 		setLayout(gridBagLayout);
 		
 		JLabel lblChooseGameSave = new JLabel("Wähle die Ladestelle aus:");
+		lblChooseGameSave.setForeground(Color.WHITE);
+		lblChooseGameSave.setOpaque(false);
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
@@ -49,6 +52,7 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 		add(lblChooseGameSave, gbc_lblWhleDieSpeicherstelle);
 		
 		JPanel panelSave = new JPanel();
+		panelSave.setOpaque(false);
 		GridBagConstraints gbc_panelSave = new GridBagConstraints();
 		gbc_panelSave.weighty = 0.9;
 		gbc_panelSave.fill = GridBagConstraints.BOTH;

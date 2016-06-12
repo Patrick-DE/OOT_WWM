@@ -25,6 +25,7 @@ public class View_QuestionPanel extends JLabel {
 	
 	//MARK: - Constructor
 	public View_QuestionPanel(int questionSeconds, int modus) {
+		this.setOpaque(false);
 		this.modus = modus;
 		this.seconds = questionSeconds - 2;
 		try {

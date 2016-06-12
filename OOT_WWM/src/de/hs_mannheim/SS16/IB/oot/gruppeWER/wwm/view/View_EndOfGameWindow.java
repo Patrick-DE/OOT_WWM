@@ -3,6 +3,8 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,7 @@ public class View_EndOfGameWindow extends JPanel {
 
 	//MARK: - Constructor
 	public View_EndOfGameWindow(WWMModel model) {
+		this.setBackground(Color.BLACK);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
@@ -30,6 +33,8 @@ public class View_EndOfGameWindow extends JPanel {
 		setLayout(gridBagLayout);
 		
 		JLabel lblCong = new JLabel("Herzlichen Glückwunsch!");
+		lblCong.setOpaque(false);
+		lblCong.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblHerzlichenGlckwunsch = new GridBagConstraints();
 		gbc_lblHerzlichenGlckwunsch.weighty = 0.3;
 		gbc_lblHerzlichenGlckwunsch.gridwidth = 0;
@@ -37,7 +42,10 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblHerzlichenGlckwunsch.gridx = 0;
 		gbc_lblHerzlichenGlckwunsch.gridy = 0;
 		add(lblCong, gbc_lblHerzlichenGlckwunsch);
+		
 		lblEuro = new JLabel("Sie haben " + model.getPrice() + "€ gewonnen!");
+		lblEuro.setOpaque(false);
+		lblEuro.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
 		gbc_lblEuro.weighty = 0.3;
 		gbc_lblEuro.gridwidth = 0;
@@ -47,6 +55,8 @@ public class View_EndOfGameWindow extends JPanel {
 		add(lblEuro, gbc_lblEuro);
 		
 		JLabel lblName = new JLabel("Name:");
+		lblName.setOpaque(false);
+		lblName.setForeground(Color.WHITE);
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.weighty = 0.2;
@@ -76,6 +86,8 @@ public class View_EndOfGameWindow extends JPanel {
 		textField.setColumns(10);
 		
 		lblTime = new JLabel(model.getGameTime() + "s");
+		lblTime.setOpaque(false);
+		lblTime.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblTime = new GridBagConstraints();
 		gbc_lblTime.gridwidth = 0;
 		gbc_lblTime.weighty = 0.3;

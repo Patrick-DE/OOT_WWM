@@ -6,6 +6,7 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import java.awt.GridBagLayout;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
@@ -24,6 +25,7 @@ public class View_MainMenu extends JPanel {
 
 	//MARK: - Constructor
 	public View_MainMenu(WWMModel model, WWMController controller) {
+		this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {1};
@@ -33,6 +35,7 @@ public class View_MainMenu extends JPanel {
 		setLayout(gridBagLayout);
 		
 		JPanel panelMainImage = new JPanel();
+		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
 		gbc_panelMainImage.insets = new Insets(0, 0, 0, 0);
@@ -41,6 +44,7 @@ public class View_MainMenu extends JPanel {
 		add(panelMainImage, gbc_panelMainImage);
 		
 		JPanel panelMainMenuButtons = new JPanel();
+		panelMainMenuButtons.setOpaque(false);
 		GridBagConstraints gbc_panelMainMenuButtons = new GridBagConstraints();
 		gbc_panelMainMenuButtons.anchor = GridBagConstraints.BASELINE;
 		gbc_panelMainMenuButtons.fill = GridBagConstraints.BOTH;

@@ -15,6 +15,7 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_Question;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 public class WWMMainView extends WWMView {
 
@@ -77,6 +78,7 @@ public class WWMMainView extends WWMView {
 		frmWwm.getContentPane().add(saveWindow, "saveWindow");
 		frmWwm.getContentPane().add(loadWindow, "loadWindow");
 		frmWwm.getContentPane().add(highScoreWindow, "highScoreWindow");
+		frmWwm.setBackground(Color.BLACK);
 		frmWwm.setVisible(true);
 		frmWwm.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {

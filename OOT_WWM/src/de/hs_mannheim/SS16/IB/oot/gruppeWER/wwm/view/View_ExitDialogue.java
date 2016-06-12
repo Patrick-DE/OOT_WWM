@@ -1,6 +1,7 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -24,6 +25,8 @@ public class View_ExitDialogue extends JDialog {
 
 	//MARK: - Constructor
 	public View_ExitDialogue(WWMController controller) {
+		contentPanel.setOpaque(false);
+		getContentPane().setBackground(Color.BLACK);
 		setTitle("Speichern und Beenden");
 		setModal(true);
 		setAlwaysOnTop(true);
@@ -34,11 +37,14 @@ public class View_ExitDialogue extends JDialog {
 		contentPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		{
 			JLabel lblBeendenOhneSpeichern = new JLabel("Beenden ohne Speichern?");
+			lblBeendenOhneSpeichern.setOpaque(false);
+			lblBeendenOhneSpeichern.setForeground(Color.WHITE);
 			lblBeendenOhneSpeichern.setHorizontalAlignment(SwingConstants.CENTER);
 			contentPanel.add(lblBeendenOhneSpeichern);
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setOpaque(false);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

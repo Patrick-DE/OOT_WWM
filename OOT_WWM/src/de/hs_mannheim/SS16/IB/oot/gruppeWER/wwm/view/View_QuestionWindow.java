@@ -37,6 +37,7 @@ public class View_QuestionWindow extends JPanel {
 
 	//MARK: - Constructor
 	public View_QuestionWindow(WWMController controller, WWMModel model) {
+		this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.rowHeights = new int[] {0, 20, 20, 30};
@@ -69,7 +70,7 @@ public class View_QuestionWindow extends JPanel {
 		add(questionTextPanel, gbc_labelQuestion);
 		
 		JPanel answerPanel = new JPanel(new GridLayout(2, 2));
-		
+		answerPanel.setOpaque(false);
 		btnAnswer1 = new View_JButton();
 		btnAnswer1.setActionCommand("Antwort1");
 		btnAnswer1.addActionListener(controller);
@@ -102,6 +103,7 @@ public class View_QuestionWindow extends JPanel {
 		add(answerPanel, gbc_answerPanel);
 		
 		JPanel buttonSpace = new JPanel();
+		buttonSpace.setOpaque(false);
 		GridBagConstraints gbc_buttonSpace = new GridBagConstraints();
 		gbc_buttonSpace.fill = GridBagConstraints.HORIZONTAL;
 		gbc_buttonSpace.gridwidth = 2;
@@ -154,7 +156,7 @@ public class View_QuestionWindow extends JPanel {
 //			btnAnswer3.setForeground(Color.WHITE);
 //			btnAnswer4.setForeground(Color.WHITE);
 		}
-		questionTextPanel.setText("<HTML><BODY>" + question.getQuestionText() + "</BODY></HTML>");
+		questionTextPanel.setText("<HTML><BODY><div style='text-align: center;'>" + question.getQuestionText() + "</BODY></HTML>");
 		questionTextPanel.animationRestart();
 		btnAnswer1.setText("<HTML><BODY>" + question.getAnswerAtIndex(1) + "</BODY></HTML>");
 		btnAnswer2.setText("<HTML><BODY>" + question.getAnswerAtIndex(2) + "</BODY></HTML>");

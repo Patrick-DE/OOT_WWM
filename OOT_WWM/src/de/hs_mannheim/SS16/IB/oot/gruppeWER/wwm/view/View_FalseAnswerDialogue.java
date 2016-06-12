@@ -1,6 +1,7 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -21,18 +22,23 @@ public class View_FalseAnswerDialogue extends JDialog {
 
 	//MARK: - Constructor
 	public View_FalseAnswerDialogue() {
+		getContentPane().setBackground(Color.BLACK);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setOpaque(false);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		{
 			JLabel lblFalseAnswer = new JLabel("Falsche Antwort!");
+			lblFalseAnswer.setForeground(Color.WHITE);
+			lblFalseAnswer.setOpaque(false);
 			lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
 			contentPanel.add(lblFalseAnswer);
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setOpaque(false);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

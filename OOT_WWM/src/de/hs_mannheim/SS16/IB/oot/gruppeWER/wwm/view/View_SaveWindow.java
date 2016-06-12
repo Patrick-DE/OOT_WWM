@@ -37,6 +37,7 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 
 	//MARK: - Constructor
 	public View_SaveWindow(WWMModel model, String path) {
+		this.setBackground(Color.BLACK);
 		this.model = model;
 		this.path = path;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -47,6 +48,7 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 		setLayout(gridBagLayout);
 		
 		JLabel lblChoose = new JLabel("Wähle die Speicherstelle aus:");
+		lblChoose.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
@@ -55,6 +57,7 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 		add(lblChoose, gbc_lblWhleDieSpeicherstelle);
 		
 		JPanel panelSave = new JPanel();
+		panelSave.setOpaque(false);
 		GridBagConstraints gbc_panelSave = new GridBagConstraints();
 		gbc_panelSave.weighty = 0.9;
 		gbc_panelSave.fill = GridBagConstraints.BOTH;
