@@ -265,7 +265,7 @@ public class WWMModel extends Observable {
 	public int getAmountOfQuestions() {
 		return gameQuestionAmount;
 	}
-	public void highScoreAddEntrie(String name, int timeInSeconds) {
+	public void highScoreAddEntry(String name, int timeInSeconds) {
 		gameStart = false;
 		highScoreEntries.add(new Model_HighScoreEntry(name, questionIndex, timeInSeconds));
 		Collections.sort(highScoreEntries);

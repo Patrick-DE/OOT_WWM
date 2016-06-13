@@ -72,7 +72,7 @@ public class View_EndOfGameWindow extends JPanel {
 			
 			@Override public void actionPerformed(ActionEvent e) {
 				if (textField.getText().length() > 1)
-					model.highScoreAddEntrie(textField.getText(), (int) model.getGameTime()); 
+					model.highScoreAddEntry(textField.getText(), (int) model.getGameTime());
 			}
 		});
 		GridBagConstraints gbc_textField = new GridBagConstraints();
