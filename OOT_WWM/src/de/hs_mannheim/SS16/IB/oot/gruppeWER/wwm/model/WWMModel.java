@@ -142,6 +142,7 @@ public class WWMModel extends Observable {
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		startTime = System.currentTimeMillis();
 		gameStart = true;
 		gameEnd = false;
 		gameEndFalseAnswer = false;
