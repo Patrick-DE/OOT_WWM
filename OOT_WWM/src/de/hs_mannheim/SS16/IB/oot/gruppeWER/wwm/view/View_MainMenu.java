@@ -111,7 +111,7 @@ public class View_MainMenu extends JPanel {
 	}
 	
 	//MARK: - Inner Classes
-	class JPanel_withBackdrop extends JPanel {
+	private class JPanel_withBackdrop extends JPanel {
 		
 		//MARK: - Assets
 		private static final long serialVersionUID = -6088012016107912859L;
@@ -122,8 +122,6 @@ public class View_MainMenu extends JPanel {
 			super();
 			loadImage();
 		}
-		
-		
 
 		//MARK: - Methods
 		@Override protected void paintComponent(Graphics g) {
