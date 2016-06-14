@@ -43,7 +43,7 @@ public class View_MainMenu extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
 		
-		JPanel panelMainImage = new View_JPanel_withBackdrop();
+		JPanel panelMainImage = new JPanel_withBackdrop();
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
@@ -107,6 +107,37 @@ public class View_MainMenu extends JPanel {
 			backdrop = ImageIO.read(new File("data/Backdrop.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	//MARK: - Inner Classes
+	class JPanel_withBackdrop extends JPanel {
+		
+		//MARK: - Assets
+		private static final long serialVersionUID = -6088012016107912859L;
+		private BufferedImage backdrop;
+		
+		//MARK: - Constructor
+		JPanel_withBackdrop() {
+			super();
+			loadImage();
+		}
+		
+		
+
+		//MARK: - Methods
+		@Override protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			if(backdrop != null) {
+		    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+		    }
+		}
+		private void loadImage() {
+			try {
+				backdrop = ImageIO.read(new File("data/WWM_Logo_Spaced.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
