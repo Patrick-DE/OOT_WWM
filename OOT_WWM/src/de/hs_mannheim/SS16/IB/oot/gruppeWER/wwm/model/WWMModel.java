@@ -30,7 +30,9 @@ public class WWMModel extends Observable {
 	private int gameQuestionAmount = 15;
 	private Timer questionTimer;
 
-	private long startTime, gameTimeAlreadyRunning = 0, gameEndTime;
+	private long startTime;
+	private long gameTimeAlreadyRunning = 0;
+	private long gameEndTime;
 
 	private boolean gameStart = false;
 	private boolean gameEnd = false;
@@ -219,8 +221,9 @@ public class WWMModel extends Observable {
 		return questionIndex;
 	}
 	public void validateAnswer(int answerIndex) {
-		if (questionTimer != null)
+		if (questionTimer != null) {
 			questionTimer.cancel();
+		}
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
 			game();
 		} else {
@@ -259,6 +262,7 @@ public class WWMModel extends Observable {
 	}
 	public boolean getGameFinishedStatus() {
 		if (gameEndRightAnswer || gameEndFalseAnswer) {
+			questionTimer.cancel();
 			return true;
 		}
 		else {
@@ -314,7 +318,7 @@ public class WWMModel extends Observable {
 			return 1000000;
 	}
 	public void gameRestart() {
-		if ( questionTimer != null)
+		if (questionTimer != null)
 			questionTimer.cancel();
 		resetAudienceJoker();
 		resetFiftyFiftyJoker();
