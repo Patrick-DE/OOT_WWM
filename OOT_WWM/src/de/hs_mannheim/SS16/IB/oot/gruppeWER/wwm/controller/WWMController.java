@@ -29,40 +29,53 @@ public class WWMController implements ActionListener {
 			model.gameRestart();
 			for (WWMView view : views)
 				view.displayGameWindow();
-		} else if (arg0.getActionCommand().equals("Weiterspielen")) {
+		} 
+		else if (arg0.getActionCommand().equals("Weiterspielen")) {
 			if (model.gameStarted())
 				for (WWMView view : views)
 					view.displayGameWindow();
-		} else if (arg0.getActionCommand().equals("Speichern")) {
+		} 
+		else if (arg0.getActionCommand().equals("Speichern")) {
 			for (WWMView view : views)
 				view.displaySaveDialog();
-		} else if (arg0.getActionCommand().equals("Laden")) {
+		} 
+		else if (arg0.getActionCommand().equals("Laden")) {
 			for (WWMView view : views)
 				view.displayLoadDialog();
-		} else if (arg0.getActionCommand().equals("Bestenliste")) {
+		} 
+		else if (arg0.getActionCommand().equals("Bestenliste")) {
 			for (WWMView view : views)
 				view.displayHighScoreWindow();
-		} else if (arg0.getActionCommand().equals("Beenden")) {
+		} 
+		else if (arg0.getActionCommand().equals("Beenden")) {
 			for (WWMView view : views)
 				view.displayExitDialog();
-		} else if (arg0.getActionCommand().equals("Antwort1")) {
+		} 
+		else if (arg0.getActionCommand().equals("Antwort1")) {
 			model.validateAnswer(1);
-		} else if (arg0.getActionCommand().equals("Antwort2")) {
+		} 
+		else if (arg0.getActionCommand().equals("Antwort2")) {
 			model.validateAnswer(2);
-		} else if (arg0.getActionCommand().equals("Antwort3")) {
+		} 
+		else if (arg0.getActionCommand().equals("Antwort3")) {
 			model.validateAnswer(3);
-		} else if (arg0.getActionCommand().equals("Antwort4")) {
+		} 
+		else if (arg0.getActionCommand().equals("Antwort4")) {
 			model.validateAnswer(4);
-		} else if (arg0.getActionCommand().equals("Telefon")) {
+		} 
+		else if (arg0.getActionCommand().equals("Telefon")) {
 			for (WWMView view : views)
 				view.displayTelephoneJoker();
-		} else if (arg0.getActionCommand().equals("50/50")) {
+		} 
+		else if (arg0.getActionCommand().equals("50/50")) {
 			for (WWMView view : views)
 				view.displayFiftyFiftyJoker();
-		} else if (arg0.getActionCommand().equals("Publikum")) {
+		} 
+		else if (arg0.getActionCommand().equals("Publikum")) {
 			for (WWMView view : views)
 				view.displayAudienceJoker();
-		} else if (arg0.getActionCommand().equals("Aussteigen")) {
+		} 
+		else if (arg0.getActionCommand().equals("Aussteigen")) {
 			for (WWMView view : views)
 				view.displayDropOutDialog();
 		}

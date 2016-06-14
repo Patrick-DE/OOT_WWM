@@ -29,7 +29,7 @@ public class View_QuestionPanel extends JLabel {
 		this.modus = modus;
 		this.seconds = questionSeconds - 2;
 		try {
-			backGround = ImageIO.read(new File("data/questionBar.png"));
+			backGround = ImageIO.read(new File("data/Question_Backdrop_Spaced.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

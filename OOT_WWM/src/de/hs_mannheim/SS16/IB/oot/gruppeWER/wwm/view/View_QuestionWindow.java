@@ -27,7 +27,7 @@ public class View_QuestionWindow extends JPanel {
 	private JButton btnAnswer3;
 	private JButton btnAnswer4;
 	private JButton btnTelephone;
-	private JButton buttonFiftyFifty;
+	private JButton btnFiftyFifty;
 	private JButton btnAudience;
 	private JButton btnDropOut;
 	private boolean fiftyFiftyUsed = false;
@@ -118,10 +118,10 @@ public class View_QuestionWindow extends JPanel {
 		btnTelephone.setActionCommand("Telefon");
 		buttonSpace.add(btnTelephone);
 		
-		buttonFiftyFifty = new View_JButton(new ImageIcon("data/Joker_50_50.png"));
-		buttonFiftyFifty.addActionListener(controller);
-		buttonFiftyFifty.setActionCommand("50/50");
-		buttonSpace.add(buttonFiftyFifty);
+		btnFiftyFifty = new View_JButton(new ImageIcon("data/Joker_50_50.png"));
+		btnFiftyFifty.addActionListener(controller);
+		btnFiftyFifty.setActionCommand("50/50");
+		buttonSpace.add(btnFiftyFifty);
 		
 		btnAudience = new View_JButton(new ImageIcon("data/Joker_Publikum.png"));
 		btnAudience.addActionListener(controller);
@@ -140,7 +140,7 @@ public class View_QuestionWindow extends JPanel {
 		if (model.getTelephoneStatus())
 			btnTelephone.setEnabled(false);
 		if (model.getFiftyFiftyStatus())
-			buttonFiftyFifty.setEnabled(false);
+			btnFiftyFifty.setEnabled(false);
 		if (model.getAudienceStatus())
 			btnAudience.setEnabled(false);
 		if (fiftyFiftyUsed) {
@@ -164,7 +164,7 @@ public class View_QuestionWindow extends JPanel {
 		btnAnswer4.setText("<HTML><BODY>" + question.getAnswerAtIndex(4) + "</BODY></HTML>");
 	}
 	public void useFiftyFiftyJoker (int[] jokerResults) {
-		buttonFiftyFifty.setEnabled(false);
+		btnFiftyFifty.setEnabled(false);
 		fiftyFiftyUsed = true;
 		for (int i = 0; i < jokerResults.length; i++) {
 			if (jokerResults[i] == 1)
@@ -191,7 +191,7 @@ public class View_QuestionWindow extends JPanel {
 		if (!model.getAudienceStatus())
 			btnAudience.setEnabled(true);
 		if (!model.getFiftyFiftyStatus())
-			buttonFiftyFifty.setEnabled(true);
+			btnFiftyFifty.setEnabled(true);
 		if (!model.getTelephoneStatus())
 			btnTelephone.setEnabled(true);
 	}

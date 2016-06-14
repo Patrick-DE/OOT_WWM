@@ -27,7 +27,8 @@ public class View_JButton extends JButton {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 945286255842321281L;
-	private BufferedImage image, imageDe;
+	private BufferedImage imageActivated;
+	private BufferedImage imageDeactivated;
 	
 	//MARK: - Constructor
 	View_JButton(String label) {
@@ -52,10 +53,10 @@ public class View_JButton extends JButton {
 	
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
-		if ( image != null && isEnabled() )
-			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-		else if (imageDe != null && !isEnabled() )
-			g.drawImage(imageDe, 0, 0, getWidth(), getHeight(), this);
+		if ( imageActivated != null && isEnabled() )
+			g.drawImage(imageActivated, 0, 0, getWidth(), getHeight(), this);
+		else if (imageDeactivated != null && !isEnabled() )
+			g.drawImage(imageDeactivated, 0, 0, getWidth(), getHeight(), this);
 		super.paintComponent(g);
 	}
 	@Override protected void paintBorder(Graphics g) {
@@ -66,8 +67,8 @@ public class View_JButton extends JButton {
 	}
 	private void loadImage() {
 		try {
-			image = ImageIO.read(new File("data/questionBar.png"));
-			imageDe = ImageIO.read(new File("data/questionBarDe.png"));
+			imageActivated = ImageIO.read(new File("data/Question_Backdrop_Spaced.png"));
+			imageDeactivated = ImageIO.read(new File("data/Question_Backdrop_Spaced_Deactivated.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
