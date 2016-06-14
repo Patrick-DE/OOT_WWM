@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class View_QuestionPanel extends JLabel {
+public class View_QuestionLabel extends JLabel {
 
 	//MARK: - Assets
 	private double widthI;
@@ -24,7 +24,7 @@ public class View_QuestionPanel extends JLabel {
 	private BufferedImage backGround;
 	
 	//MARK: - Constructor
-	public View_QuestionPanel(int questionSeconds, int modus) {
+	public View_QuestionLabel(int questionSeconds, int modus) {
 		this.setOpaque(false);
 		this.modus = modus;
 		this.seconds = questionSeconds - 2;

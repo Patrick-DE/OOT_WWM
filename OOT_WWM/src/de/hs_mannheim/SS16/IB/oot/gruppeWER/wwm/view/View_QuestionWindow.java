@@ -11,9 +11,14 @@ import java.awt.GridLayout;
 
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -22,6 +27,8 @@ public class View_QuestionWindow extends JPanel {
 	
 	//MARK: - Assets
 	private static final long serialVersionUID = -8111826866911799613L;
+	private BufferedImage backdrop;
+	
 	private JButton btnAnswer1;
 	private JButton btnAnswer2;
 	private JButton btnAnswer3;
@@ -31,13 +38,14 @@ public class View_QuestionWindow extends JPanel {
 	private JButton btnAudience;
 	private JButton btnDropOut;
 	private boolean fiftyFiftyUsed = false;
-	private View_QuestionPanel questionTextPanel;
+	private View_QuestionLabel questionTextPanel;
 	private View_GameInfoPanel paneGameInfo;
 	private WWMModel model;
 
 	//MARK: - Constructor
 	public View_QuestionWindow(WWMController controller, WWMModel model) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.rowHeights = new int[] {0, 20, 20, 30};
@@ -57,7 +65,7 @@ public class View_QuestionWindow extends JPanel {
 		gbc_paneGameInfo.gridy = 0;
 		add(paneGameInfo, gbc_paneGameInfo);
 		
-		questionTextPanel = new View_QuestionPanel(model.getAnswerTime(),1);
+		questionTextPanel = new View_QuestionLabel(model.getAnswerTime(),1);
 		questionTextPanel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
@@ -194,5 +202,18 @@ public class View_QuestionWindow extends JPanel {
 			btnFiftyFifty.setEnabled(true);
 		if (!model.getTelephoneStatus())
 			btnTelephone.setEnabled(true);
+	}
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

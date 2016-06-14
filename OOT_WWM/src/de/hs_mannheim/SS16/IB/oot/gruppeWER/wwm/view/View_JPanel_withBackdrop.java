@@ -8,14 +8,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class View_JPanel extends JPanel {
+public class View_JPanel_withBackdrop extends JPanel {
 	
 	//MARK: - Assets
 	private static final long serialVersionUID = -6088012016107912859L;
 	private BufferedImage backdrop;
 	
 	//MARK: - Constructor
-	View_JPanel() {
+	View_JPanel_withBackdrop() {
 		super();
 		loadImage();
 	}

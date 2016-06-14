@@ -7,14 +7,21 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.GridLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 public class View_MainMenu extends JPanel {
 	
 	//MARK: - Assets
+	private BufferedImage backdrop;
 	private JButton btnContinue;
 	private JButton btnNewGame;
 	private JButton btnSave;
@@ -25,7 +32,9 @@ public class View_MainMenu extends JPanel {
 
 	//MARK: - Constructor
 	public View_MainMenu(WWMModel model, WWMController controller) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		
+		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {1};
@@ -34,7 +43,7 @@ public class View_MainMenu extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
 		
-		JPanel panelMainImage = new View_JPanel();
+		JPanel panelMainImage = new View_JPanel_withBackdrop();
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
@@ -86,5 +95,18 @@ public class View_MainMenu extends JPanel {
 			btnContinue.setEnabled(false);
 		else 
 			btnContinue.setEnabled(true);
+	}
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
