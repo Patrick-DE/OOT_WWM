@@ -53,10 +53,12 @@ public class View_JButton extends JButton {
 	
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
-		if ( imageActivated != null && isEnabled() )
+		if (imageActivated != null && isEnabled()) {
 			g.drawImage(imageActivated, 0, 0, getWidth(), getHeight(), this);
-		else if (imageDeactivated != null && !isEnabled() )
+		}
+		else if (imageDeactivated != null && !isEnabled()) {
 			g.drawImage(imageDeactivated, 0, 0, getWidth(), getHeight(), this);
+		}
 		super.paintComponent(g);
 	}
 	@Override protected void paintBorder(Graphics g) {

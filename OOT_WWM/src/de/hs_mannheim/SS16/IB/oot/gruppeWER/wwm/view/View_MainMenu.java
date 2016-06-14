@@ -34,7 +34,7 @@ public class View_MainMenu extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
 		
-		JPanel panelMainImage = new JPanel();
+		JPanel panelMainImage = new View_JPanel();
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
