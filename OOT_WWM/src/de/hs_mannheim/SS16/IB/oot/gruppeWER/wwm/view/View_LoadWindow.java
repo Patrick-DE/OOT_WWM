@@ -1,14 +1,18 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +23,7 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 394076361918986893L;
+	private BufferedImage backdrop;
 	private JButton btnLoadButton1;
 	private JButton btnLoadButton2;
 	private JButton btnLoadButton3;
@@ -32,7 +37,8 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 	
 	//MARK: - Constructor
 	public View_LoadWindow(WWMModel model) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
@@ -139,5 +145,18 @@ public class View_LoadWindow extends JPanel implements ActionListener{
 			btnLoadButton7.setForeground(Color.GREEN);
 		if (loadGameExists(8))
 			btnLoadButton8.setForeground(Color.GREEN);
+	}
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

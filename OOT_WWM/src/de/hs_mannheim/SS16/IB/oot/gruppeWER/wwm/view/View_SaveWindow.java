@@ -12,18 +12,24 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.awt.GridLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 
 public class View_SaveWindow extends JPanel implements ActionListener{
 	
 	//MARK: - Assets
+	private BufferedImage backdrop;
 	private JButton btnSaveButton1;
 	private JButton btnSaveButton2;
 	private JButton btnSaveButton3;
@@ -37,7 +43,8 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 
 	//MARK: - Constructor
 	public View_SaveWindow(WWMModel model, String path) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		loadImage();
 		this.model = model;
 		this.path = path;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -195,6 +202,19 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 			}
 			pack();
 			this.setVisible(true);
+		}
+	}
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

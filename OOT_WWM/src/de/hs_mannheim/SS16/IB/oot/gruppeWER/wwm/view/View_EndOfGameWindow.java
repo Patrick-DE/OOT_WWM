@@ -2,13 +2,19 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -18,13 +24,15 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 public class View_EndOfGameWindow extends JPanel {
 	
 	//MARK: - Assets
+	private BufferedImage backdrop;
 	private JTextField textField;
 	private JLabel lblEuro;
 	private JLabel lblTime;
 
 	//MARK: - Constructor
 	public View_EndOfGameWindow(WWMModel model) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		loadImage();
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
@@ -95,5 +103,20 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblTime.gridx = 2;
 		gbc_lblTime.gridy = 2;
 		add(lblTime, gbc_lblTime);
+	}
+	
+	//MARK: - Methods
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

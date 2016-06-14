@@ -5,12 +5,18 @@ import javax.swing.JPanel;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_HighScoreEntry;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import java.awt.GridBagLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
@@ -21,6 +27,7 @@ import javax.swing.SwingConstants;
 public class View_HighScoreWindow extends JPanel {
 	
 	//MARK: - Assets
+	private BufferedImage backdrop;
 	private WWMModel model;
 	private JLabel lblQuestioncount;
 	private JLabel lblTime_1;
@@ -28,7 +35,8 @@ public class View_HighScoreWindow extends JPanel {
 	
 	//MARK: - Constructor
 	public View_HighScoreWindow(WWMModel model) {
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
+		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0};
@@ -133,5 +141,18 @@ public class View_HighScoreWindow extends JPanel {
 		lblQuestioncount.setText("<HTML><BODY><div style='text-align: center;'><br>" + count + "</BODY></HTML>");;
 		lblTime_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + time + "</BODY></HTML>");;
 		lblName_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + name + "</BODY></HTML>");;
+	}
+	@Override protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(backdrop != null) {
+	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+	    }
+	}
+	private void loadImage() {
+		try {
+			backdrop = ImageIO.read(new File("data/Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
