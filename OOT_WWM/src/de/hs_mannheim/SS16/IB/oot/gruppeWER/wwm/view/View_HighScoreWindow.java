@@ -99,7 +99,7 @@ public class View_HighScoreWindow extends JPanel {
 		scrollPane.setBorder(null);
 		panelHighScore.add(scrollPane);
 
-		JPanel panel = new JPanel_withBackdrop();
+		JPanel panel = new View_JPanel_withBackdrop();
 		//panel.setBackground(Color.BLACK);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
@@ -153,35 +153,6 @@ public class View_HighScoreWindow extends JPanel {
 			backdrop = ImageIO.read(new File("data/Status_Backdrop.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
-
-	//MARK: - Inner Classes
-	private class JPanel_withBackdrop extends JPanel {
-
-		//MARK: - Assets
-		private static final long serialVersionUID = -2444632001588697654L;
-		private BufferedImage backdrop;
-
-		//MARK: - Constructor
-		JPanel_withBackdrop() {
-			super();
-			loadImage();
-		}
-
-		//MARK: - Methods
-		@Override protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			if(backdrop != null) {
-				g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-			}
-		}
-		private void loadImage() {
-			try {
-				backdrop = ImageIO.read(new File("data/Backdrop.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

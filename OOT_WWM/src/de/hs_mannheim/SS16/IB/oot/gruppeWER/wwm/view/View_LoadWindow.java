@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_LoadWindow extends JPanel implements ActionListener{
+public class View_LoadWindow extends JPanel implements ActionListener {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 394076361918986893L;

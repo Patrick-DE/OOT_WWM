@@ -43,7 +43,7 @@ public class View_MainMenu extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
 		
-		JPanel panelMainImage = new JPanel_withBackdrop();
+		JPanel panelMainImage = new JPanel_withLogo();
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
@@ -111,14 +111,14 @@ public class View_MainMenu extends JPanel {
 	}
 	
 	//MARK: - Inner Classes
-	private class JPanel_withBackdrop extends JPanel {
+	private class JPanel_withLogo extends JPanel {
 		
 		//MARK: - Assets
 		private static final long serialVersionUID = -6088012016107912859L;
 		private BufferedImage backdrop;
 		
 		//MARK: - Constructor
-		JPanel_withBackdrop() {
+		JPanel_withLogo() {
 			super();
 			loadImage();
 		}

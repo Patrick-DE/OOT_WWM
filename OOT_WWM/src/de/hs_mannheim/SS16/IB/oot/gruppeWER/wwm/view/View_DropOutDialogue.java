@@ -20,53 +20,54 @@ import javax.swing.SwingConstants;
 
 public class View_DropOutDialogue extends JDialog {
 
-	//MARK: - Assets
-	private final JPanel contentPanel = new JPanel();
-
 	//MARK: - Constructor
 	public View_DropOutDialogue(WWMModel model) {
 		getContentPane().setBackground(Color.BLACK);
-		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPanel.setOpaque(false);
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		{
-			JLabel lblAussteigen = new JLabel("Aussteigen?");
-			lblAussteigen.setForeground(Color.WHITE);
-			lblAussteigen.setOpaque(false);
-			lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
-			contentPanel.add(lblAussteigen);
-		}
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setOpaque(false);
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton btnNo = new View_JButton("Nein");
-				btnNo.addActionListener(new ActionListener() {
-					
-					@Override public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-				buttonPane.add(btnNo);
-				getRootPane().setDefaultButton(btnNo);
+		setTitle("Aussteigen");
+		setBounds(100, 100, 450, 300);
+
+		//Create a JPanel for the label
+		JPanel labelPanel = new JPanel();
+		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		labelPanel.setOpaque(false);
+		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		//Create and add the label
+		JLabel lblAussteigen = new JLabel("Aussteigen?");
+		lblAussteigen.setForeground(Color.WHITE);
+		lblAussteigen.setOpaque(false);
+		lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPanel.add(lblAussteigen);
+		//Add the panel to the contentPane
+		getContentPane().add(labelPanel, BorderLayout.CENTER);
+
+		//Create a JPanel for the buttons
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false);
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		//Create and add the buttons
+		//Button "NO"
+		JButton btnNo = new View_JButton("Nein");
+		btnNo.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
-			{
-				JButton btnYes = new View_JButton("Ja");
-				btnYes.addActionListener(new ActionListener() {
-					
-					@Override public void actionPerformed(ActionEvent e) {
-						model.setGameEnd();
-						dispose();
-					}
-				});
-				buttonPane.add(btnYes);
+		});
+		buttonPanel.add(btnNo);
+		getRootPane().setDefaultButton(btnNo);
+		//Button "YES"
+		JButton btnYes = new View_JButton("Ja");
+		btnYes.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				model.setGameEnd();
+				dispose();
 			}
-		}
+		});
+		buttonPanel.add(btnYes);
+		//Add the panel to the contentPane
+		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+		//Finish creating the Dialogue
 		pack();
 		this.setVisible(true);
 	}
