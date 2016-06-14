@@ -118,7 +118,7 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 	@Override public void actionPerformed(ActionEvent e) {
 		int saveIndex = Integer.parseInt(e.getActionCommand());
 		if (saveGameExists(path, saveIndex)) {
-			new FileOverRide(model, path, saveIndex);
+			new View_SaveDialogue(model, path, saveIndex);
 		} else {
 			model.saveToFile(path, saveIndex);
 		}
@@ -155,55 +155,6 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 		if (saveGameExists(path, 8))
 			btnSaveButton8.setForeground(Color.GREEN);
 	}
-	
-	//MARK: - Inner Classes
-	class FileOverRide extends JDialog {
-		
-		private final JPanel contentPanel = new JPanel();
-		
-		FileOverRide (WWMModel model, String path, int index) {
-			this.setTitle("Warnung");
-			setBounds(100, 100, 450, 300);
-			getContentPane().setLayout(new BorderLayout());
-			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-			getContentPane().add(contentPanel, BorderLayout.CENTER);
-			contentPanel.setLayout(new GridLayout(1, 1, 0, 0));
-			{
-				JLabel lblSpielstandberschreiben = new JLabel("Spielstand überschreiben?");
-				lblSpielstandberschreiben.setHorizontalAlignment(SwingConstants.CENTER);
-				contentPanel.add(lblSpielstandberschreiben);
-			}
-			{
-				JPanel buttonPane = new JPanel();
-				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-				getContentPane().add(buttonPane, BorderLayout.SOUTH);
-				{
-					JButton btnCancel = new View_JButton("Abbrechen");
-					buttonPane.add(btnCancel);
-					btnCancel.addActionListener(new ActionListener() {
-						
-						@Override public void actionPerformed(ActionEvent e) {
-							dispose();
-						}
-					});
-					getRootPane().setDefaultButton(btnCancel);
-				}
-				{
-					JButton btnOverRide = new View_JButton("Überschreiben");
-					btnOverRide.addActionListener(new ActionListener() {
-						
-						@Override public void actionPerformed(ActionEvent e) {
-							model.saveToFile(path, index);
-							dispose();
-						}
-					});
-					buttonPane.add(btnOverRide);
-				}
-			}
-			pack();
-			this.setVisible(true);
-		}
-	}
 	@Override protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if(backdrop != null) {
@@ -216,5 +167,5 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 }

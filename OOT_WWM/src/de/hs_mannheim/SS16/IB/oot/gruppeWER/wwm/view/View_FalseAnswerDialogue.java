@@ -21,6 +21,7 @@ public class View_FalseAnswerDialogue extends JDialog {
 	public View_FalseAnswerDialogue() {
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(new BorderLayout());
+		setTitle("Falsche Antwort");
 		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
