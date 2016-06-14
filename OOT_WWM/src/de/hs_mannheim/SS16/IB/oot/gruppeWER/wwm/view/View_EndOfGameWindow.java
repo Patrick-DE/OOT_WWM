@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 public class View_EndOfGameWindow extends JPanel {
-	
+
 	//MARK: - Assets
 	private BufferedImage backdrop;
 	private JTextField textField;
@@ -39,7 +39,7 @@ public class View_EndOfGameWindow extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
+
 		JLabel lblCong = new JLabel("Herzlichen Glückwunsch!");
 		lblCong.setOpaque(false);
 		lblCong.setForeground(Color.WHITE);
@@ -50,8 +50,8 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblHerzlichenGlckwunsch.gridx = 0;
 		gbc_lblHerzlichenGlckwunsch.gridy = 0;
 		add(lblCong, gbc_lblHerzlichenGlckwunsch);
-		
-		lblEuro = new JLabel("Sie haben " + model.getPrice() + "€ gewonnen!");
+
+		lblEuro = new JLabel("Sie haben " + model.getPrize() + "€ gewonnen!");
 		lblEuro.setOpaque(false);
 		lblEuro.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
@@ -61,7 +61,7 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblEuro.gridx = 0;
 		gbc_lblEuro.gridy = 1;
 		add(lblEuro, gbc_lblEuro);
-		
+
 		JLabel lblName = new JLabel("Name:");
 		lblName.setOpaque(false);
 		lblName.setForeground(Color.WHITE);
@@ -74,10 +74,10 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblName.gridx = 0;
 		gbc_lblName.gridy = 2;
 		add(lblName, gbc_lblName);
-		
+
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
-			
+
 			@Override public void actionPerformed(ActionEvent e) {
 				if (textField.getText().length() > 1)
 					model.highScoreAddEntry(textField.getText(), (int) model.getGameTime());
@@ -92,7 +92,7 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_textField.gridy = 2;
 		add(textField, gbc_textField);
 		textField.setColumns(10);
-		
+
 		lblTime = new JLabel(model.getGameTime() + "s");
 		lblTime.setOpaque(false);
 		lblTime.setForeground(Color.WHITE);
@@ -104,13 +104,13 @@ public class View_EndOfGameWindow extends JPanel {
 		gbc_lblTime.gridy = 2;
 		add(lblTime, gbc_lblTime);
 	}
-	
+
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if(backdrop != null) {
-	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-	    }
+			g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
+		}
 	}
 	private void loadImage() {
 		try {

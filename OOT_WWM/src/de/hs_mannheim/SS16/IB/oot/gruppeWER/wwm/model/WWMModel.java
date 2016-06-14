@@ -20,7 +20,7 @@ public class WWMModel extends Observable {
 
 	//MARK: - Assets
 	private ArrayList<Model_Question> questions;
-	private ArrayList<Integer> prices;
+	private ArrayList<Integer> prizes;
 	private ArrayList<Model_HighScoreEntry> highScoreEntries;
 	private Model_Joker fiftyFifty = new Model_JokerFiftyFifty();
 	private	Model_Joker audience = new Model_JokerAudience();
@@ -31,8 +31,11 @@ public class WWMModel extends Observable {
 	private Timer questionTimer;
 
 	private long startTime, gameTimeAlreadyRunning = 0, gameEndTime;
-	
-	private boolean gameStart = false, gameEnd = false, gameEndFalseAnswer = false, gameEndRightAnswer = false;
+
+	private boolean gameStart = false;
+	private boolean gameEnd = false;
+	private boolean gameEndFalseAnswer = false;
+	private boolean gameEndRightAnswer = false;
 
 	//MARK: - Constructor
 	public WWMModel() {
@@ -41,11 +44,11 @@ public class WWMModel extends Observable {
 
 	//MARK: - Methods
 	/**
-	 * Loads the main data (prices and high score entry)
+	 * Loads the main data (prizes and high score entry)
 	 */
 	public void loadMainData() {
 		highScoreEntries = new ArrayList<Model_HighScoreEntry>();
-		prices = new ArrayList<Integer>();
+		prizes = new ArrayList<Integer>();
 		BufferedReader bufferedIS;
 		try {
 			if (new File("data/highscore.dat").exists()) {
@@ -54,17 +57,22 @@ public class WWMModel extends Observable {
 				highScoreEntries = (ArrayList<Model_HighScoreEntry>) objectIS.readObject();
 				objectIS.close();
 			}
-			bufferedIS = new BufferedReader(new InputStreamReader(new FileInputStream("data/prices.dat"), "UTF8"));
-			while (bufferedIS.ready())
-				prices.add(new Integer(Integer.parseInt(bufferedIS.readLine())));
+			bufferedIS = new BufferedReader(new InputStreamReader(new FileInputStream("data/prizes.dat"), "UTF8"));
+			while (bufferedIS.ready()) {
+				prizes.add(new Integer(Integer.parseInt(bufferedIS.readLine())));
+			}
 			bufferedIS.close();
-		} catch (UnsupportedEncodingException e1) {
+		} 
+		catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
-		} catch (FileNotFoundException e1) {
+		} 
+		catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} 
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -75,8 +83,9 @@ public class WWMModel extends Observable {
 	public void setQuestionsFromFile() {
 		startTime = System.currentTimeMillis();
 		questions = new ArrayList<Model_Question>();
-		ArrayList<Model_Question> questionsEasy = new ArrayList<Model_Question>(), questionsMiddle = new ArrayList<Model_Question>(),
-				questionsHard = new ArrayList<Model_Question>();
+		ArrayList<Model_Question> questionsEasy = new ArrayList<Model_Question>();
+		ArrayList<Model_Question> questionsMiddle = new ArrayList<Model_Question>();
+		ArrayList<Model_Question> questionsHard = new ArrayList<Model_Question>();
 		BufferedReader fileReader;
 
 		try {
@@ -124,8 +133,9 @@ public class WWMModel extends Observable {
 		notifyObservers();
 	}
 	public void loadQuestionsFromSaveGame(int loadIndex) {
-		if ( questionTimer != null)
+		if (questionTimer != null) {
 			questionTimer.cancel();
+		}
 		try {
 			ObjectInputStream loadInput = new ObjectInputStream(
 					new FileInputStream("save/game" + loadIndex + ".wwm"));
@@ -239,7 +249,8 @@ public class WWMModel extends Observable {
 			}, questionAnswerTimeInSeconds * 1000);
 			setChanged();
 			notifyObservers();
-		} else {
+		} 
+		else {
 			gameEndRightAnswer = true;
 			calculateGameRunningTime();
 			setChanged();
@@ -247,9 +258,12 @@ public class WWMModel extends Observable {
 		}
 	}
 	public boolean getGameFinishedStatus() {
-		if (gameEndRightAnswer || gameEndFalseAnswer)
+		if (gameEndRightAnswer || gameEndFalseAnswer) {
 			return true;
-		return false;
+		}
+		else {
+			return false;
+		}
 	}
 	public int getAnswerTime() {
 		return this.questionAnswerTimeInSeconds;
@@ -260,8 +274,8 @@ public class WWMModel extends Observable {
 	public long getGameTime() {
 		return gameEndTime;
 	}
-	public int getPricesAtPos(int index) {
-		return prices.get(index);
+	public int getPrizesAtPos(int index) {
+		return prizes.get(index);
 	}
 	public int getAmountOfQuestions() {
 		return gameQuestionAmount;
@@ -289,7 +303,7 @@ public class WWMModel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-	public int getPrice() {
+	public int getPrize() {
 		if (questionIndex < 4)
 			return 0;
 		else if (questionIndex < 9)

@@ -55,10 +55,10 @@ public class View_GameInfoPanel extends JPanel {
         	g2d.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 50));
         FontMetrics fm = g2d.getFontMetrics();
-        int x = ((getWidth() - fm.stringWidth(model.getPricesAtPos(model.getQuestionIndex()) + "€")) / 2);
+        int x = ((getWidth() - fm.stringWidth(model.getPrizesAtPos(model.getQuestionIndex()) + "€")) / 2);
         int y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
         g2d.setColor(Color.WHITE);
-        g2d.drawString(model.getPricesAtPos(model.getQuestionIndex()) + "€", x, y);
+        g2d.drawString(model.getPrizesAtPos(model.getQuestionIndex()) + "€", x, y);
         g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 25));
         fm = g2d.getFontMetrics();
         x = (getWidth() / 6 - fm.stringWidth(model.getQuestionIndex() + "/" + model.getAmountOfQuestions()) / 2);
