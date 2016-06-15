@@ -26,7 +26,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
-public class View_SaveWindow extends JPanel implements ActionListener{
+public class View_SaveWindow extends View_JPanel_withBackdrop implements ActionListener{
 	
 	//MARK: - Assets
 	private BufferedImage backdrop;
@@ -44,7 +44,6 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 	//MARK: - Constructor
 	public View_SaveWindow(WWMModel model, String path) {
 		//this.setBackground(Color.BLACK);
-		loadImage();
 		this.model = model;
 		this.path = path;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -154,18 +153,5 @@ public class View_SaveWindow extends JPanel implements ActionListener{
 			btnSaveButton7.setForeground(Color.GREEN);
 		if (saveGameExists(path, 8))
 			btnSaveButton8.setForeground(Color.GREEN);
-	}
-	@Override protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(backdrop != null) {
-	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-	    }
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}	
 }

@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
-public class View_HighScoreWindow extends JPanel {
+public class View_HighScoreWindow extends View_JPanel_withBackdrop {
 
 	//MARK: - Assets
 	private BufferedImage backdrop;
@@ -36,7 +36,6 @@ public class View_HighScoreWindow extends JPanel {
 	//MARK: - Constructor
 	public View_HighScoreWindow(WWMModel model) {
 		//this.setBackground(Color.BLACK);
-		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0};
@@ -141,18 +140,5 @@ public class View_HighScoreWindow extends JPanel {
 		lblQuestioncount.setText("<HTML><BODY><div style='text-align: center;'><br>" + count + "</BODY></HTML>");;
 		lblTime_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + time + "</BODY></HTML>");;
 		lblName_1.setText("<HTML><BODY><div style='text-align: center;'><br>" + name + "</BODY></HTML>");;
-	}
-	@Override protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(backdrop != null) {
-			g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-		}
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Status_Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

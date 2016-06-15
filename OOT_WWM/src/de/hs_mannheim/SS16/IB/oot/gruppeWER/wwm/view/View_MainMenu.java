@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class View_MainMenu extends JPanel {
+public class View_MainMenu extends View_JPanel_withBackdrop {
 	
 	//MARK: - Assets
 	private BufferedImage backdrop;
@@ -32,9 +32,7 @@ public class View_MainMenu extends JPanel {
 
 	//MARK: - Constructor
 	public View_MainMenu(WWMModel model, WWMController controller) {
-		//this.setBackground(Color.BLACK);
-		
-		loadImage();
+		//this.setBackground(Color.BLACK);		
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {1};
@@ -95,19 +93,6 @@ public class View_MainMenu extends JPanel {
 			btnContinue.setEnabled(false);
 		else 
 			btnContinue.setEnabled(true);
-	}
-	@Override protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(backdrop != null) {
-	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-	    }
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	//MARK: - Inner Classes

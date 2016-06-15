@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_LoadWindow extends JPanel implements ActionListener {
+public class View_LoadWindow extends View_JPanel_withBackdrop implements ActionListener {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 394076361918986893L;
@@ -38,7 +38,6 @@ public class View_LoadWindow extends JPanel implements ActionListener {
 	//MARK: - Constructor
 	public View_LoadWindow(WWMModel model) {
 		//this.setBackground(Color.BLACK);
-		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
@@ -121,42 +120,30 @@ public class View_LoadWindow extends JPanel implements ActionListener {
 		return false;
 	}
 	public void updateLoadWindow() {
-		btnLoadButton1.setForeground(Color.RED);
-		btnLoadButton2.setForeground(Color.RED);
-		btnLoadButton3.setForeground(Color.RED);
-		btnLoadButton4.setForeground(Color.RED);
-		btnLoadButton5.setForeground(Color.RED);
-		btnLoadButton6.setForeground(Color.RED);
-		btnLoadButton7.setForeground(Color.RED);
-		btnLoadButton8.setForeground(Color.RED);
+		btnLoadButton1.setEnabled(false);
+		btnLoadButton2.setEnabled(false);
+		btnLoadButton3.setEnabled(false);
+		btnLoadButton4.setEnabled(false);
+		btnLoadButton5.setEnabled(false);
+		btnLoadButton6.setEnabled(false);
+		btnLoadButton7.setEnabled(false);
+		btnLoadButton8.setEnabled(false);
+		
 		if (loadGameExists(1))
-			btnLoadButton1.setForeground(Color.GREEN);
+			btnLoadButton1.setEnabled(true);
 		if (loadGameExists(2))
-			btnLoadButton2.setForeground(Color.GREEN);
+			btnLoadButton2.setEnabled(true);
 		if (loadGameExists(3))
-			btnLoadButton3.setForeground(Color.GREEN);
+			btnLoadButton3.setEnabled(true);
 		if (loadGameExists(4))
-			btnLoadButton4.setForeground(Color.GREEN);
+			btnLoadButton4.setEnabled(true);
 		if (loadGameExists(5))
-			btnLoadButton5.setForeground(Color.GREEN);
+			btnLoadButton5.setEnabled(true);
 		if (loadGameExists(6))
-			btnLoadButton6.setForeground(Color.GREEN);
+			btnLoadButton6.setEnabled(true);
 		if (loadGameExists(7))
-			btnLoadButton7.setForeground(Color.GREEN);
+			btnLoadButton7.setEnabled(true);
 		if (loadGameExists(8))
-			btnLoadButton8.setForeground(Color.GREEN);
-	}
-	@Override protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(backdrop != null) {
-	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-	    }
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			btnLoadButton8.setEnabled(true);
 	}
 }
