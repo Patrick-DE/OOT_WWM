@@ -264,11 +264,12 @@ public class WWMModel extends Observable {
 		if (audience.getStatus())
 			return null;
 		audience.setStatus(true);
-		return ((Model_JokerAudience) audience).getAudienceResults(question);
+		if (!fiftyFifty.getStatus())
+			return ((Model_JokerAudience) audience).getAudienceResults(question, null);
+		else
+			return ((Model_JokerAudience) audience).getAudienceResults(question, generateFiftyFiftyJokerResults(question));
 	}
 	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
-		if (fiftyFifty.getStatus())
-			return null;
 		fiftyFifty.setStatus(true);
 		return ((Model_JokerFiftyFifty) fiftyFifty).getFalseAnswerPositions(question);
 	}
