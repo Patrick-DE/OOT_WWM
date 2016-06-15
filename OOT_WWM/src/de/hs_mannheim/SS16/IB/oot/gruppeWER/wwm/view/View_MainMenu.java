@@ -73,6 +73,7 @@ public class View_MainMenu extends View_JPanel_withBackdrop {
 		btnSave.addActionListener(controller);
 		panelMainMenuButtons.add(btnSave);
 		
+		
 		btnLoad = new View_JButton("Laden");
 		btnLoad.addActionListener(controller);
 		panelMainMenuButtons.add(btnLoad);
@@ -88,11 +89,18 @@ public class View_MainMenu extends View_JPanel_withBackdrop {
 	}
 	
 	//MARK: - Methods
+	/**
+	 * Disables the save button and the continue button until the user has started a game
+	 */
 	public void updateMenuButtons() {
-		if (!model.gameStarted())
+		if (!model.gameStarted()) {
 			btnContinue.setEnabled(false);
-		else 
+			btnSave.setEnabled(false);
+		}
+		else {
 			btnContinue.setEnabled(true);
+			btnSave.setEnabled(true);
+		}
 	}
 	
 	//MARK: - Inner Classes
