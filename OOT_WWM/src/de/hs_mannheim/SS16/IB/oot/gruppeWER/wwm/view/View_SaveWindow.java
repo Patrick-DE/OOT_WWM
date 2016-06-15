@@ -118,7 +118,7 @@ public class View_SaveWindow extends View_JPanel_withBackdrop implements ActionL
 		if (saveGameExists(path, saveIndex)) {
 			new View_SaveDialogue(model, path, saveIndex);
 		} else {
-			model.saveToFile(path, saveIndex);
+			model.saveGameToFile(path, saveIndex);
 		}
 		updateSaveWindow();
 	}

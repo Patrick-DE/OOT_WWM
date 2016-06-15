@@ -91,7 +91,7 @@ public class WWMMainView extends WWMView {
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();
-		new View_JokerAudience(model.getAudienceJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
+		new View_JokerAudience(model.generateAudienceJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
 	@Override public void displayTelephoneJoker() {
 		questionWindow.setTelephoneJokerUsed();
@@ -99,7 +99,7 @@ public class WWMMainView extends WWMView {
 	}
 
 	@Override public void displayFiftyFiftyJoker() {
-		questionWindow.useFiftyFiftyJoker(model.getFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
+		questionWindow.useFiftyFiftyJoker(model.generateFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
 
 	@Override public void displaySaveDialog() {

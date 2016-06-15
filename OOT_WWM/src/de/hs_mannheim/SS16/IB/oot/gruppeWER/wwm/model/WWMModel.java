@@ -16,6 +16,8 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.View_MainMenu;
+
 public class WWMModel extends Observable {
 
 	//MARK: - Assets
@@ -31,11 +33,10 @@ public class WWMModel extends Observable {
 	private Timer questionTimer;
 
 	private long startTime;
-	private long gameTimeAlreadyRunning = 0;
+	private long saveGamePlayTime = 0;
 	private long gameEndTime;
 
 	private boolean gameStart = false;
-	private boolean gameEnd = false;
 	private boolean gameEndFalseAnswer = false;
 	private boolean gameEndRightAnswer = false;
 
@@ -79,10 +80,10 @@ public class WWMModel extends Observable {
 		}
 	}
 	/**
-	 * loads the question from the question files
+	 * Loads the question from the question files
 	 * @param path String the file path of the jar- (normal "")
 	 */
-	public void setQuestionsFromFile() {
+	public void loadQuestionsFromFile() {
 		startTime = System.currentTimeMillis();
 		questions = new ArrayList<Model_Question>();
 		ArrayList<Model_Question> questionsEasy = new ArrayList<Model_Question>();
@@ -130,10 +131,14 @@ public class WWMModel extends Observable {
 		for (int i = 0; i < 5; i++) {
 			questions.add(questionsHard.get(i));
 		}
-		game();
+		startGame();
 		setChanged();
 		notifyObservers();
 	}
+	/**
+	 * Loads the questions from the save game if the user continues from a saved game
+	 * @param loadIndex -> Specifies the save game that is loaded
+	 */
 	public void loadQuestionsFromSaveGame(int loadIndex) {
 		if (questionTimer != null) {
 			questionTimer.cancel();
@@ -143,10 +148,10 @@ public class WWMModel extends Observable {
 					new FileInputStream("save/game" + loadIndex + ".wwm"));
 			questions = (ArrayList<Model_Question>) loadInput.readObject();
 			if (questions == null)
-				setQuestionsFromFile();
+				loadQuestionsFromFile();
 			questionIndex = (int) loadInput.readInt();
 			questionIndex = (questionIndex == -2) ? -1 : questionIndex;
-			gameTimeAlreadyRunning = (long) loadInput.readLong();
+			saveGamePlayTime = (long) loadInput.readLong();
 			fiftyFifty.setStatus(loadInput.readBoolean());
 			audience.setStatus(loadInput.readBoolean());
 			telephone.setStatus(loadInput.readBoolean());
@@ -156,93 +161,21 @@ public class WWMModel extends Observable {
 		}
 		startTime = System.currentTimeMillis();
 		gameStart = true;
-		gameEnd = false;
 		gameEndFalseAnswer = false;
 		gameEndRightAnswer = false;
-		game();
+		startGame();
 		setChanged();
 		notifyObservers();
 	}
 	/**
-	 * Datei: 1. Fragen 2. Frageindex 3. Zeit 4. 50/50 Status 5. Publikum Status
-	 * 6. Telefon Status
-	 * 
-	 * @param path
-	 * @param saveIndex
+	 * Runs the game logic
 	 */
-	public void saveToFile(String path, int saveIndex) {
-		try {
-			ObjectOutputStream saveOutput = new ObjectOutputStream(
-					new FileOutputStream(path + "save/game" + saveIndex + ".wwm"));
-			saveOutput.writeObject(questions);
-			saveOutput.writeInt(questionIndex - 1);
-			saveOutput.writeLong(getGameTime());
-			saveOutput.writeBoolean(fiftyFifty.getStatus());
-			saveOutput.writeBoolean(audience.getStatus());
-			saveOutput.writeBoolean(telephone.getStatus());
-			saveOutput.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	public Model_Question getQuestionAtIndex(int index) {
-		return questions.get(index);
-	}
-	public int[] getAudienceJokerResults(Model_Question question) {
-		if (audience.getStatus())
-			return null;
-		audience.setStatus(true);
-		return ((Model_JokerAudience) audience).getAudienceResults(question);
-	}
-	public int[] getFiftyFiftyJokerResults(Model_Question question) {
-		if (fiftyFifty.getStatus())
-			return null;
-		fiftyFifty.setStatus(true);
-		return ((Model_JokerFiftyFifty) fiftyFifty).getFalseAnswerPositions(question);
-	}
-	public String[] getTelephoneJokerResults(Model_Question question) {
-		if (telephone.getStatus())
-			return null;
-		telephone.setStatus(true);
-		return ((Model_JokerTelephone) telephone).getTelephonAnswer(question);
-	}
-	public boolean getFiftyFiftyStatus () {
-		return fiftyFifty.getStatus();
-	}
-	public boolean getTelephoneStatus () {
-		return telephone.getStatus();
-	}
-	public boolean getAudienceStatus () {
-		return audience.getStatus();
-	}
-	public int getQuestionIndex() {
-		return questionIndex;
-	}
-	public void validateAnswer(int answerIndex) {
-		if (questionTimer != null) {
-			questionTimer.cancel();
-		}
-		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
-			game();
-		} else {
-			calculateGameRunningTime();
-			gameEndFalseAnswer = true;
-			setChanged();
-			notifyObservers();
-		}
-	}
-	public boolean gameStarted() {
-		return this.gameStart;
-	}
-	public void game() {
+	public void startGame() {
 		gameStart = true;
 		questionIndex++;
 		if (questionIndex < gameQuestionAmount) {
 			questionTimer = new Timer();
 			questionTimer.schedule(new TimerTask() {
-
 				@Override public void run() {
 					gameEndFalseAnswer = true;
 					calculateGameRunningTime();
@@ -260,29 +193,101 @@ public class WWMModel extends Observable {
 			notifyObservers();
 		}
 	}
-	public boolean getGameFinishedStatus() {
-		if (gameEndRightAnswer || gameEndFalseAnswer) {
+	/**
+	 * Performs the necessary action when the user selects "new game" from the main menu while a game is running in the background
+	 */
+	public void restartGame() {
+		if (questionTimer != null) {
 			questionTimer.cancel();
-			return true;
 		}
-		else {
-			return false;
+		resetAudienceJoker();
+		resetFiftyFiftyJoker();
+		resetTelephoneJoker();
+		gameStart = false;
+		gameEndRightAnswer = false;
+		gameEndFalseAnswer = false;
+		loadMainData();
+		questionIndex = -1;
+		loadQuestionsFromFile();
+	}
+	/**
+	 * Let's the user claim his prize and finish the game and go to the main menu
+	 */
+	public void dropOut() {
+		gameEndRightAnswer = true;
+		calculateGameRunningTime();
+		setChanged();
+		notifyObservers();
+	}
+	/**
+	 * Let's the user save the game and go to the main menu
+	 * Datei: 1. Fragen 2. Frageindex 3. Zeit 4. 50/50 Status 5. Publikum Status
+	 * 6. Telefon Status
+	 * 
+	 * @param path
+	 * @param saveIndex
+	 */
+	public void saveGameToFile(String path, int saveIndex) {
+		try {
+			ObjectOutputStream saveOutput = new ObjectOutputStream(
+					new FileOutputStream(path + "save/game" + saveIndex + ".wwm"));
+			saveOutput.writeObject(questions);
+			saveOutput.writeInt(questionIndex - 1);
+			saveOutput.writeLong(getGameTime());
+			saveOutput.writeBoolean(fiftyFifty.getStatus());
+			saveOutput.writeBoolean(audience.getStatus());
+			saveOutput.writeBoolean(telephone.getStatus());
+			saveOutput.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
-	public int getAnswerTime() {
-		return this.questionAnswerTimeInSeconds;
+
+	//MARK: - Helper Methods
+	public void validateAnswer(int answerIndex) {
+		if (questionTimer != null) {
+			questionTimer.cancel();
+		}
+		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
+			startGame();
+		} else {
+			calculateGameRunningTime();
+			gameEndFalseAnswer = true;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	public int[] generateAudienceJokerResults(Model_Question question) {
+		if (audience.getStatus())
+			return null;
+		audience.setStatus(true);
+		return ((Model_JokerAudience) audience).getAudienceResults(question);
+	}
+	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
+		if (fiftyFifty.getStatus())
+			return null;
+		fiftyFifty.setStatus(true);
+		return ((Model_JokerFiftyFifty) fiftyFifty).getFalseAnswerPositions(question);
+	}
+	private void resetTelephoneJoker () {
+		this.telephone.setStatus(false);
+	}
+	private void resetAudienceJoker () {
+		this.audience.setStatus(false);
+	}
+	private void resetFiftyFiftyJoker () {
+		this.fiftyFifty.setStatus(false);
+	}
+	public String[] generateTelephoneJokerResults(Model_Question question) {
+		if (telephone.getStatus())
+			return null;
+		telephone.setStatus(true);
+		return ((Model_JokerTelephone) telephone).getTelephonAnswer(question);
 	}
 	private void calculateGameRunningTime() {
-		this.gameEndTime = gameTimeAlreadyRunning + ((System.currentTimeMillis() - this.startTime) / 1000);
-	}
-	public long getGameTime() {
-		return gameEndTime;
-	}
-	public int getPrizesAtPos(int index) {
-		return prizes.get(index);
-	}
-	public int getAmountOfQuestions() {
-		return gameQuestionAmount;
+		this.gameEndTime = saveGamePlayTime + ((System.currentTimeMillis() - this.startTime) / 1000);
 	}
 	public void highScoreAddEntry(String name, int timeInSeconds) {
 		gameStart = false;
@@ -301,13 +306,7 @@ public class WWMModel extends Observable {
 	public ArrayList<Model_HighScoreEntry> getHighScoreEntries() {
 		return highScoreEntries;
 	}
-	public void setGameEnd() {
-		gameEndRightAnswer = true;
-		calculateGameRunningTime();
-		setChanged();
-		notifyObservers();
-	}
-	public int getPrize() {
+	public int generatePrize() {
 		if (questionIndex < 4)
 			return 0;
 		else if (questionIndex < 9)
@@ -317,30 +316,48 @@ public class WWMModel extends Observable {
 		else
 			return 1000000;
 	}
-	public void gameRestart() {
-		if (questionTimer != null)
+	
+	//MARK: - Getter and Setter Methods
+	public boolean getGameStartedStatus() {
+		return this.gameStart;
+	}
+	public boolean getGameFinishedStatus() {
+		if (gameEndRightAnswer || gameEndFalseAnswer) {
 			questionTimer.cancel();
-		resetAudienceJoker();
-		resetFiftyFiftyJoker();
-		resetTelephoneJoker();
-		gameEndFalseAnswer = false;
-		gameStart = false;
-		gameEndRightAnswer = false;
-		gameEnd = false;
-		loadMainData();
-		questionIndex = -1;
-		setQuestionsFromFile();
-	}
-	private void resetTelephoneJoker () {
-		this.telephone.setStatus(false);
-	}
-	private void resetAudienceJoker () {
-		this.audience.setStatus(false);
-	}
-	private void resetFiftyFiftyJoker () {
-		this.fiftyFifty.setStatus(false);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	public boolean getGameEndFalseAnswer () {
 		return this.gameEndFalseAnswer;
+	}
+	public int getAnswerTime() {
+		return this.questionAnswerTimeInSeconds;
+	}
+	public int getQuestionIndex() {
+		return questionIndex;
+	}
+	public Model_Question getQuestionAtIndex(int index) {
+		return questions.get(index);
+	}
+	public long getGameTime() {
+		return gameEndTime;
+	}
+	public int getAmountOfQuestions() {
+		return gameQuestionAmount;
+	}
+	public int getPrizesAtPos(int index) {
+		return prizes.get(index);
+	}
+	public boolean getFiftyFiftyStatus () {
+		return fiftyFifty.getStatus();
+	}
+	public boolean getTelephoneStatus () {
+		return telephone.getStatus();
+	}
+	public boolean getAudienceStatus () {
+		return audience.getStatus();
 	}
 }

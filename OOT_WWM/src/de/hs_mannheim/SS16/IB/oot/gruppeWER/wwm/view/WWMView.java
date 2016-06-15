@@ -80,7 +80,7 @@ public abstract class WWMView implements Observer {
 		if (!model.getGameFinishedStatus()) { // if game is running
 			setQuestion(model.getQuestionAtIndex(model.getQuestionIndex())); // set the next question
 			displayGameWindow();
-		} else if (model.gameStarted()){ // game was valid
+		} else if (model.getGameStartedStatus()){ // game was valid
 			if (model.getGameEndFalseAnswer()) // if game ended with a false answer
 				displayFalseAnswerDialog();
 			displayEndOfGameDialog();

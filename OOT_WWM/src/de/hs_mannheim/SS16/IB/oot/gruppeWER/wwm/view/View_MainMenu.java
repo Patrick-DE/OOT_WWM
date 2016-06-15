@@ -89,10 +89,11 @@ public class View_MainMenu extends View_JPanel_withBackdrop {
 	
 	//MARK: - Methods
 	/**
-	 * Disables the save button and the continue button until the user has started a game
+	 * Disables the save button and the continue button until the user has started a game 
+	 * and after a game has ended
 	 */
 	public void updateMenuButtons() {
-		if (!model.gameStarted()) {
+		if(!model.getGameStartedStatus() || model.getGameFinishedStatus()) {
 			btnContinue.setEnabled(false);
 			btnSave.setEnabled(false);
 		}

@@ -50,7 +50,7 @@ public class View_SaveDialogue extends JDialog {
 		JButton btnOverRide = new View_JButton("Überschreiben");
 		btnOverRide.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				model.saveToFile(path, index);
+				model.saveGameToFile(path, index);
 				dispose();
 			}
 		});

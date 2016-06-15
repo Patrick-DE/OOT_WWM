@@ -59,7 +59,7 @@ public class View_DropOutDialogue extends JDialog {
 		JButton btnYes = new View_JButton("Ja");
 		btnYes.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				model.setGameEnd();
+				model.dropOut();
 				dispose();
 			}
 		});

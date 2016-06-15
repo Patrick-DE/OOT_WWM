@@ -26,12 +26,12 @@ public class WWMController implements ActionListener {
 	}
 	@Override public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getActionCommand().equals("Neues Spiel")) {
-			model.gameRestart();
+			model.restartGame();
 			for (WWMView view : views)
 				view.displayGameWindow();
 		} 
 		else if (arg0.getActionCommand().equals("Weiterspielen")) {
-			if (model.gameStarted())
+			if (model.getGameStartedStatus())
 				for (WWMView view : views)
 					view.displayGameWindow();
 		} 
