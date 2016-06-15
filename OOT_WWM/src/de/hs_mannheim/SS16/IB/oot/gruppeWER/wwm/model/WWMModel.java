@@ -215,6 +215,7 @@ public class WWMModel extends Observable {
 	 */
 	public void dropOut() {
 		gameEndRightAnswer = true;
+		questionTimer.cancel();
 		calculateGameRunningTime();
 		setChanged();
 		notifyObservers();

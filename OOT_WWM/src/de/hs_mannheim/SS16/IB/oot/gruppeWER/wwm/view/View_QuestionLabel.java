@@ -20,9 +20,10 @@ public class View_QuestionLabel extends JLabel {
 	private double widthI;
 	private int step = 0;
 	private Timer timer;
-	private int seconds, modus;
+	private int seconds;
+	private int modus;
 	private BufferedImage backGround;
-	
+
 	//MARK: - Constructor
 	public View_QuestionLabel(int questionSeconds, int modus) {
 		this.setOpaque(false);
@@ -42,30 +43,29 @@ public class View_QuestionLabel extends JLabel {
 			}
 		});
 	}
-	
+
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
 		if (modus == 0) {
-		if (step * widthI < getWidth() / 3)
-			g.setColor(Color.GREEN);
-		else if (step * widthI < (getWidth() * 2) / 3)
-			g.setColor(Color.YELLOW);
-		else
-			g.setColor(Color.RED);
-		g.fillRect(0, 0, (int) (step++ * widthI), (int) this.getHeight());
+			if (step * widthI < getWidth() / 3)
+				g.setColor(Color.GREEN);
+			else if (step * widthI < (getWidth() * 2) / 3)
+				g.setColor(Color.YELLOW);
+			else
+				g.setColor(Color.RED);
+			g.fillRect(0, 0, (int) (step++ * widthI), (int) this.getHeight());
 		} else {
 			if ( backGround != null )
 				g.drawImage(backGround, 0, 0, getWidth(), getHeight(), this);
 		}
 		super.paintComponent(g);
 	}
-	private void timeAnimation (int seconds) {
+	private void timeAnimation(int seconds) {
 		step = 0;
 		widthI = getWidth() / (double) ((seconds * 1000) / 50);
 		if (widthI <= 0)
 			return;
-		timer = new Timer(50, new ActionListener() {
-			
+		timer = new Timer(50, new ActionListener() {	
 			@Override public void actionPerformed(ActionEvent e) {
 				if (step * widthI > getWidth())
 					timer.stop();
