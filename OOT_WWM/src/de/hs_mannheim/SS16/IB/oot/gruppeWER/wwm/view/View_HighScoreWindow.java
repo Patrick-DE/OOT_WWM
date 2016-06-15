@@ -27,7 +27,6 @@ import javax.swing.SwingConstants;
 public class View_HighScoreWindow extends View_JPanel_withBackdrop {
 
 	//MARK: - Assets
-	private BufferedImage backdrop;
 	private WWMModel model;
 	private JLabel lblQuestioncount;
 	private JLabel lblTime_1;

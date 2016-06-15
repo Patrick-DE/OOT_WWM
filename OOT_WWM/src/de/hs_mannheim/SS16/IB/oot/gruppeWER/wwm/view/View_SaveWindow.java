@@ -29,7 +29,6 @@ import java.awt.Graphics;
 public class View_SaveWindow extends View_JPanel_withBackdrop implements ActionListener{
 	
 	//MARK: - Assets
-	private BufferedImage backdrop;
 	private JButton btnSaveButton1;
 	private JButton btnSaveButton2;
 	private JButton btnSaveButton3;

@@ -21,7 +21,6 @@ import javax.swing.JButton;
 public class View_MainMenu extends View_JPanel_withBackdrop {
 	
 	//MARK: - Assets
-	private BufferedImage backdrop;
 	private JButton btnContinue;
 	private JButton btnNewGame;
 	private JButton btnSave;

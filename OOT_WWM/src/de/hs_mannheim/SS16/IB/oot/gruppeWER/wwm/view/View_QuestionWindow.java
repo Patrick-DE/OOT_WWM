@@ -23,11 +23,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class View_QuestionWindow extends JPanel {
+public class View_QuestionWindow extends View_JPanel_withBackdrop {
 	
 	//MARK: - Assets
 	private static final long serialVersionUID = -8111826866911799613L;
-	private BufferedImage backdrop;
 	
 	private JButton btnAnswer1;
 	private JButton btnAnswer2;
@@ -45,7 +44,6 @@ public class View_QuestionWindow extends JPanel {
 	//MARK: - Constructor
 	public View_QuestionWindow(WWMController controller, WWMModel model) {
 		//this.setBackground(Color.BLACK);
-		loadImage();
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.rowHeights = new int[] {0, 20, 20, 30};
@@ -202,18 +200,5 @@ public class View_QuestionWindow extends JPanel {
 			btnFiftyFifty.setEnabled(true);
 		if (!model.getTelephoneStatus())
 			btnTelephone.setEnabled(true);
-	}
-	@Override protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(backdrop != null) {
-	    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-	    }
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

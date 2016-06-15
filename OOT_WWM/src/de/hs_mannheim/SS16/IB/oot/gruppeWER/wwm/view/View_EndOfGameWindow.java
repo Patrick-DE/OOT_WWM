@@ -24,7 +24,6 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 public class View_EndOfGameWindow extends View_JPanel_withBackdrop {
 
 	//MARK: - Assets
-	private BufferedImage backdrop;
 	private JTextField textField;
 	private JLabel lblEuro;
 	private JLabel lblTime;
