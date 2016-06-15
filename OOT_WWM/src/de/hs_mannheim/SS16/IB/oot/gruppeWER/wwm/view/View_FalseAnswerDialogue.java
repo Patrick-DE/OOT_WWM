@@ -30,7 +30,7 @@ public class View_FalseAnswerDialogue extends JDialog {
 		labelPanel.setOpaque(false);
 		labelPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		//Create and add the label
-		JLabel lblFalseAnswer = new JLabel("Falsche Antwort!");
+		JLabel lblFalseAnswer = new JLabel("Sie haben die Frage nicht (richtig) beantwortet.");
 		lblFalseAnswer.setForeground(Color.WHITE);
 		lblFalseAnswer.setOpaque(false);
 		lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
