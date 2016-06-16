@@ -19,68 +19,92 @@ import javax.swing.Timer;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_Panel_GameStatus extends JPanel {
+public class View_Panel_GameStatus extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private WWMModel model;
 	private Timer timer;
 	private int[] time = {-1,-1};
 	private int timeAn;
+	private boolean standardAnimation;
+
 	private BufferedImage background;
-	
+
 	//MARK: - Constructor
 	public View_Panel_GameStatus(WWMModel model) {
+		super();
 		setOpaque(false);
-		try {
-			background = ImageIO.read(new File("data/Status_Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		loadImage();
 		this.model = model;
-		this.setOpaque(false);
+		this.standardAnimation = true;
 	}
-	
+
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-//        Color color1 = Color.BLUE;
-//        Color color2 = new Color(108,210,232);
-//        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
-//        g2d.setPaint(gp);
-//        g2d.fillRect(0, 0, w, h);
-        if ( background != null )
-        	g2d.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-        g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 50));
-        FontMetrics fm = g2d.getFontMetrics();
-        int x = ((getWidth() - fm.stringWidth(model.getPrizesAtPos(model.getQuestionIndex()) + "€")) / 2);
-        int y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
-        g2d.setColor(Color.WHITE);
-        g2d.drawString(model.getPrizesAtPos(model.getQuestionIndex()) + "€", x, y);
-        g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 25));
-        fm = g2d.getFontMetrics();
-        x = (getWidth() / 6 - fm.stringWidth(model.getQuestionIndex() + "/" + model.getAmountOfQuestions()) / 2);
-        y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
-        g2d.drawString(model.getQuestionIndex() + "/" + model.getAmountOfQuestions(), x, y);
-        x = (getWidth() - (getWidth() / 6) - fm.stringWidth(time[0] + ":" + (time[1] > 9 ? "" : "0") + time[1]) / 2);
-        y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
-        if (time[1] < 10)
-        	g2d.setColor(Color.RED);
-        g2d.drawString(time[0] + ":" + (time[1] > 9 ? "" : "0") + time[1], x, y);
-        g2d.setColor(Color.BLACK);
-        g2d.dispose();
+		int w = getWidth();
+		int h = getHeight();
+		//        Color color1 = Color.BLUE;
+		//        Color color2 = new Color(108,210,232);
+		//        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
+		//        g2d.setPaint(gp);
+		//        g2d.fillRect(0, 0, w, h);
+		if (background != null) {
+			g2d.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		}
+		g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 50));
+		FontMetrics fm = g2d.getFontMetrics();
+		
+		//Draw the Prize Tier String
+		//Set Position
+		int x = ((getWidth() - fm.stringWidth(model.getPrizesAtPos(model.getQuestionIndex()) + "€")) / 2);
+		int y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
+		//Set Font Color
+		g2d.setColor(Color.WHITE);
+		g2d.drawString(model.getPrizesAtPos(model.getQuestionIndex()) + "€", x, y);
+		g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 25));
+		fm = g2d.getFontMetrics();
+		
+		//Draw the Question Tier String
+		//Set Position
+		x = (getWidth() / 6 - fm.stringWidth(model.getQuestionIndex() + "/" + model.getAmountOfQuestions()) / 2);
+		y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
+		//Set Font Color
+		g2d.setColor(Color.WHITE);
+		g2d.drawString(model.getQuestionIndex() + "/" + model.getAmountOfQuestions(), x, y);
+		
+		//Draw Countdown String
+		//Set Position
+		x = (getWidth() - (getWidth() / 6) - fm.stringWidth(time[0] + ":" + (time[1] > 9 ? "" : "0") + time[1]) / 2);
+		y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
+		//Set Font Color
+		if(time[1] <= 10 && this.standardAnimation) {
+			g2d.setColor(Color.RED);
+		}
+		else if(!this.standardAnimation) {
+			g2d.setColor(Color.ORANGE);
+		}
+		g2d.drawString(time[0] + ":" + (time[1] > 9 ? "" : "0") + time[1], x, y);
+		g2d.setColor(Color.BLACK);
+		g2d.dispose();
 		super.paintComponent(g);
 	}
-	private void questionTimerAnimation() {
-		timeAn = model.getAnswerTime();
+	private void questionTimerAnimation(boolean standardAnimation) {
+		if(standardAnimation) {
+			timeAn = model.getAnswerTime();
+		}
+		else {
+			timeAn = 5;
+		}
 		time[0] = (timeAn / 60);
 		time[1] = timeAn - time[0];
 		timer = new Timer(1000, new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				if (timeAn <= 1)
+				if (timeAn <= 1) {
 					timer.stop();
+				}
 				timeAn -= 1;
 				time[0] = (timeAn / 60);
 				time[1] = timeAn - time[0];
@@ -89,9 +113,18 @@ public class View_Panel_GameStatus extends JPanel {
 		});
 		timer.start();
 	}
-	public void animationRestart () {
-		if (timer != null && timer.isRunning())
+	public void animationRestart(boolean standardAnimation) {
+		this.standardAnimation = standardAnimation;
+		if (timer != null && timer.isRunning()) {
 			timer.stop();
-		questionTimerAnimation();
+		}
+		questionTimerAnimation(standardAnimation);
+	}
+	private void loadImage() {
+		try {
+			background = ImageIO.read(new File("data/Status_Backdrop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

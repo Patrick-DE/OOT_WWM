@@ -14,6 +14,7 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 	private static final long serialVersionUID = 5017812866844155230L;
 	private BufferedImage backdrop;
 	private BufferedImage logo;
+	private BufferedImage statusBackdrop;
 
 	private int imageIndex;
 
@@ -50,6 +51,11 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 				g.drawImage(logo, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 2: 
+			if(statusBackdrop != null) {
+				g.drawImage(statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(backdrop != null) {
 				g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), this);
@@ -61,6 +67,7 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 		try {
 			backdrop = ImageIO.read(new File("data/Backdrop.png"));
 			logo =  ImageIO.read(new File("data/WWM_Logo_Spaced.png"));
+			statusBackdrop =  ImageIO.read(new File("data/Status_Backdrop.png"));
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

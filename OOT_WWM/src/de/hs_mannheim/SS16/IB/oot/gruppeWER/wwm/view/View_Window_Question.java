@@ -37,7 +37,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 	private JButton btnAudience;
 	private JButton btnDropOut;
 
-	private View_LabelQuestion questionTextLabel;
+	private View_JLabel_withBackgroundImage questionTextLabel;
 	private View_Panel_GameStatus gameStatusPanel;
 	private JPanel answerPanel;
 
@@ -70,7 +70,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_paneGameInfo.gridy = 0;
 		add(gameStatusPanel, gbc_paneGameInfo);
 
-		questionTextLabel = new View_LabelQuestion(this.model.getAnswerTime(),1);
+		questionTextLabel = new View_JLabel_withBackgroundImage(this.model.getAnswerTime(),1);
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
@@ -157,7 +157,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		this.enableAllButtons();
 		
 		gameStatusPanel.repaint();
-		gameStatusPanel.animationRestart();
+		gameStatusPanel.animationRestart(true);
 		if (model.getTelephoneStatus()) {
 			btnTelephone.setEnabled(false);
 		}
@@ -186,7 +186,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		}
 		
 		questionTextLabel.setText("<HTML><BODY><div style='text-align: center;'>" + question.getQuestionText() + "</BODY></HTML>");
-		questionTextLabel.animationRestart();
+		//questionTextLabel.animationRestart();
 		btnAnswer1.setText("<HTML><BODY>" + question.getAnswerAtIndex(1) + "</BODY></HTML>");
 		btnAnswer2.setText("<HTML><BODY>" + question.getAnswerAtIndex(2) + "</BODY></HTML>");
 		btnAnswer3.setText("<HTML><BODY>" + question.getAnswerAtIndex(3) + "</BODY></HTML>");
@@ -241,6 +241,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		}
 	}
 	public void disableAllButtons() {
+		gameStatusPanel.animationRestart(false);
 		btnAnswer1.removeActionListener(this.controller);
 		btnAnswer2.removeActionListener(this.controller);
 		btnAnswer3.removeActionListener(this.controller);
