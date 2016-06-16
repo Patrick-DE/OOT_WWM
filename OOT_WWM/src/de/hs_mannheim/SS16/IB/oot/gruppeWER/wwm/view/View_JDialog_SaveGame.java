@@ -15,9 +15,9 @@ import javax.swing.border.EmptyBorder;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_Dialogue_SaveGame extends JDialog {
+public class View_JDialog_SaveGame extends JDialog {
 
-	View_Dialogue_SaveGame(WWMModel model, String path, int index) {
+	View_JDialog_SaveGame(WWMModel model, String path, int index) {
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Warnung");
 		setBounds(100, 100, 450, 300);

@@ -80,7 +80,7 @@ public class WWMMainView extends WWMView {
 		frmWwm.setVisible(true);
 		frmWwm.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {
-				new View_Dialogue_Exit(controller);
+				new View_JDialog_Exit(controller);
 			}
 		});
 	}
@@ -125,13 +125,13 @@ public class WWMMainView extends WWMView {
 		card.show(frmWwm.getContentPane(), "highScoreWindow");
 	}
 	@Override public void displayExitDialog() {
-		new View_Dialogue_Exit(controller);
+		new View_JDialog_Exit(controller);
 	}
 	@Override public void displayDropOutDialog() {
-		new View_Dialogue_DropOut(model);
+		new View_JDialog_DropOut(model);
 	}
 	@Override public void displayFalseAnswerDialog() {
-		new View_Dialogue_FalseAnswer();
+		new View_JDialog_FalseAnswer();
 	}
 	@Override public void displayEndOfGameDialog() {
 		endGameWindow = new View_Window_EndOfGame(model);

@@ -38,7 +38,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 	private JButton btnDropOut;
 
 	private View_JLabel_withBackgroundImage questionTextLabel;
-	private View_Panel_GameStatus gameStatusPanel;
+	private View_JPanel_GameStatus gameStatusPanel;
 	private JPanel answerPanel;
 
 	private WWMModel model;
@@ -59,7 +59,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
 		setLayout(gridBagLayout);
 
-		gameStatusPanel = new View_Panel_GameStatus(this.model);
+		gameStatusPanel = new View_JPanel_GameStatus(this.model);
 		GridBagConstraints gbc_paneGameInfo = new GridBagConstraints();
 		gbc_paneGameInfo.gridwidth = 1;
 		gbc_paneGameInfo.weightx = 1.0;

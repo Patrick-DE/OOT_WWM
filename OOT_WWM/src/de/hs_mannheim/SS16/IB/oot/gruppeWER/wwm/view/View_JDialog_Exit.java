@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-public class View_Dialogue_Exit extends JDialog {
+public class View_JDialog_Exit extends JDialog {
 
 	//MARK: - Constructor
-	public View_Dialogue_Exit(WWMController controller) {
+	public View_JDialog_Exit(WWMController controller) {
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Speichern und Beenden");

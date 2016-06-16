@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-public class View_Dialogue_DropOut extends JDialog {
+public class View_JDialog_DropOut extends JDialog {
 
 	//MARK: - Constructor
-	public View_Dialogue_DropOut(WWMModel model) {
+	public View_JDialog_DropOut(WWMModel model) {
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Aussteigen");
