@@ -8,36 +8,33 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
-
-import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class View_DropOutDialogue extends JDialog {
+public class View_Dialogue_FalseAnswer extends JDialog {
 
 	//MARK: - Constructor
-	public View_DropOutDialogue(WWMModel model) {
+	public View_Dialogue_FalseAnswer() {
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(new BorderLayout());
-		setTitle("Aussteigen");
+		setTitle("Falsche Antwort");
 		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new JPanel();
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setOpaque(false);
-		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		labelPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		//Create and add the label
-		JLabel lblAussteigen = new JLabel("Aussteigen?");
-		lblAussteigen.setForeground(Color.WHITE);
-		lblAussteigen.setOpaque(false);
-		lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPanel.add(lblAussteigen);
+		JLabel lblFalseAnswer = new JLabel("Sie haben die Frage nicht (richtig) beantwortet.");
+		lblFalseAnswer.setForeground(Color.WHITE);
+		lblFalseAnswer.setOpaque(false);
+		lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPanel.add(lblFalseAnswer);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);
 
@@ -46,24 +43,18 @@ public class View_DropOutDialogue extends JDialog {
 		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//Create and add the buttons
-		//Button "NO"
-		JButton btnNo = new View_JButton("Nein");
-		btnNo.addActionListener(new ActionListener() {
+		//Button "OK"
+		JButton okButton = new View_JButton_withBackgroundImage("OK");
+		okButton.addActionListener(new ActionListener() {
+
 			@Override public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		buttonPanel.add(btnNo);
-		getRootPane().setDefaultButton(btnNo);
-		//Button "YES"
-		JButton btnYes = new View_JButton("Ja");
-		btnYes.addActionListener(new ActionListener() {
-			@Override public void actionPerformed(ActionEvent e) {
-				model.dropOut();
-				dispose();
-			}
-		});
-		buttonPanel.add(btnYes);
+		okButton.setActionCommand("OK");
+		buttonPanel.add(okButton);
+		getRootPane().setDefaultButton(okButton);
+		
 		//Add the panel to the contentPane
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 

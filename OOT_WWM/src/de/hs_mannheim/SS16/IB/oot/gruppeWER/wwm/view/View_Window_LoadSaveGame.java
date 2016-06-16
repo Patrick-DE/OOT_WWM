@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_LoadWindow extends View_JPanel_withBackgroundImage implements ActionListener {
+public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage implements ActionListener {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 394076361918986893L;
@@ -36,7 +36,7 @@ public class View_LoadWindow extends View_JPanel_withBackgroundImage implements 
 
 	
 	//MARK: - Constructor
-	public View_LoadWindow(WWMModel model) {
+	public View_Window_LoadSaveGame(WWMModel model) {
 		//this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -66,42 +66,42 @@ public class View_LoadWindow extends View_JPanel_withBackgroundImage implements 
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		
-		btnLoadButton1 = new View_JButton("Ladestelle 1");
+		btnLoadButton1 = new View_JButton_withBackgroundImage("Ladestelle 1");
 		btnLoadButton1.setActionCommand("1");
 		btnLoadButton1.addActionListener(this);
 		panelSave.add(btnLoadButton1);
 		
-		btnLoadButton2 = new View_JButton("Ladestelle 2");
+		btnLoadButton2 = new View_JButton_withBackgroundImage("Ladestelle 2");
 		btnLoadButton2.setActionCommand("2");
 		btnLoadButton2.addActionListener(this);
 		panelSave.add(btnLoadButton2);
 		
-		btnLoadButton3 = new View_JButton("Ladestelle 3");
+		btnLoadButton3 = new View_JButton_withBackgroundImage("Ladestelle 3");
 		btnLoadButton3.setActionCommand("3");
 		btnLoadButton3.addActionListener(this);
 		panelSave.add(btnLoadButton3);
 		
-		btnLoadButton4 = new View_JButton("Ladestelle 4");
+		btnLoadButton4 = new View_JButton_withBackgroundImage("Ladestelle 4");
 		btnLoadButton4.setActionCommand("4");
 		btnLoadButton4.addActionListener(this);
 		panelSave.add(btnLoadButton4);
 		
-		btnLoadButton5 = new View_JButton("Ladestelle 5");
+		btnLoadButton5 = new View_JButton_withBackgroundImage("Ladestelle 5");
 		btnLoadButton5.setActionCommand("5");
 		btnLoadButton5.addActionListener(this);
 		panelSave.add(btnLoadButton5);
 		
-		btnLoadButton6 = new View_JButton("Ladestelle 6");
+		btnLoadButton6 = new View_JButton_withBackgroundImage("Ladestelle 6");
 		btnLoadButton6.setActionCommand("6");
 		btnLoadButton6.addActionListener(this);
 		panelSave.add(btnLoadButton6);
 		
-		btnLoadButton7 = new View_JButton("Ladestelle 7");
+		btnLoadButton7 = new View_JButton_withBackgroundImage("Ladestelle 7");
 		btnLoadButton7.setActionCommand("7");
 		btnLoadButton7.addActionListener(this);
 		panelSave.add(btnLoadButton7);
 		
-		btnLoadButton8 = new View_JButton("Ladestelle 8");
+		btnLoadButton8 = new View_JButton_withBackgroundImage("Ladestelle 8");
 		btnLoadButton8.setActionCommand("8");
 		btnLoadButton8.addActionListener(this);
 		panelSave.add(btnLoadButton8);

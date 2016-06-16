@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class View_MainMenu extends View_JPanel_withBackgroundImage {
+public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 	
 	//MARK: - Assets
 	private JButton btnContinue;
@@ -30,7 +30,7 @@ public class View_MainMenu extends View_JPanel_withBackgroundImage {
 	private WWMModel model;
 
 	//MARK: - Constructor
-	public View_MainMenu(WWMModel model, WWMController controller) {
+	public View_Window_MainMenu(WWMModel model, WWMController controller) {
 		//this.setBackground(Color.BLACK);		
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -60,28 +60,28 @@ public class View_MainMenu extends View_JPanel_withBackgroundImage {
 		panelMainMenuButtons.setLayout(new GridLayout(6, 1, 0, 0));
 		
 		
-		btnContinue = new View_JButton("Weiterspielen");
+		btnContinue = new View_JButton_withBackgroundImage("Weiterspielen");
 		btnContinue.addActionListener(controller);
 		panelMainMenuButtons.add(btnContinue);
 		
-		btnNewGame = new View_JButton("Neues Spiel");
+		btnNewGame = new View_JButton_withBackgroundImage("Neues Spiel");
 		btnNewGame.addActionListener(controller);
 		panelMainMenuButtons.add(btnNewGame);
 		
-		btnSave = new View_JButton("Speichern");
+		btnSave = new View_JButton_withBackgroundImage("Speichern");
 		btnSave.addActionListener(controller);
 		panelMainMenuButtons.add(btnSave);
 		
 		
-		btnLoad = new View_JButton("Laden");
+		btnLoad = new View_JButton_withBackgroundImage("Laden");
 		btnLoad.addActionListener(controller);
 		panelMainMenuButtons.add(btnLoad);
 		
-		btnHighScore = new View_JButton("Bestenliste");
+		btnHighScore = new View_JButton_withBackgroundImage("Bestenliste");
 		btnHighScore.addActionListener(controller);
 		panelMainMenuButtons.add(btnHighScore);
 		
-		btnExit = new View_JButton("Beenden");
+		btnExit = new View_JButton_withBackgroundImage("Beenden");
 		btnExit.addActionListener(controller);
 		panelMainMenuButtons.add(btnExit);
 		updateMenuButtons();

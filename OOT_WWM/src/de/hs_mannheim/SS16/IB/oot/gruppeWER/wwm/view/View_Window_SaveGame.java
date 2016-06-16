@@ -26,7 +26,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
-public class View_SaveWindow extends View_JPanel_withBackgroundImage implements ActionListener{
+public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implements ActionListener{
 	
 	//MARK: - Assets
 	private JButton btnSaveButton1;
@@ -41,7 +41,7 @@ public class View_SaveWindow extends View_JPanel_withBackgroundImage implements 
 	private String path;
 
 	//MARK: - Constructor
-	public View_SaveWindow(WWMModel model, String path) {
+	public View_Window_SaveGame(WWMModel model, String path) {
 		//this.setBackground(Color.BLACK);
 		this.model = model;
 		this.path = path;
@@ -71,42 +71,42 @@ public class View_SaveWindow extends View_JPanel_withBackgroundImage implements 
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		
-		btnSaveButton1 = new View_JButton("Speicherstelle 1");
+		btnSaveButton1 = new View_JButton_withBackgroundImage("Speicherstelle 1");
 		btnSaveButton1.setActionCommand("1");
 		btnSaveButton1.addActionListener(this);
 		panelSave.add(btnSaveButton1);
 		
-		btnSaveButton2 = new View_JButton("Speicherstelle 2");
+		btnSaveButton2 = new View_JButton_withBackgroundImage("Speicherstelle 2");
 		btnSaveButton2.setActionCommand("2");
 		btnSaveButton2.addActionListener(this);
 		panelSave.add(btnSaveButton2);
 		
-		btnSaveButton3 = new View_JButton("Speicherstelle 3");
+		btnSaveButton3 = new View_JButton_withBackgroundImage("Speicherstelle 3");
 		btnSaveButton3.setActionCommand("3");
 		btnSaveButton3.addActionListener(this);
 		panelSave.add(btnSaveButton3);
 		
-		btnSaveButton4 = new View_JButton("Speicherstelle 4");
+		btnSaveButton4 = new View_JButton_withBackgroundImage("Speicherstelle 4");
 		btnSaveButton4.setActionCommand("4");
 		btnSaveButton4.addActionListener(this);
 		panelSave.add(btnSaveButton4);
 		
-		btnSaveButton5 = new View_JButton("Speicherstelle 5");
+		btnSaveButton5 = new View_JButton_withBackgroundImage("Speicherstelle 5");
 		btnSaveButton5.setActionCommand("5");
 		btnSaveButton5.addActionListener(this);
 		panelSave.add(btnSaveButton5);
 		
-		btnSaveButton6 = new View_JButton("Speicherstelle 6");
+		btnSaveButton6 = new View_JButton_withBackgroundImage("Speicherstelle 6");
 		btnSaveButton6.setActionCommand("6");
 		btnSaveButton6.addActionListener(this);
 		panelSave.add(btnSaveButton6);
 		
-		btnSaveButton7 = new View_JButton("Speicherstelle 7");
+		btnSaveButton7 = new View_JButton_withBackgroundImage("Speicherstelle 7");
 		btnSaveButton7.setActionCommand("7");
 		btnSaveButton7.addActionListener(this);
 		panelSave.add(btnSaveButton7);
 		
-		btnSaveButton8 = new View_JButton("Speicherstelle 8");
+		btnSaveButton8 = new View_JButton_withBackgroundImage("Speicherstelle 8");
 		btnSaveButton8.setActionCommand("8");
 		btnSaveButton8.addActionListener(this);
 		panelSave.add(btnSaveButton8);
@@ -116,7 +116,7 @@ public class View_SaveWindow extends View_JPanel_withBackgroundImage implements 
 	@Override public void actionPerformed(ActionEvent e) {
 		int saveIndex = Integer.parseInt(e.getActionCommand());
 		if (saveGameExists(path, saveIndex)) {
-			new View_SaveDialogue(model, path, saveIndex);
+			new View_Dialogue_SaveGame(model, path, saveIndex);
 		} else {
 			model.saveGameToFile(path, saveIndex);
 		}

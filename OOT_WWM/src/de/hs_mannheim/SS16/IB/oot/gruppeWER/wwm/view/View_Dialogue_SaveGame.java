@@ -15,9 +15,9 @@ import javax.swing.border.EmptyBorder;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_SaveDialogue extends JDialog {
+public class View_Dialogue_SaveGame extends JDialog {
 
-	View_SaveDialogue(WWMModel model, String path, int index) {
+	View_Dialogue_SaveGame(WWMModel model, String path, int index) {
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Warnung");
 		setBounds(100, 100, 450, 300);
@@ -38,7 +38,7 @@ public class View_SaveDialogue extends JDialog {
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//Create and add the buttons
 		//Button "ABBRECHEN"
-		JButton btnCancel = new View_JButton("Abbrechen");
+		JButton btnCancel = new View_JButton_withBackgroundImage("Abbrechen");
 		buttonPane.add(btnCancel);
 		btnCancel.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -47,7 +47,7 @@ public class View_SaveDialogue extends JDialog {
 		});
 		getRootPane().setDefaultButton(btnCancel);
 		//Button "UEBERSCHREIBEN"
-		JButton btnOverRide = new View_JButton("Überschreiben");
+		JButton btnOverRide = new View_JButton_withBackgroundImage("Überschreiben");
 		btnOverRide.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				model.saveGameToFile(path, index);

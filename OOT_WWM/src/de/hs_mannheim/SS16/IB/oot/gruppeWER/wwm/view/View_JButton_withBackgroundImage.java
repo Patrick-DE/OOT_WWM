@@ -23,7 +23,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-public class View_JButton extends JButton {
+public class View_JButton_withBackgroundImage extends JButton {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 945286255842321281L;
@@ -41,7 +41,7 @@ public class View_JButton extends JButton {
 	 * @param label -> Set the button text
 	 * @param imageIndex -> Set up a specified background image (index starts at 1, 0 will use the default image)
 	 */
-	View_JButton(String label, int imageIndex) {
+	View_JButton_withBackgroundImage(String label, int imageIndex) {
 		super(label);
 		this.imageIndex = imageIndex;
 
@@ -51,7 +51,7 @@ public class View_JButton extends JButton {
 
 		loadImage();
 	}
-	View_JButton(String label) {
+	View_JButton_withBackgroundImage(String label) {
 		super(label);
 		this.imageIndex = 0;
 
@@ -61,7 +61,7 @@ public class View_JButton extends JButton {
 
 		loadImage();
 	}
-	View_JButton() {
+	View_JButton_withBackgroundImage() {
 		super();
 		this.imageIndex = 0;
 
@@ -71,7 +71,7 @@ public class View_JButton extends JButton {
 
 		loadImage();
 	}
-	View_JButton(Icon icon) {
+	View_JButton_withBackgroundImage(Icon icon) {
 		super(icon);
 		this.imageIndex = 0;
 

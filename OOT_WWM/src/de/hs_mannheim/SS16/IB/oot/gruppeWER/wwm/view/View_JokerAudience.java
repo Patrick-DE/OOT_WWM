@@ -203,7 +203,7 @@ public class View_JokerAudience extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new View_JButton("OK");
+				JButton okButton = new View_JButton_withBackgroundImage("OK");
 				okButton.addActionListener(new ActionListener() {
 					
 					@Override public void actionPerformed(ActionEvent e) {

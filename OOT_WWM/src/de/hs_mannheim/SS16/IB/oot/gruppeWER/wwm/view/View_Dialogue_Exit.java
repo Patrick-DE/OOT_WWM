@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-public class View_ExitDialogue extends JDialog {
+public class View_Dialogue_Exit extends JDialog {
 
 	//MARK: - Constructor
-	public View_ExitDialogue(WWMController controller) {
+	public View_Dialogue_Exit(WWMController controller) {
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Speichern und Beenden");
@@ -49,7 +49,7 @@ public class View_ExitDialogue extends JDialog {
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//Create and add the buttons
 		//Button "ABBRECHEN"
-		JButton btnCancel = new View_JButton("Abbrechen");
+		JButton btnCancel = new View_JButton_withBackgroundImage("Abbrechen");
 		btnCancel.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -58,7 +58,7 @@ public class View_ExitDialogue extends JDialog {
 		buttonPanel.add(btnCancel);
 		getRootPane().setDefaultButton(btnCancel);
 		//Button "SPEICHERN"
-		JButton btnSave = new View_JButton("Speichern");
+		JButton btnSave = new View_JButton_withBackgroundImage("Speichern");
 		btnSave.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				controller.actionPerformed(new ActionEvent(this, 123456, "Speichern"));
@@ -67,7 +67,7 @@ public class View_ExitDialogue extends JDialog {
 		});
 		buttonPanel.add(btnSave);
 		//Button "BEENDEN"
-		JButton btnExit = new View_JButton("Beenden");
+		JButton btnExit = new View_JButton_withBackgroundImage("Beenden");
 		btnExit.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				System.exit(0);

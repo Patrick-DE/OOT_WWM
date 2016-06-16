@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_EndOfGameWindow extends View_JPanel_withBackgroundImage {
+public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class View_EndOfGameWindow extends View_JPanel_withBackgroundImage {
 	private JLabel lblTime;
 
 	//MARK: - Constructor
-	public View_EndOfGameWindow(WWMModel model) {
+	public View_Window_EndOfGame(WWMModel model) {
 		//this.setBackground(Color.BLACK);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};

@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
-public class View_HighScoreWindow extends View_JPanel_withBackgroundImage {
+public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private WWMModel model;
@@ -33,7 +33,7 @@ public class View_HighScoreWindow extends View_JPanel_withBackgroundImage {
 	private JLabel lblName_1;
 
 	//MARK: - Constructor
-	public View_HighScoreWindow(WWMModel model) {
+	public View_Window_HighScore(WWMModel model) {
 		//this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();

@@ -19,7 +19,7 @@ import javax.swing.Timer;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_GameInfoPanel extends JPanel {
+public class View_PanelGameStatus extends JPanel {
 
 	//MARK: - Assets
 	private WWMModel model;
@@ -29,7 +29,7 @@ public class View_GameInfoPanel extends JPanel {
 	private BufferedImage background;
 	
 	//MARK: - Constructor
-	public View_GameInfoPanel(WWMModel model) {
+	public View_PanelGameStatus(WWMModel model) {
 		setOpaque(false);
 		try {
 			background = ImageIO.read(new File("data/Status_Backdrop.png"));

@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
+public class View_Window_Question extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = -8111826866911799613L;
@@ -37,8 +37,8 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 	private JButton btnAudience;
 	private JButton btnDropOut;
 
-	private View_QuestionLabel questionTextLabel;
-	private View_GameInfoPanel gameStatusPanel;
+	private View_LabelQuestion questionTextLabel;
+	private View_PanelGameStatus gameStatusPanel;
 	private JPanel answerPanel;
 	
 	private WWMModel model;
@@ -46,7 +46,7 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 	private boolean fiftyFiftyUsed = false;
 
 	//MARK: - Constructor
-	public View_QuestionWindow(WWMController controller, WWMModel model) {
+	public View_Window_Question(WWMController controller, WWMModel model) {
 		//this.setBackground(Color.BLACK);
 		this.model = model;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -56,7 +56,7 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
 		setLayout(gridBagLayout);
 
-		gameStatusPanel = new View_GameInfoPanel(model);
+		gameStatusPanel = new View_PanelGameStatus(model);
 		GridBagConstraints gbc_paneGameInfo = new GridBagConstraints();
 		gbc_paneGameInfo.gridwidth = 1;
 		gbc_paneGameInfo.weightx = 1.0;
@@ -67,7 +67,7 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 		gbc_paneGameInfo.gridy = 0;
 		add(gameStatusPanel, gbc_paneGameInfo);
 
-		questionTextLabel = new View_QuestionLabel(model.getAnswerTime(),1);
+		questionTextLabel = new View_LabelQuestion(model.getAnswerTime(),1);
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
@@ -81,22 +81,22 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 
 		answerPanel = new JPanel(new GridLayout(2, 2));
 		answerPanel.setOpaque(false);
-		btnAnswer1 = new View_JButton();
+		btnAnswer1 = new View_JButton_withBackgroundImage();
 		btnAnswer1.setActionCommand("Antwort1");
 		btnAnswer1.addActionListener(controller);
 		answerPanel.add(btnAnswer1);
 
-		btnAnswer2 = new View_JButton();
+		btnAnswer2 = new View_JButton_withBackgroundImage();
 		btnAnswer2.setActionCommand("Antwort2");
 		btnAnswer2.addActionListener(controller);
 		answerPanel.add(btnAnswer2);
 
-		btnAnswer3 = new View_JButton();
+		btnAnswer3 = new View_JButton_withBackgroundImage();
 		btnAnswer3.setActionCommand("Antwort3");
 		btnAnswer3.addActionListener(controller);
 		answerPanel.add(btnAnswer3);
 
-		btnAnswer4 = new View_JButton();
+		btnAnswer4 = new View_JButton_withBackgroundImage();
 		btnAnswer4.setActionCommand("Antwort4");
 		btnAnswer4.addActionListener(controller);
 		answerPanel.add(btnAnswer4);
@@ -123,22 +123,22 @@ public class View_QuestionWindow extends View_JPanel_withBackgroundImage {
 		gbc_buttonSpace.gridy = 3;
 		add(buttonSpace, gbc_buttonSpace);
 
-		btnTelephone = new View_JButton(new ImageIcon("data/Joker_Telefon.png"));
+		btnTelephone = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Telefon.png"));
 		btnTelephone.addActionListener(controller);
 		btnTelephone.setActionCommand("Telefon");
 		buttonSpace.add(btnTelephone);
 
-		btnFiftyFifty = new View_JButton(new ImageIcon("data/Joker_50_50.png"));
+		btnFiftyFifty = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_50_50.png"));
 		btnFiftyFifty.addActionListener(controller);
 		btnFiftyFifty.setActionCommand("50/50");
 		buttonSpace.add(btnFiftyFifty);
 
-		btnAudience = new View_JButton(new ImageIcon("data/Joker_Publikum.png"));
+		btnAudience = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Publikum.png"));
 		btnAudience.addActionListener(controller);
 		btnAudience.setActionCommand("Publikum");
 		buttonSpace.add(btnAudience);
 
-		btnDropOut = new View_JButton("Aussteigen");
+		btnDropOut = new View_JButton_withBackgroundImage("Aussteigen");
 		btnDropOut.addActionListener(controller);
 		buttonSpace.add(btnDropOut);
 	}

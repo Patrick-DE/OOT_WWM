@@ -21,13 +21,13 @@ public class WWMMainView extends WWMView {
 
 	//MARK: - Assets
 	private JFrame frmWwm;
-	private View_MainMenu menu;
-	private View_QuestionWindow questionWindow;
+	private View_Window_MainMenu menu;
+	private View_Window_Question questionWindow;
 	private CardLayout card;
-	private View_SaveWindow saveWindow;
-	private View_LoadWindow loadWindow;
-	private View_HighScoreWindow highScoreWindow;
-	private View_EndOfGameWindow endGameWindow;
+	private View_Window_SaveGame saveWindow;
+	private View_Window_LoadSaveGame loadWindow;
+	private View_Window_HighScore highScoreWindow;
+	private View_Window_EndOfGame endGameWindow;
 
 	//MARK: - Constructor
 	public WWMMainView(WWMModel model, WWMController controller) {
@@ -44,29 +44,29 @@ public class WWMMainView extends WWMView {
 		frmWwm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		card = new CardLayout();
 		frmWwm.getContentPane().setLayout(card);
-		menu = new View_MainMenu(model,controller);
-		questionWindow = new View_QuestionWindow(controller, model);
+		menu = new View_Window_MainMenu(model,controller);
+		questionWindow = new View_Window_Question(controller, model);
 		questionWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-		saveWindow = new View_SaveWindow(model, "");
+		saveWindow = new View_Window_SaveGame(model, "");
 		saveWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-		loadWindow = new View_LoadWindow(model);
+		loadWindow = new View_Window_LoadSaveGame(model);
 		loadWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-		highScoreWindow = new View_HighScoreWindow(model);
+		highScoreWindow = new View_Window_HighScore(model);
 		highScoreWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override public void actionPerformed(ActionEvent e) {
@@ -82,7 +82,7 @@ public class WWMMainView extends WWMView {
 		frmWwm.setVisible(true);
 		frmWwm.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {
-				new View_ExitDialogue(controller);
+				new View_Dialogue_Exit(controller);
 			}
 		});
 	}
@@ -119,16 +119,16 @@ public class WWMMainView extends WWMView {
 		card.show(frmWwm.getContentPane(), "highScoreWindow");
 	}
 	@Override public void displayExitDialog() {
-		new View_ExitDialogue(controller);
+		new View_Dialogue_Exit(controller);
 	}
 	@Override public void displayDropOutDialog() {
-		new View_DropOutDialogue(model);
+		new View_Dialogue_DropOut(model);
 	}
 	@Override public void displayFalseAnswerDialog() {
-		new View_FalseAnswerDialogue();
+		new View_Dialogue_FalseAnswer();
 	}
 	@Override public void displayEndOfGameDialog() {
-		endGameWindow = new View_EndOfGameWindow(model);
+		endGameWindow = new View_Window_EndOfGame(model);
 		endGameWindow.registerKeyboardAction(new ActionListener() {
 			
 			@Override
