@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -47,28 +49,24 @@ public class WWMMainView extends WWMView {
 		menu = new View_Window_MainMenu(model,controller);
 		questionWindow = new View_Window_Question(controller, model);
 		questionWindow.registerKeyboardAction(new ActionListener() {
-			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 		saveWindow = new View_Window_SaveGame(model, "");
 		saveWindow.registerKeyboardAction(new ActionListener() {
-			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 		loadWindow = new View_Window_LoadSaveGame(model);
 		loadWindow.registerKeyboardAction(new ActionListener() {
-			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 		highScoreWindow = new View_Window_HighScore(model);
 		highScoreWindow.registerKeyboardAction(new ActionListener() {
-			
 			@Override public void actionPerformed(ActionEvent e) {
 				displayMainMenu();
 			}
@@ -89,19 +87,27 @@ public class WWMMainView extends WWMView {
 	@Override public void setQuestion(Model_Question question) {
 		questionWindow.setQuestion(question);
 	}
+	@Override public void provideAnswerFeedback(int answerIndex) {
+		questionWindow.disableAllButtons();
+		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);
+		
+//		if(model.getCorrectAnswerIndex() == answerIndex) {
+//			questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 2);
+//		}
+//		else {
+//			questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
+//		}
+	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();
 		new View_JokerAudience(model.generateAudienceJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
 	@Override public void displayTelephoneJoker() {
 		questionWindow.setTelephoneJokerUsed();
-		
 	}
-
 	@Override public void displayFiftyFiftyJoker() {
 		questionWindow.useFiftyFiftyJoker(model.generateFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
-
 	@Override public void displaySaveDialog() {
 		saveWindow.updateSaveWindow();
 		card.show(frmWwm.getContentPane(), "saveWindow");
@@ -130,14 +136,12 @@ public class WWMMainView extends WWMView {
 	@Override public void displayEndOfGameDialog() {
 		endGameWindow = new View_Window_EndOfGame(model);
 		endGameWindow.registerKeyboardAction(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+			@Override public void actionPerformed(ActionEvent e) {
 				card.first(frmWwm.getContentPane());
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 		frmWwm.getContentPane().add(endGameWindow, "endGameWindow");
-		
+
 		card.show(frmWwm.getContentPane(), "endGameWindow");
 	}
 	@Override public void displayMainMenu() {

@@ -247,7 +247,14 @@ public class WWMModel extends Observable {
 
 	//MARK: - Helper Methods
 	public void logInAnswer(int answerIndex) {
+		//Run timer to allow for the chosen answer to be logged before it is validated 
 		questionTimer.cancel();
+		questionTimer = new Timer();
+		questionTimer.schedule(new TimerTask() {
+			@Override public void run() {
+				validateAnswer(answerIndex);
+			}
+		}, 5 * 1000);
 	}
 	public void validateAnswer(int answerIndex) {
 		questionTimer.cancel();
@@ -260,6 +267,9 @@ public class WWMModel extends Observable {
 			setChanged();
 			notifyObservers();
 		}
+	}
+	public int getCorrectAnswerIndex() {
+		return questions.get(questionIndex).getRightAnswerIndex();
 	}
 	public int[] generateAudienceJokerResults(Model_Question question) {
 		if (audience.getStatus())

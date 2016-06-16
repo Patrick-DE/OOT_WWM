@@ -28,27 +28,30 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 	//MARK: - Assets
 	private static final long serialVersionUID = -8111826866911799613L;
 
-	private JButton btnAnswer1;
-	private JButton btnAnswer2;
-	private JButton btnAnswer3;
-	private JButton btnAnswer4;
+	private View_JButton_withBackgroundImage btnAnswer1;
+	private View_JButton_withBackgroundImage btnAnswer2;
+	private View_JButton_withBackgroundImage btnAnswer3;
+	private View_JButton_withBackgroundImage btnAnswer4;
 	private JButton btnTelephone;
 	private JButton btnFiftyFifty;
 	private JButton btnAudience;
 	private JButton btnDropOut;
 
 	private View_LabelQuestion questionTextLabel;
-	private View_PanelGameStatus gameStatusPanel;
+	private View_Panel_GameStatus gameStatusPanel;
 	private JPanel answerPanel;
-	
+
 	private WWMModel model;
-	
+	private WWMController controller;
+
 	private boolean fiftyFiftyUsed = false;
+	private boolean answerLogged = false;
 
 	//MARK: - Constructor
 	public View_Window_Question(WWMController controller, WWMModel model) {
 		//this.setBackground(Color.BLACK);
 		this.model = model;
+		this.controller = controller;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.rowHeights = new int[] {0, 20, 20, 30};
 		gridBagLayout.columnWidths = new int[] {1, 1};
@@ -56,7 +59,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
 		setLayout(gridBagLayout);
 
-		gameStatusPanel = new View_PanelGameStatus(model);
+		gameStatusPanel = new View_Panel_GameStatus(this.model);
 		GridBagConstraints gbc_paneGameInfo = new GridBagConstraints();
 		gbc_paneGameInfo.gridwidth = 1;
 		gbc_paneGameInfo.weightx = 1.0;
@@ -67,7 +70,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_paneGameInfo.gridy = 0;
 		add(gameStatusPanel, gbc_paneGameInfo);
 
-		questionTextLabel = new View_LabelQuestion(model.getAnswerTime(),1);
+		questionTextLabel = new View_LabelQuestion(this.model.getAnswerTime(),1);
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
@@ -83,22 +86,22 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		answerPanel.setOpaque(false);
 		btnAnswer1 = new View_JButton_withBackgroundImage();
 		btnAnswer1.setActionCommand("Antwort1");
-		btnAnswer1.addActionListener(controller);
+		btnAnswer1.addActionListener(this.controller);
 		answerPanel.add(btnAnswer1);
 
 		btnAnswer2 = new View_JButton_withBackgroundImage();
 		btnAnswer2.setActionCommand("Antwort2");
-		btnAnswer2.addActionListener(controller);
+		btnAnswer2.addActionListener(this.controller);
 		answerPanel.add(btnAnswer2);
 
 		btnAnswer3 = new View_JButton_withBackgroundImage();
 		btnAnswer3.setActionCommand("Antwort3");
-		btnAnswer3.addActionListener(controller);
+		btnAnswer3.addActionListener(this.controller);
 		answerPanel.add(btnAnswer3);
 
 		btnAnswer4 = new View_JButton_withBackgroundImage();
 		btnAnswer4.setActionCommand("Antwort4");
-		btnAnswer4.addActionListener(controller);
+		btnAnswer4.addActionListener(this.controller);
 		answerPanel.add(btnAnswer4);
 
 		GridBagConstraints gbc_answerPanel = new GridBagConstraints();
@@ -123,36 +126,47 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_buttonSpace.gridy = 3;
 		add(buttonSpace, gbc_buttonSpace);
 
-		btnTelephone = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Telefon.png"));
-		btnTelephone.addActionListener(controller);
+		//btnTelephone = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Telefon.png"));
+		btnTelephone = new View_JButton_withBackgroundImage(4);
+		btnTelephone.addActionListener(this.controller);
 		btnTelephone.setActionCommand("Telefon");
 		buttonSpace.add(btnTelephone);
 
-		btnFiftyFifty = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_50_50.png"));
-		btnFiftyFifty.addActionListener(controller);
+		//btnFiftyFifty = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_50_50.png"));
+		btnFiftyFifty = new View_JButton_withBackgroundImage(5);
+		btnFiftyFifty.addActionListener(this.controller);
 		btnFiftyFifty.setActionCommand("50/50");
 		buttonSpace.add(btnFiftyFifty);
 
-		btnAudience = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Publikum.png"));
-		btnAudience.addActionListener(controller);
+		//btnAudience = new View_JButton_withBackgroundImage(new ImageIcon("data/Joker_Publikum.png"));
+		btnAudience = new View_JButton_withBackgroundImage(6);
+		btnAudience.addActionListener(this.controller);
 		btnAudience.setActionCommand("Publikum");
 		buttonSpace.add(btnAudience);
 
-		btnDropOut = new View_JButton_withBackgroundImage("Aussteigen");
-		btnDropOut.addActionListener(controller);
+		//btnDropOut = new View_JButton_withBackgroundImage("Aussteigen");
+		btnDropOut = new View_JButton_withBackgroundImage(7);
+		btnDropOut.addActionListener(this.controller);
+		btnDropOut.setActionCommand("Aussteigen");
 		buttonSpace.add(btnDropOut);
 	}
 
 	//MARK: - Methods
-	public void setQuestion (Model_Question question) {
+	public void setQuestion(Model_Question question) {
+		//re-enable the buttons
+		this.enableAllButtons();
+		
 		gameStatusPanel.repaint();
 		gameStatusPanel.animationRestart();
-		if (model.getTelephoneStatus())
+		if (model.getTelephoneStatus()) {
 			btnTelephone.setEnabled(false);
-		if (model.getFiftyFiftyStatus())
+		}
+		if (model.getFiftyFiftyStatus()) {
 			btnFiftyFifty.setEnabled(false);
-		if (model.getAudienceStatus())
+		}
+		if (model.getAudienceStatus()) {
 			btnAudience.setEnabled(false);
+		}
 		if (fiftyFiftyUsed) {
 			fiftyFiftyUsed = false;
 
@@ -161,6 +175,16 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 			btnAnswer3.setEnabled(true);
 			btnAnswer4.setEnabled(true);
 		}
+		
+		//reset to default button images
+		if(answerLogged) {
+			answerLogged = false;
+			btnAnswer1.changeImageIndex(0);
+			btnAnswer2.changeImageIndex(0);
+			btnAnswer3.changeImageIndex(0);
+			btnAnswer4.changeImageIndex(0);
+		}
+		
 		questionTextLabel.setText("<HTML><BODY><div style='text-align: center;'>" + question.getQuestionText() + "</BODY></HTML>");
 		questionTextLabel.animationRestart();
 		btnAnswer1.setText("<HTML><BODY>" + question.getAnswerAtIndex(1) + "</BODY></HTML>");
@@ -168,7 +192,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		btnAnswer3.setText("<HTML><BODY>" + question.getAnswerAtIndex(3) + "</BODY></HTML>");
 		btnAnswer4.setText("<HTML><BODY>" + question.getAnswerAtIndex(4) + "</BODY></HTML>");
 	}
-	public void useFiftyFiftyJoker (int[] jokerResults) {
+	public void useFiftyFiftyJoker(int[] jokerResults) {
 		btnFiftyFifty.setEnabled(false);
 		fiftyFiftyUsed = true;
 		for (int i = 0; i < jokerResults.length; i++) {
@@ -198,5 +222,40 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		if (!model.getTelephoneStatus()) {
 			btnTelephone.setEnabled(true);
 		}
+	}
+	public void changeAnswerButtonBackgroundImage(int answerIndex, int imageIndex) {
+		answerLogged = true;
+		switch(answerIndex) {
+		case 1:
+			btnAnswer1.changeImageIndex(imageIndex);
+			break;
+		case 2:
+			btnAnswer2.changeImageIndex(imageIndex);
+			break;
+		case 3:
+			btnAnswer3.changeImageIndex(imageIndex);
+			break;
+		case 4:
+			btnAnswer4.changeImageIndex(imageIndex);
+			break;
+		}
+	}
+	public void disableAllButtons() {
+		btnAnswer1.removeActionListener(this.controller);
+		btnAnswer2.removeActionListener(this.controller);
+		btnAnswer3.removeActionListener(this.controller);
+		btnAnswer4.removeActionListener(this.controller);
+		btnTelephone.removeActionListener(this.controller);
+		btnFiftyFifty.removeActionListener(this.controller);
+		btnAudience.removeActionListener(this.controller);
+	}
+	public void enableAllButtons() {
+		btnAnswer1.addActionListener(this.controller);
+		btnAnswer2.addActionListener(this.controller);
+		btnAnswer3.addActionListener(this.controller);
+		btnAnswer4.addActionListener(this.controller);
+		btnTelephone.addActionListener(this.controller);
+		btnFiftyFifty.addActionListener(this.controller);
+		btnAudience.addActionListener(this.controller);
 	}
 }

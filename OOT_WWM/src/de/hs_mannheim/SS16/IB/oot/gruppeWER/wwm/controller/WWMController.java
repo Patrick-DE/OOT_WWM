@@ -3,6 +3,8 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.WWMMainView;
@@ -13,6 +15,7 @@ public class WWMController implements ActionListener {
 	//MARK: - Assets
 	private WWMModel model;
 	private ArrayList<WWMView> views;
+	private Timer delayTimer;
 	
 	//MARK: - Constructor
 	public WWMController (WWMModel model) {
@@ -21,7 +24,7 @@ public class WWMController implements ActionListener {
 	}
 	
 	//MARK: - Methods
-	public void addViews (WWMView view) {
+	public void addViews(WWMView view) {
 		views.add(view);
 	}
 	@Override public void actionPerformed(ActionEvent arg0) {
@@ -52,16 +55,28 @@ public class WWMController implements ActionListener {
 				view.displayExitDialog();
 		} 
 		else if (arg0.getActionCommand().equals("Antwort1")) {
-			model.validateAnswer(1);
+			for (WWMView view : views) {
+				view.provideAnswerFeedback(1);
+			}
+			model.logInAnswer(1);
 		} 
 		else if (arg0.getActionCommand().equals("Antwort2")) {
-			model.validateAnswer(2);
+			for (WWMView view : views) {
+				view.provideAnswerFeedback(2);
+			}
+			model.logInAnswer(2);
 		} 
 		else if (arg0.getActionCommand().equals("Antwort3")) {
-			model.validateAnswer(3);
+			for (WWMView view : views) {
+				view.provideAnswerFeedback(3);
+			}
+			model.logInAnswer(3);
 		} 
 		else if (arg0.getActionCommand().equals("Antwort4")) {
-			model.validateAnswer(4);
+			for (WWMView view : views) {
+				view.provideAnswerFeedback(4);
+			}
+			model.logInAnswer(4);
 		} 
 		else if (arg0.getActionCommand().equals("Telefon")) {
 			for (WWMView view : views)

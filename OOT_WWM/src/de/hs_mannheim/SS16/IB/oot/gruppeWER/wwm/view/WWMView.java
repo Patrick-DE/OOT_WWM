@@ -27,6 +27,7 @@ public abstract class WWMView implements Observer {
 	 * @param question
 	 */
 	public abstract void setQuestion(Model_Question question);
+	public abstract void provideAnswerFeedback(int answerIndex);
 	/**
 	 * display the audience joker
 	 */

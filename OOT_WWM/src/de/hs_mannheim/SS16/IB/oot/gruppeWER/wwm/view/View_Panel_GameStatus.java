@@ -19,7 +19,7 @@ import javax.swing.Timer;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_PanelGameStatus extends JPanel {
+public class View_Panel_GameStatus extends JPanel {
 
 	//MARK: - Assets
 	private WWMModel model;
@@ -29,7 +29,7 @@ public class View_PanelGameStatus extends JPanel {
 	private BufferedImage background;
 	
 	//MARK: - Constructor
-	public View_PanelGameStatus(WWMModel model) {
+	public View_Panel_GameStatus(WWMModel model) {
 		setOpaque(false);
 		try {
 			background = ImageIO.read(new File("data/Status_Backdrop.png"));
@@ -73,12 +73,11 @@ public class View_PanelGameStatus extends JPanel {
         g2d.dispose();
 		super.paintComponent(g);
 	}
-	private void questionTimerAnimation () {
+	private void questionTimerAnimation() {
 		timeAn = model.getAnswerTime();
 		time[0] = (timeAn / 60);
 		time[1] = timeAn - time[0];
 		timer = new Timer(1000, new ActionListener() {
-			
 			@Override public void actionPerformed(ActionEvent e) {
 				if (timeAn <= 1)
 					timer.stop();
