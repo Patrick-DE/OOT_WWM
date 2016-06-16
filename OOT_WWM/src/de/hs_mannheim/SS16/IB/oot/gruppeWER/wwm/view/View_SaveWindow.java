@@ -26,7 +26,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
-public class View_SaveWindow extends View_JPanel_withBackdrop implements ActionListener{
+public class View_SaveWindow extends View_JPanel_withBackgroundImage implements ActionListener{
 	
 	//MARK: - Assets
 	private JButton btnSaveButton1;

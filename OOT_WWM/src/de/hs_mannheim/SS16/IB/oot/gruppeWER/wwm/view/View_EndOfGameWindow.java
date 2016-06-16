@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_EndOfGameWindow extends View_JPanel_withBackdrop {
+public class View_EndOfGameWindow extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private JTextField textField;

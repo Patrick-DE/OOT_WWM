@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class View_MainMenu extends View_JPanel_withBackdrop {
+public class View_MainMenu extends View_JPanel_withBackgroundImage {
 	
 	//MARK: - Assets
 	private JButton btnContinue;
@@ -40,7 +40,7 @@ public class View_MainMenu extends View_JPanel_withBackdrop {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
 		
-		JPanel panelMainImage = new JPanel_withLogo();
+		JPanel panelMainImage = new View_JPanel_withBackgroundImage(1);
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
@@ -100,35 +100,6 @@ public class View_MainMenu extends View_JPanel_withBackdrop {
 		else {
 			btnContinue.setEnabled(true);
 			btnSave.setEnabled(true);
-		}
-	}
-	
-	//MARK: - Inner Classes
-	private class JPanel_withLogo extends JPanel {
-		
-		//MARK: - Assets
-		private static final long serialVersionUID = -6088012016107912859L;
-		private BufferedImage backdrop;
-		
-		//MARK: - Constructor
-		JPanel_withLogo() {
-			super();
-			loadImage();
-		}
-
-		//MARK: - Methods
-		@Override protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			if(backdrop != null) {
-		    	g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), null);
-		    }
-		}
-		private void loadImage() {
-			try {
-				backdrop = ImageIO.read(new File("data/WWM_Logo_Spaced.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

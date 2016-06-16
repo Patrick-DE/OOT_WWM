@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
-public class View_HighScoreWindow extends View_JPanel_withBackdrop {
+public class View_HighScoreWindow extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
 	private WWMModel model;
@@ -97,7 +97,7 @@ public class View_HighScoreWindow extends View_JPanel_withBackdrop {
 		scrollPane.setBorder(null);
 		panelHighScore.add(scrollPane);
 
-		JPanel panel = new View_JPanel_withBackdrop();
+		JPanel panel = new View_JPanel_withBackgroundImage();
 		//panel.setBackground(Color.BLACK);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new GridLayout(0, 3, 0, 0));

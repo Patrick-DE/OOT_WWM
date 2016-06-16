@@ -31,11 +31,13 @@ public class View_QuestionLabel extends JLabel {
 		this.seconds = questionSeconds - 2;
 		try {
 			backGround = ImageIO.read(new File("data/Question_Backdrop_Spaced.png"));
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
-		if ( modus == 1)
+		if (modus == 1) {
 			this.setForeground(Color.WHITE);
+		}
 		addComponentListener(new ComponentAdapter() {
 			@Override public void componentResized(ComponentEvent e) {
 				widthI = getWidth() / (double) ((seconds * 1000) / 50);
@@ -55,7 +57,7 @@ public class View_QuestionLabel extends JLabel {
 				g.setColor(Color.RED);
 			g.fillRect(0, 0, (int) (step++ * widthI), (int) this.getHeight());
 		} else {
-			if ( backGround != null )
+			if (backGround != null )
 				g.drawImage(backGround, 0, 0, getWidth(), getHeight(), this);
 		}
 		super.paintComponent(g);

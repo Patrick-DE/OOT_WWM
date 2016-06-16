@@ -16,8 +16,6 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.View_MainMenu;
-
 public class WWMModel extends Observable {
 
 	//MARK: - Assets
@@ -131,7 +129,7 @@ public class WWMModel extends Observable {
 		for (int i = 0; i < 5; i++) {
 			questions.add(questionsHard.get(i));
 		}
-		startGame();
+		runGame();
 		setChanged();
 		notifyObservers();
 	}
@@ -163,14 +161,15 @@ public class WWMModel extends Observable {
 		gameStart = true;
 		gameEndFalseAnswer = false;
 		gameEndRightAnswer = false;
-		startGame();
+		runGame();
 		setChanged();
 		notifyObservers();
 	}
 	/**
-	 * Runs the game logic
+	 * Runs the game logic per Question
+	 * Method will be called for each Question
 	 */
-	public void startGame() {
+	public void runGame() {
 		gameStart = true;
 		questionIndex++;
 		if (questionIndex < gameQuestionAmount) {
@@ -247,13 +246,15 @@ public class WWMModel extends Observable {
 	}
 
 	//MARK: - Helper Methods
+	public void logInAnswer(int answerIndex) {
+		questionTimer.cancel();
+	}
 	public void validateAnswer(int answerIndex) {
-		if (questionTimer != null) {
-			questionTimer.cancel();
-		}
+		questionTimer.cancel();
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
-			startGame();
-		} else {
+			runGame();
+		} 
+		else {
 			calculateGameRunningTime();
 			gameEndFalseAnswer = true;
 			setChanged();
@@ -318,7 +319,7 @@ public class WWMModel extends Observable {
 		else
 			return 1000000;
 	}
-	
+
 	//MARK: - Getter and Setter Methods
 	public boolean getGameStartedStatus() {
 		return this.gameStart;

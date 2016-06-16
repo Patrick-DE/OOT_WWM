@@ -111,7 +111,7 @@ public class WWMMainView extends WWMView {
 		card.show(frmWwm.getContentPane(), "loadWindow");
 	}
 	@Override public void displayGameWindow() {
-		questionWindow.updateQuestionWindow();
+		questionWindow.updateJokerButtons();
 		card.show(frmWwm.getContentPane(), "questionWindow");
 	}
 	@Override public void displayHighScoreWindow() {

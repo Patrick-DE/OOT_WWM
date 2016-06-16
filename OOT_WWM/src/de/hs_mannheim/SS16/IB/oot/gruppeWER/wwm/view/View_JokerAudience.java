@@ -23,7 +23,7 @@ public class View_JokerAudience extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 1599703298634307780L;
-	private final JPanel contentPanel = new View_JPanel_withBackdrop();
+	private final JPanel contentPanel = new View_JPanel_withBackgroundImage();
 
 	//MARK: - Assets
 	public View_JokerAudience(int[] audienceResults) {
