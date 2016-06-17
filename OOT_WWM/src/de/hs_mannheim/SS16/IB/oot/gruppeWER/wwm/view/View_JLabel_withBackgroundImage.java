@@ -26,8 +26,8 @@ public class View_JLabel_withBackgroundImage extends JLabel {
 
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
-		if (WWMController.imageContainer.backdrop != null) {
-			g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+		if (WWMController.imageContainer.backdrop_activated != null) {
+			g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
 		}
 		super.paintComponent(g);
 	}
