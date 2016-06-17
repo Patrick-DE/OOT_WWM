@@ -18,16 +18,44 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 
 public class View_JLabel_withBackgroundImage extends JLabel {
 
+	//MARK: - Assets
+	private int imageIndex;
+	
 	//MARK: - Constructor
-	public View_JLabel_withBackgroundImage(int questionSeconds, int modus) {
+	public View_JLabel_withBackgroundImage(int imageIndex) {
 		super();
+		this.imageIndex = imageIndex;
+		this.setForeground(Color.WHITE);
+	}
+	public View_JLabel_withBackgroundImage() {
+		super();
+		this.imageIndex = 0;
 		this.setForeground(Color.WHITE);
 	}
 
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
-		if (WWMController.imageContainer.backdrop_activated != null) {
-			g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+		switch(this.imageIndex) {
+		case 0:
+			if(WWMController.imageContainer.backdrop_activated != null) {
+				g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		case 1: 
+			if(WWMController.imageContainer.statusBackdrop != null) {
+				g.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		case 2: 
+			if(WWMController.imageContainer.backdrop != null) {
+				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		default:
+			if(WWMController.imageContainer.backdrop_activated != null) {
+				g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		}
 		super.paintComponent(g);
 	}

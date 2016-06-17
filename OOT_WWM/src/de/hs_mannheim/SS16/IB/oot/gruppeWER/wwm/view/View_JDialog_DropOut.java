@@ -3,12 +3,14 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import javax.swing.JLabel;
@@ -28,7 +30,7 @@ public class View_JDialog_DropOut extends JDialog {
 		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
-		JPanel labelPanel = new JPanel();
+		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setOpaque(false);
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -42,7 +44,7 @@ public class View_JDialog_DropOut extends JDialog {
 		getContentPane().add(labelPanel, BorderLayout.CENTER);
 
 		//Create a JPanel for the buttons
-		JPanel buttonPanel = new JPanel();
+		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
 		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//Create and add the buttons

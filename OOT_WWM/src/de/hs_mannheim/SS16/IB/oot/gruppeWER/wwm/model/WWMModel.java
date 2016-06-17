@@ -254,7 +254,7 @@ public class WWMModel extends Observable {
 			@Override public void run() {
 				validateAnswer(answerIndex);
 			}
-		}, 3 * 1000);
+		}, 4 * 1000);
 	}
 	public void validateAnswer(int answerIndex) {
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {

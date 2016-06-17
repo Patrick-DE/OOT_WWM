@@ -1,6 +1,7 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,21 +21,23 @@ public class View_JDialog_SaveGame extends JDialog {
 	View_JDialog_SaveGame(WWMModel model, String path, int index) {
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Warnung");
+		setForeground(Color.WHITE);
 		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
-		JPanel labelPanel = new JPanel();
+		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		//Create and add the label
 		JLabel lblSpielstandberschreiben = new JLabel("Spielstand überschreiben?");
+		lblSpielstandberschreiben.setForeground(Color.WHITE);
 		lblSpielstandberschreiben.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPanel.add(lblSpielstandberschreiben);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);
 
 		//Create a JPanel for the buttons
-		JPanel buttonPane = new JPanel();
+		JPanel buttonPane = new View_JPanel_withBackgroundImage();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//Create and add the buttons
 		//Button "ABBRECHEN"

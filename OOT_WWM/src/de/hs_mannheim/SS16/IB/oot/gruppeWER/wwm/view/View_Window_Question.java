@@ -70,7 +70,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_paneGameInfo.gridy = 0;
 		add(gameStatusPanel, gbc_paneGameInfo);
 
-		questionTextLabel = new View_JLabel_withBackgroundImage(this.model.getAnswerTime(),1);
+		questionTextLabel = new View_JLabel_withBackgroundImage();
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
 		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
