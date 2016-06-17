@@ -257,7 +257,6 @@ public class WWMModel extends Observable {
 		}, 5 * 1000);
 	}
 	public void validateAnswer(int answerIndex) {
-		questionTimer.cancel();
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
 			runGame();
 		} 

@@ -228,15 +228,19 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		switch(answerIndex) {
 		case 1:
 			btnAnswer1.changeImageIndex(imageIndex);
+			btnAnswer1.repaint();
 			break;
 		case 2:
 			btnAnswer2.changeImageIndex(imageIndex);
+			btnAnswer2.repaint();
 			break;
 		case 3:
 			btnAnswer3.changeImageIndex(imageIndex);
+			btnAnswer3.repaint();
 			break;
 		case 4:
 			btnAnswer4.changeImageIndex(imageIndex);
+			btnAnswer4.repaint();
 			break;
 		}
 	}

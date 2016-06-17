@@ -88,9 +88,6 @@ public class WWMMainView extends WWMView {
 		questionWindow.setQuestion(question);
 	}
 	@Override public void provideAnswerFeedback(int answerIndex) {
-		questionWindow.disableAllButtons();
-		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);
-		
 		Timer delayTimer = new Timer();
 		delayTimer.schedule(new TimerTask() {
 			@Override public void run() {
@@ -102,6 +99,8 @@ public class WWMMainView extends WWMView {
 				}
 			}
 		}, 3 * 1000);
+		questionWindow.disableAllButtons();
+		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);	
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();
