@@ -100,7 +100,7 @@ public class WWMMainView extends WWMView {
 					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
 				}
 			}
-		}, 3 * 1000);
+		}, 2 * 1000);
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();

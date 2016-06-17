@@ -94,7 +94,7 @@ public class View_JPanel_GameStatus extends JPanel {
 			timeAn = model.getAnswerTime();
 		}
 		else {
-			timeAn = 5;
+			timeAn = 3;
 		}
 		time[0] = (timeAn / 60);
 		time[1] = timeAn - time[0];
