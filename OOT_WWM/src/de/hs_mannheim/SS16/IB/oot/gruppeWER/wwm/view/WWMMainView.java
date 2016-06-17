@@ -95,11 +95,30 @@ public class WWMMainView extends WWMView {
 		Timer delayTimer = new Timer();
 		delayTimer.schedule(new TimerTask() {
 			@Override public void run() {
+				//Answer was correct
 				if(model.getCorrectAnswerIndex() == answerIndex) {
+					//Color the chosen answer GREEN
 					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 2);
 				}
+				//Answer was wrong
 				else {
+					//Color the chosen answer RED
 					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
+					//Color the correct answer GREEN
+					switch(model.getCorrectAnswerIndex()) {
+					case 1:
+						questionWindow.changeAnswerButtonBackgroundImage(1, 2);
+						break;
+					case 2:
+						questionWindow.changeAnswerButtonBackgroundImage(2, 2);
+						break;
+					case 3:
+						questionWindow.changeAnswerButtonBackgroundImage(3, 2);
+						break;
+					case 4:
+						questionWindow.changeAnswerButtonBackgroundImage(4, 2);
+						break;
+					}
 				}
 			}
 		}, 2 * 1000);
