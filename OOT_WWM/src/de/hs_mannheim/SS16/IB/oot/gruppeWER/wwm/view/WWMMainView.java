@@ -85,7 +85,9 @@ public class WWMMainView extends WWMView {
 		});
 	}
 	@Override public void setQuestion(Model_Question question) {
-		questionWindow.setQuestion(question);
+		if(model.getQuestionIndex() < 15) {
+			questionWindow.setQuestion(question);
+		}
 	}
 	@Override public void provideAnswerFeedback(int answerIndex) {
 		questionWindow.disableAllButtons();

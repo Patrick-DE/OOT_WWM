@@ -172,7 +172,7 @@ public class WWMModel extends Observable {
 	public void runGame() {
 		gameStart = true;
 		questionIndex++;
-		if (questionIndex < gameQuestionAmount) {
+		if(questionIndex < gameQuestionAmount) {
 			questionTimer = new Timer();
 			questionTimer.schedule(new TimerTask() {
 				@Override public void run() {
