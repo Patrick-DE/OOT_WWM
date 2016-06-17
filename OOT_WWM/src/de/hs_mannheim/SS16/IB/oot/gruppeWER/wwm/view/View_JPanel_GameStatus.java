@@ -67,7 +67,7 @@ public class View_JPanel_GameStatus extends JPanel {
 		g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 20));
 		fm = g2d.getFontMetrics();		
 		//Set Position
-		x = ((getWidth() - fm.stringWidth(model.getPrizesAtPos(model.getQuestionIndex()) + "€")) / 2);
+		x = ((getWidth() - fm.stringWidth(model.generatePrizeAtSecurityTier() + "€")) / 2);
 		y = ((int)((getHeight() - fm.getHeight()) / 1.15)) + fm.getAscent();
 		//Set Font Color
 		g2d.setColor(Color.ORANGE);
