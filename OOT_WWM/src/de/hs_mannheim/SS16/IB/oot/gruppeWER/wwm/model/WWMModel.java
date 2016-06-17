@@ -372,4 +372,8 @@ public class WWMModel extends Observable {
 	public boolean getAudienceStatus() {
 		return audience.getStatus();
 	}
+	public boolean[] getAllJokerStatus(){
+		boolean[] status = {this.getFiftyFiftyStatus(),this.getTelephoneStatus(),this.getAudienceStatus()};
+		return status;
+	}
 }
