@@ -88,6 +88,8 @@ public class WWMMainView extends WWMView {
 		questionWindow.setQuestion(question);
 	}
 	@Override public void provideAnswerFeedback(int answerIndex) {
+		questionWindow.disableAllButtons();
+		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);
 		Timer delayTimer = new Timer();
 		delayTimer.schedule(new TimerTask() {
 			@Override public void run() {
@@ -99,8 +101,6 @@ public class WWMMainView extends WWMView {
 				}
 			}
 		}, 3 * 1000);
-		questionWindow.disableAllButtons();
-		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);	
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();
@@ -108,6 +108,7 @@ public class WWMMainView extends WWMView {
 	}
 	@Override public void displayTelephoneJoker() {
 		questionWindow.setTelephoneJokerUsed();
+		//new View_JokerTelephone(model.generateTelephoneJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
 	@Override public void displayFiftyFiftyJoker() {
 		questionWindow.useFiftyFiftyJoker(model.generateFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
