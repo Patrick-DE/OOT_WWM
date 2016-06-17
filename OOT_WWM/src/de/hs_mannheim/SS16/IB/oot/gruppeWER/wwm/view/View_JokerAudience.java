@@ -23,7 +23,7 @@ public class View_JokerAudience extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 1599703298634307780L;
-	private final JPanel contentPanel = new View_JPanel_withBackgroundImage();
+	private final JPanel contentPanel = new View_JPanel_withBackgroundImage(2);
 
 	//MARK: - Assets
 	public View_JokerAudience(int[] audienceResults) {
@@ -198,14 +198,13 @@ public class View_JokerAudience extends JDialog {
 			contentPanel.add(lblD, gbc_lblD);
 		}
 		{
-			JPanel buttonPane = new JPanel();
+			JPanel buttonPane = new View_JPanel_withBackgroundImage();
 			buttonPane.setOpaque(false);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new View_JButton_withBackgroundImage("OK");
 				okButton.addActionListener(new ActionListener() {
-					
 					@Override public void actionPerformed(ActionEvent e) {
 						dispose();
 					}

@@ -145,6 +145,11 @@ public class View_JButton_withBackgroundImage extends JButton {
 				g.drawImage(WWMController.imageContainer.imageDropout, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 8:
+			if(WWMController.imageContainer.backdrop != null) {
+				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.backdrop_activated != null && WWMController.imageContainer.backdrop_deactivated != null) {
 				if (isEnabled()) {
