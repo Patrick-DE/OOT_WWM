@@ -43,7 +43,7 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0};
 		setLayout(gridBagLayout);
 
-		JPanel panel_1 = new JPanel();
+		JPanel panel_1 = new View_JPanel_withBackgroundImage(2);
 		panel_1.setBackground(Color.BLACK);
 		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
