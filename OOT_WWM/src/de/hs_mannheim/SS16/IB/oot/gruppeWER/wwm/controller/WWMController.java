@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.View_ImageContainer;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.WWMMainView;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.WWMView;
 
@@ -15,7 +16,7 @@ public class WWMController implements ActionListener {
 	//MARK: - Assets
 	private WWMModel model;
 	private ArrayList<WWMView> views;
-	private Timer delayTimer;
+	public static View_ImageContainer imageContainer = new View_ImageContainer();
 	
 	//MARK: - Constructor
 	public WWMController (WWMModel model) {

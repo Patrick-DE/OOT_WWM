@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 public class View_JPanel_GameStatus extends JPanel {
@@ -28,14 +29,11 @@ public class View_JPanel_GameStatus extends JPanel {
 	private int timeAn;
 	private boolean standardAnimation;
 
-	private BufferedImage background;
-
 	//MARK: - Constructor
 	public View_JPanel_GameStatus(WWMModel model) {
 		super();
 		setOpaque(false);
 
-		loadImage();
 		this.model = model;
 		this.standardAnimation = true;
 	}
@@ -51,8 +49,8 @@ public class View_JPanel_GameStatus extends JPanel {
 		//        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
 		//        g2d.setPaint(gp);
 		//        g2d.fillRect(0, 0, w, h);
-		if (background != null) {
-			g2d.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		if (WWMController.imageContainer.statusBackdrop != null) {
+			g2d.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
 		}
 		g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 50));
 		FontMetrics fm = g2d.getFontMetrics();
@@ -119,12 +117,5 @@ public class View_JPanel_GameStatus extends JPanel {
 			timer.stop();
 		}
 		questionTimerAnimation(standardAnimation);
-	}
-	private void loadImage() {
-		try {
-			background = ImageIO.read(new File("data/Status_Backdrop.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

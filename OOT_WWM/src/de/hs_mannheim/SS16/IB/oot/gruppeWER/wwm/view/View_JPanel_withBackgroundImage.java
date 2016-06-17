@@ -8,13 +8,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
+
 public class View_JPanel_withBackgroundImage extends JPanel {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 5017812866844155230L;
-	private BufferedImage backdrop;
-	private BufferedImage logo;
-	private BufferedImage statusBackdrop;
 
 	private int imageIndex;
 
@@ -27,14 +26,10 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 	View_JPanel_withBackgroundImage(int imageIndex) {
 		super();
 		this.imageIndex = imageIndex;
-
-		loadImage();
 	}
 	View_JPanel_withBackgroundImage() {
 		super();
 		this.imageIndex = 0;
-
-		loadImage();
 	}
 
 	//MARK: - Methods
@@ -42,35 +37,25 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 		super.paintComponent(g);
 		switch(this.imageIndex) {
 		case 0:
-			if(backdrop != null) {
-				g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.backdrop != null) {
+				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 1: 
-			if(logo != null) {
-				g.drawImage(logo, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.logo != null) {
+				g.drawImage(WWMController.imageContainer.logo, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 2: 
-			if(statusBackdrop != null) {
-				g.drawImage(statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.statusBackdrop != null) {
+				g.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		default:
-			if(backdrop != null) {
-				g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.backdrop != null) {
+				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
-		}
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-			logo =  ImageIO.read(new File("data/WWM_Logo_Spaced.png"));
-			statusBackdrop =  ImageIO.read(new File("data/Status_Backdrop.png"));
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 }

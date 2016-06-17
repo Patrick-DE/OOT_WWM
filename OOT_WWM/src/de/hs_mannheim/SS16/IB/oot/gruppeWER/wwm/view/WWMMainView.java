@@ -91,12 +91,17 @@ public class WWMMainView extends WWMView {
 		questionWindow.disableAllButtons();
 		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);
 		
-//		if(model.getCorrectAnswerIndex() == answerIndex) {
-//			questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 2);
-//		}
-//		else {
-//			questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
-//		}
+		Timer delayTimer = new Timer();
+		delayTimer.schedule(new TimerTask() {
+			@Override public void run() {
+				if(model.getCorrectAnswerIndex() == answerIndex) {
+					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 2);
+				}
+				else {
+					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
+				}
+			}
+		}, 3 * 1000);
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();

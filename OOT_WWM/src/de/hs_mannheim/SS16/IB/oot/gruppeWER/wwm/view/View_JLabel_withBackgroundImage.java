@@ -14,31 +14,21 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class View_JLabel_withBackgroundImage extends JLabel {
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 
-	//MARK: - Assets
-	private BufferedImage backdrop;
+public class View_JLabel_withBackgroundImage extends JLabel {
 
 	//MARK: - Constructor
 	public View_JLabel_withBackgroundImage(int questionSeconds, int modus) {
 		super();
-		loadImage();
 		this.setForeground(Color.WHITE);
 	}
 
 	//MARK: - Methods
 	@Override protected void paintComponent(Graphics g) {
-		if (backdrop != null) {
-			g.drawImage(backdrop, 0, 0, getWidth(), getHeight(), this);
+		if (WWMController.imageContainer.backdrop != null) {
+			g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
 		}
 		super.paintComponent(g);
-	}
-	private void loadImage() {
-		try {
-			backdrop = ImageIO.read(new File("data/Question_Backdrop_Spaced.png"));
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
