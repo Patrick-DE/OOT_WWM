@@ -318,7 +318,7 @@ public class WWMModel extends Observable {
 	public ArrayList<Model_HighScoreEntry> getHighScoreEntries() {
 		return highScoreEntries;
 	}
-	public int generatePrize() {
+	public int generatePrizeAtSecurityTier() {
 		if (questionIndex < 4)
 			return 0;
 		else if (questionIndex < 9)
@@ -363,13 +363,13 @@ public class WWMModel extends Observable {
 	public int getPrizesAtPos(int index) {
 		return prizes.get(index);
 	}
-	public boolean getFiftyFiftyStatus () {
+	public boolean getFiftyFiftyStatus() {
 		return fiftyFifty.getStatus();
 	}
-	public boolean getTelephoneStatus () {
+	public boolean getTelephoneStatus() {
 		return telephone.getStatus();
 	}
-	public boolean getAudienceStatus () {
+	public boolean getAudienceStatus() {
 		return audience.getStatus();
 	}
 }

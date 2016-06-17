@@ -49,7 +49,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		gbc_lblHerzlichenGlckwunsch.gridy = 0;
 		add(lblCong, gbc_lblHerzlichenGlckwunsch);
 
-		lblEuro = new JLabel("Sie haben " + model.generatePrize() + "€ gewonnen!");
+		lblEuro = new JLabel("Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
 		lblEuro.setOpaque(false);
 		lblEuro.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
