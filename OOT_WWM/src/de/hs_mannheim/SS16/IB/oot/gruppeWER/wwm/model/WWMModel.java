@@ -292,11 +292,14 @@ public class WWMModel extends Observable {
 	private void resetFiftyFiftyJoker () {
 		this.fiftyFifty.setStatus(false);
 	}
-	public String[] generateTelephoneJokerResults(Model_Question question) {
+	public String generateTelephoneJokerResults(Model_Question question) {
 		if (telephone.getStatus())
 			return null;
 		telephone.setStatus(true);
-		return ((Model_JokerTelephone) telephone).getTelephonAnswer(question);
+		if (!fiftyFifty.getStatus())
+		    return ((Model_JokerTelephone) telephone).getTelephonAnswer(question, null);
+		else
+		    return ((Model_JokerTelephone) telephone).getTelephonAnswer(question, generateFiftyFiftyJokerResults(question));
 	}
 	private void calculateGameRunningTime() {
 		this.gameEndTime = saveGamePlayTime + ((System.currentTimeMillis() - this.startTime) / 1000);

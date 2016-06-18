@@ -129,7 +129,7 @@ public class WWMMainView extends WWMView {
 	}
 	@Override public void displayTelephoneJoker() {
 		questionWindow.setTelephoneJokerUsed();
-		//new View_JokerTelephone(model.generateTelephoneJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
+		new View_JokerTelephone(model.generateTelephoneJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
 	}
 	@Override public void displayFiftyFiftyJoker() {
 		questionWindow.useFiftyFiftyJoker(model.generateFiftyFiftyJokerResults(model.getQuestionAtIndex(model.getQuestionIndex())));
