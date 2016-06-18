@@ -30,7 +30,7 @@ public class View_JokerTelephone extends JDialog {
         getContentPane().setBackground(Color.BLACK);
         setAlwaysOnTop(true);
         setBounds(100, 100, 500, 150);
-        this.setTitle("Publikumsjoker");
+        this.setTitle("Telefonjoker");
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPanel.setOpaque(false);
