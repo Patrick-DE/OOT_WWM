@@ -29,6 +29,7 @@ public class View_ImageContainer {
 	public BufferedImage image_background;
 	public BufferedImage image_wwmBadge;
 	public BufferedImage image_buttonSquared;
+	public BufferedImage image_spacer;
 	
 	//MARK: - Constructor
 	public View_ImageContainer() {
@@ -58,6 +59,7 @@ public class View_ImageContainer {
 			image_background = ImageIO.read(new File("data/images/image_background.png"));
 			image_wwmBadge =  ImageIO.read(new File("data/images/image_wwmBadge.png"));
 			image_buttonSquared =  ImageIO.read(new File("data/images/image_buttonSquared.png"));
+			image_spacer =  ImageIO.read(new File("data/images/image_spacer.png"));
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

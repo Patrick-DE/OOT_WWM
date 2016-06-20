@@ -150,6 +150,11 @@ public class View_JButton_withBackgroundImage extends JButton {
 				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 9:
+			if(WWMController.imageContainer.image_spacer != null) {
+				g.drawImage(WWMController.imageContainer.image_spacer, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_buttonActivated != null && WWMController.imageContainer.image_buttonDeactivated != null) {
 				if (isEnabled()) {
