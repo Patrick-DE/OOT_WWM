@@ -184,6 +184,7 @@ public class WWMModel extends Observable {
 					calculateGameRunningTime();
 					setChanged();
 					notifyObservers();
+					
 				}
 			}, questionAnswerTimeInSeconds * 1000);
 			setChanged();

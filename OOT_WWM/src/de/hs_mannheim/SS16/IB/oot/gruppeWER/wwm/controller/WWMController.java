@@ -3,8 +3,6 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.View_ImageContainer;

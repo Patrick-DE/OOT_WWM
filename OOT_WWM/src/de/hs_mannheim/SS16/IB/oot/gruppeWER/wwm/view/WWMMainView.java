@@ -10,7 +10,6 @@ import java.util.TimerTask;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
@@ -164,6 +163,7 @@ public class WWMMainView extends WWMView {
 		endGameWindow.registerKeyboardAction(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				card.first(frmWwm.getContentPane());
+				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 		frmWwm.getContentPane().add(endGameWindow, "endGameWindow");

@@ -1,20 +1,14 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
-import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 
-import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
