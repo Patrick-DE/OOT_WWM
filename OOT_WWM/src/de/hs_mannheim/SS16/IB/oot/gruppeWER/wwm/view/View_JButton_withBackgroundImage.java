@@ -86,77 +86,77 @@ public class View_JButton_withBackgroundImage extends JButton {
 	@Override protected void paintComponent(Graphics g) {
 		switch(this.imageIndex) {
 		case 0:
-			if(WWMController.imageContainer.backdrop_activated != null && WWMController.imageContainer.backdrop_deactivated != null) {
+			if(WWMController.imageContainer.image_buttonActivated != null && WWMController.imageContainer.image_buttonDeactivated != null) {
 				if (isEnabled()) {
-					g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_buttonActivated, 0, 0, getWidth(), getHeight(), this);
 				}
 				else {
-					g.drawImage(WWMController.imageContainer.backdrop_deactivated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_buttonDeactivated, 0, 0, getWidth(), getHeight(), this);
 				}
 			}
 			break;
 		case 1:
-			if(WWMController.imageContainer.loggedAnswer != null) {
-				g.drawImage(WWMController.imageContainer.loggedAnswer, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonLogged != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonLogged, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 2:
-			if(WWMController.imageContainer.rightAnswer != null) {
-				g.drawImage(WWMController.imageContainer.rightAnswer, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonCorrect != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonCorrect, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 3:
-			if(WWMController.imageContainer.wrongAnswer != null) {
-				g.drawImage(WWMController.imageContainer.wrongAnswer, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonWrong != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonWrong, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 4:
-			if(WWMController.imageContainer.jokerTelephone_activated != null && WWMController.imageContainer.jokerTelephone_deactivated != null) {
+			if(WWMController.imageContainer.image_jokerTelephoneActivated != null && WWMController.imageContainer.image_jokerTelephoneDeactivated != null) {
 				if (isEnabled()) {
-					g.drawImage(WWMController.imageContainer.jokerTelephone_activated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerTelephoneActivated, 0, 0, getWidth(), getHeight(), this);
 				}
 				else {
-					g.drawImage(WWMController.imageContainer.jokerTelephone_deactivated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerTelephoneDeactivated, 0, 0, getWidth(), getHeight(), this);
 				}
 			}
 			break;
 		case 5:
-			if(WWMController.imageContainer.jokerFiftyFifty_activated != null && WWMController.imageContainer.jokerFiftyFifty_deactivated != null) {
+			if(WWMController.imageContainer.image_jokerFiftyFiftyActivated != null && WWMController.imageContainer.image_jokerFiftyFiftyDeactivated != null) {
 				if (isEnabled()) {
-					g.drawImage(WWMController.imageContainer.jokerFiftyFifty_activated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerFiftyFiftyActivated, 0, 0, getWidth(), getHeight(), this);
 				}
 				else {
-					g.drawImage(WWMController.imageContainer.jokerFiftyFifty_deactivated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerFiftyFiftyDeactivated, 0, 0, getWidth(), getHeight(), this);
 				}
 			}
 			break;
 		case 6:
-			if(WWMController.imageContainer.jokerAudience_activated != null && WWMController.imageContainer.jokerAudience_deactivated != null) {
+			if(WWMController.imageContainer.image_jokerAudienceActivated != null && WWMController.imageContainer.image_jokerAudienceDeactivated != null) {
 				if (isEnabled()) {
-					g.drawImage(WWMController.imageContainer.jokerAudience_activated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerAudienceActivated, 0, 0, getWidth(), getHeight(), this);
 				}
 				else {
-					g.drawImage(WWMController.imageContainer.jokerAudience_deactivated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_jokerAudienceDeactivated, 0, 0, getWidth(), getHeight(), this);
 				}
 			}
 			break;
 		case 7:
-			if(WWMController.imageContainer.imageDropout != null) {
-				g.drawImage(WWMController.imageContainer.imageDropout, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_ButtonDropout != null) {
+				g.drawImage(WWMController.imageContainer.image_ButtonDropout, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 8:
-			if(WWMController.imageContainer.backdrop != null) {
-				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_background != null) {
+				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		default:
-			if(WWMController.imageContainer.backdrop_activated != null && WWMController.imageContainer.backdrop_deactivated != null) {
+			if(WWMController.imageContainer.image_buttonActivated != null && WWMController.imageContainer.image_buttonDeactivated != null) {
 				if (isEnabled()) {
-					g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_buttonActivated, 0, 0, getWidth(), getHeight(), this);
 				}
 				else {
-					g.drawImage(WWMController.imageContainer.backdrop_deactivated, 0, 0, getWidth(), getHeight(), this);
+					g.drawImage(WWMController.imageContainer.image_buttonDeactivated, 0, 0, getWidth(), getHeight(), this);
 				}
 			}
 			break;

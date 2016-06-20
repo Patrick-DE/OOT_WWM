@@ -37,23 +37,23 @@ public class View_JLabel_withBackgroundImage extends JLabel {
 	@Override protected void paintComponent(Graphics g) {
 		switch(this.imageIndex) {
 		case 0:
-			if(WWMController.imageContainer.backdrop_activated != null) {
-				g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonActivated != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonActivated, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 1: 
-			if(WWMController.imageContainer.statusBackdrop != null) {
-				g.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonSquared != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 2: 
-			if(WWMController.imageContainer.backdrop != null) {
-				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_background != null) {
+				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		default:
-			if(WWMController.imageContainer.backdrop_activated != null) {
-				g.drawImage(WWMController.imageContainer.backdrop_activated, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonActivated != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonActivated, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		}

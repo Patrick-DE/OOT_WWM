@@ -9,26 +9,26 @@ import javax.imageio.ImageIO;
 public class View_ImageContainer {
 	
 	//MARK: - Assets
-	public BufferedImage backdrop_activated;
-	public BufferedImage backdrop_deactivated;
+	public BufferedImage image_buttonActivated;
+	public BufferedImage image_buttonDeactivated;
 
-	public BufferedImage jokerTelephone_activated;
-	public BufferedImage jokerTelephone_deactivated;
+	public BufferedImage image_jokerTelephoneActivated;
+	public BufferedImage image_jokerTelephoneDeactivated;
 
-	public BufferedImage jokerFiftyFifty_activated;
-	public BufferedImage jokerFiftyFifty_deactivated;
+	public BufferedImage image_jokerFiftyFiftyActivated;
+	public BufferedImage image_jokerFiftyFiftyDeactivated;
 
-	public BufferedImage jokerAudience_activated;
-	public BufferedImage jokerAudience_deactivated;
+	public BufferedImage image_jokerAudienceActivated;
+	public BufferedImage image_jokerAudienceDeactivated;
 
-	public BufferedImage loggedAnswer;
-	public BufferedImage rightAnswer;
-	public BufferedImage wrongAnswer;
-	public BufferedImage imageDropout;
+	public BufferedImage image_buttonLogged;
+	public BufferedImage image_buttonCorrect;
+	public BufferedImage image_buttonWrong;
+	public BufferedImage image_ButtonDropout;
 	
-	public BufferedImage backdrop;
-	public BufferedImage logo;
-	public BufferedImage statusBackdrop;
+	public BufferedImage image_background;
+	public BufferedImage image_wwmBadge;
+	public BufferedImage image_buttonSquared;
 	
 	//MARK: - Constructor
 	public View_ImageContainer() {
@@ -38,26 +38,26 @@ public class View_ImageContainer {
 	//MARK: - Methods
 	public void loadImages() {
 		try {
-			backdrop_activated = ImageIO.read(new File("data/Question_Backdrop_Spaced.png"));
-			backdrop_deactivated = ImageIO.read(new File("data/Question_Backdrop_Spaced_Deactivated.png"));
+			image_buttonActivated = ImageIO.read(new File("data/images/image_buttonActivated.png"));
+			image_buttonDeactivated = ImageIO.read(new File("data/images/image_buttonDeactivated.png"));
 
-			jokerTelephone_activated = ImageIO.read(new File("data/Joker_Telefon.png"));
-			jokerTelephone_deactivated = ImageIO.read(new File("data/Joker_Telefon_Deactivated.png"));
+			image_jokerTelephoneActivated = ImageIO.read(new File("data/images/joker_telephoneActivated.png"));
+			image_jokerTelephoneDeactivated = ImageIO.read(new File("data/images/joker_telephoneDeactivated.png"));
 
-			jokerFiftyFifty_activated = ImageIO.read(new File("data/Joker_50_50.png"));
-			jokerFiftyFifty_deactivated = ImageIO.read(new File("data/Joker_50_50_Deactivated.png"));
+			image_jokerFiftyFiftyActivated = ImageIO.read(new File("data/images/joker_fiftyFiftyActivated.png"));
+			image_jokerFiftyFiftyDeactivated = ImageIO.read(new File("data/images/joker_fiftyFiftyDeactivated.png"));
 
-			jokerAudience_activated = ImageIO.read(new File("data/Joker_Publikum.png"));
-			jokerAudience_deactivated = ImageIO.read(new File("data/Joker_Publikum_Deactivated.png"));
+			image_jokerAudienceActivated = ImageIO.read(new File("data/images/joker_audienceActivated.png"));
+			image_jokerAudienceDeactivated = ImageIO.read(new File("data/images/joker_audienceDeactivated.png"));
 
-			loggedAnswer = ImageIO.read(new File("data/Question_Backdrop_Logged_Spaced.png"));
-			rightAnswer = ImageIO.read(new File("data/Question_Backdrop_Right_Spaced.png"));
-			wrongAnswer = ImageIO.read(new File("data/Question_Backdrop_Wrong_Spaced.png"));
-			imageDropout = ImageIO.read(new File("data/Dropout.png"));
+			image_buttonLogged = ImageIO.read(new File("data/images/image_buttonLogged.png"));
+			image_buttonCorrect = ImageIO.read(new File("data/images/image_buttonCorrect.png"));
+			image_buttonWrong = ImageIO.read(new File("data/images/image_buttonWrong.png"));
+			image_ButtonDropout = ImageIO.read(new File("data/images/image_buttonDropout.png"));
 
-			backdrop = ImageIO.read(new File("data/Backdrop.png"));
-			logo =  ImageIO.read(new File("data/WWM_Logo_Spaced.png"));
-			statusBackdrop =  ImageIO.read(new File("data/Status_Backdrop.png"));
+			image_background = ImageIO.read(new File("data/images/image_background.png"));
+			image_wwmBadge =  ImageIO.read(new File("data/images/image_wwmBadge.png"));
+			image_buttonSquared =  ImageIO.read(new File("data/images/image_buttonSquared.png"));
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

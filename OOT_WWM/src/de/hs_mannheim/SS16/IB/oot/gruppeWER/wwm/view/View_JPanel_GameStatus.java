@@ -49,8 +49,8 @@ public class View_JPanel_GameStatus extends JPanel {
 		//        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
 		//        g2d.setPaint(gp);
 		//        g2d.fillRect(0, 0, w, h);
-		if (WWMController.imageContainer.statusBackdrop != null) {
-			g2d.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+		if (WWMController.imageContainer.image_buttonSquared != null) {
+			g2d.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 		}
 		
 		//Draw the Prize Tier String
@@ -104,7 +104,7 @@ public class View_JPanel_GameStatus extends JPanel {
 			timeAn = model.getAnswerTime();
 		}
 		else {
-			timeAn = 3;
+			timeAn = 2;
 		}
 		time[0] = (timeAn / 60);
 		time[1] = timeAn - time[0];

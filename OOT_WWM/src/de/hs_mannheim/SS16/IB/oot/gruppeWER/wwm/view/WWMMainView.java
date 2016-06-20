@@ -121,7 +121,7 @@ public class WWMMainView extends WWMView {
 					}
 				}
 			}
-		}, 2 * 1000);
+		}, 1 * 1000);
 	}
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();

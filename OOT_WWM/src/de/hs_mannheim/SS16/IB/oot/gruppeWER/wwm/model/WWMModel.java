@@ -91,30 +91,34 @@ public class WWMModel extends Observable {
 
 		try {
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream("data/fragenEinfach.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/questions/questionsEasy.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsEasy.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 0));
 			fileReader.close();
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream("data/fragenMittel.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/questions/questionsMiddle.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsMiddle.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 1));
 			fileReader.close();
 			fileReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream("data/fragenSchwer.dat"), "UTF8"));
+					new InputStreamReader(new FileInputStream("data/questions/questionsDifficult.dat"), "UTF8"));
 			while (fileReader.ready())
 				questionsHard.add(new Model_Question(fileReader.readLine(), fileReader.readLine(), fileReader.readLine(),
 						fileReader.readLine(), fileReader.readLine(), Integer.parseInt(fileReader.readLine()), 2));
 			fileReader.close();
-		} catch (UnsupportedEncodingException e) {
+		} 
+		catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (NumberFormatException e) {
+		} 
+		catch (NumberFormatException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 		Collections.shuffle(questionsEasy);
@@ -254,7 +258,7 @@ public class WWMModel extends Observable {
 			@Override public void run() {
 				validateAnswer(answerIndex);
 			}
-		}, 4 * 1000);
+		}, 2 * 1000);
 	}
 	public void validateAnswer(int answerIndex) {
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {

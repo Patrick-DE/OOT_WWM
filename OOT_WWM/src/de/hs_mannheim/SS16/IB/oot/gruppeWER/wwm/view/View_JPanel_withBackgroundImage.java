@@ -37,23 +37,23 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 		super.paintComponent(g);
 		switch(this.imageIndex) {
 		case 0:
-			if(WWMController.imageContainer.backdrop != null) {
-				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_background != null) {
+				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 1: 
-			if(WWMController.imageContainer.logo != null) {
-				g.drawImage(WWMController.imageContainer.logo, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_wwmBadge != null) {
+				g.drawImage(WWMController.imageContainer.image_wwmBadge, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		case 2: 
-			if(WWMController.imageContainer.statusBackdrop != null) {
-				g.drawImage(WWMController.imageContainer.statusBackdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_buttonSquared != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		default:
-			if(WWMController.imageContainer.backdrop != null) {
-				g.drawImage(WWMController.imageContainer.backdrop, 0, 0, getWidth(), getHeight(), this);
+			if(WWMController.imageContainer.image_background != null) {
+				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		}

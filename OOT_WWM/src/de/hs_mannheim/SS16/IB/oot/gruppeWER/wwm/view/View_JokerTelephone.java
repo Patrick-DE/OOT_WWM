@@ -22,8 +22,8 @@ import javax.swing.SwingConstants;
 public class View_JokerTelephone extends JDialog {
 
     //MARK: - Assets
-    private static final long serialVersionUID = 1599703298634307780L;
-    private final JPanel contentPanel = new View_JPanel_withBackgroundImage();
+	private static final long serialVersionUID = 6013656282755272097L;
+	private final JPanel contentPanel = new View_JPanel_withBackgroundImage(2);
 
     //MARK: - Assets
     public View_JokerTelephone(String telephoneAnswer) {
@@ -48,14 +48,13 @@ public class View_JokerTelephone extends JDialog {
             contentPanel.add(telephoneAnswerLabel);
         }
         {
-            JPanel buttonPane = new JPanel();
+            JPanel buttonPane = new View_JPanel_withBackgroundImage();
             buttonPane.setOpaque(false);
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 JButton okButton = new View_JButton_withBackgroundImage("OK");
                 okButton.addActionListener(new ActionListener() {
-                    
                     @Override public void actionPerformed(ActionEvent e) {
                         dispose();
                     }
