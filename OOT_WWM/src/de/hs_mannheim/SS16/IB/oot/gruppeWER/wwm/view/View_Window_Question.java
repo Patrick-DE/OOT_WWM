@@ -196,14 +196,18 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		btnFiftyFifty.setEnabled(false);
 		fiftyFiftyUsed = true;
 		for (int i = 0; i < jokerResults.length; i++) {
-			if (jokerResults[i] == 1)
+			if (jokerResults[i] == 1) {
 				btnAnswer1.setEnabled(false);
-			else if (jokerResults[i] == 2)
+			}
+			else if(jokerResults[i] == 2) {
 				btnAnswer2.setEnabled(false);
-			else if (jokerResults[i] == 3)
+			}
+			else if(jokerResults[i] == 3) {
 				btnAnswer3.setEnabled(false);
-			else if (jokerResults[i] == 4)
+			}
+			else if(jokerResults[i] == 4) {
 				btnAnswer4.setEnabled(false);
+			}
 		}
 	}
 	public void setAudienceJokerUsed () {

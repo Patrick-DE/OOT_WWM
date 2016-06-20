@@ -5,15 +5,18 @@ public class Model_JokerAudience extends Model_Joker {
 	//MARK: - Methods
 	public int[] getAudienceResults(Model_Question question, int[] fiftyFiftyValues) {
 		int[] audienceResults = new int[4];
-		if (question.getDifficultyValue() == 0)
+		if(question.getDifficultyValue() == 0) {
 			audienceResults[question.getRightAnswerIndex() - 1] = 65 + (int) (Math.random() * 20);
-		else if (question.getDifficultyValue() == 1)
+		}
+		else if(question.getDifficultyValue() == 1) {
 			audienceResults[question.getRightAnswerIndex() - 1] = 45 + (int) (Math.random() * 20);
-		else
+		}
+		else {
 			audienceResults[question.getRightAnswerIndex() - 1] = 25 + (int) (Math.random() * 20);
+		}
 		int perLess = 100 - audienceResults[question.getRightAnswerIndex() - 1];
 		int perAll = 0;
-		for (int i = 0; i < audienceResults.length; i++) {
+		for(int i = 0; i < audienceResults.length; i++) {
 			if (i != (question.getRightAnswerIndex() - 1) && (i != audienceResults.length - 1)) {
 				audienceResults[i] = (int) (Math.random() * (perLess));
 				perLess -= audienceResults[i];
@@ -26,7 +29,7 @@ public class Model_JokerAudience extends Model_Joker {
 			}
 			perAll += audienceResults[i];
 		}
-		if (perAll < 100) {
+		if(perAll < 100) {
 			for (int i = audienceResults.length - 1; i >= 0; i--) {
 				if (i != question.getRightAnswerIndex() - 1) {
 					audienceResults[i] += 100 - perAll;
@@ -34,11 +37,11 @@ public class Model_JokerAudience extends Model_Joker {
 				}
 			}
 		}
-		if ( fiftyFiftyValues != null ) {
+		if(fiftyFiftyValues != null) {
 			boolean perUsed = false;
 			int perInvalid = 0;
-			for (int i = 0; i < fiftyFiftyValues.length; i++) {
-				if (fiftyFiftyValues[i] != -1) {
+			for(int i = 0; i < fiftyFiftyValues.length; i++) {
+				if(fiftyFiftyValues[i] != -1) {
 					perInvalid += audienceResults[fiftyFiftyValues[i] - 1];
 					audienceResults[fiftyFiftyValues[i] - 1] = 0;
 				}
@@ -48,7 +51,8 @@ public class Model_JokerAudience extends Model_Joker {
 					if (!perUsed) {
 						audienceResults[i] += perInvalid / 2;
 						perUsed = true;
-					} else
+					} 
+					else
 						audienceResults[i] += perInvalid;
 					perInvalid -= perInvalid / 2;
 				}

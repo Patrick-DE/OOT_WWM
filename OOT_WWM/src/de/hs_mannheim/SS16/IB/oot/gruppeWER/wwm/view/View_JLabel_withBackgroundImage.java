@@ -22,6 +22,11 @@ public class View_JLabel_withBackgroundImage extends JLabel {
 	private int imageIndex;
 	
 	//MARK: - Constructor
+	public View_JLabel_withBackgroundImage(int imageIndex, String label) {
+		super(label);
+		this.imageIndex = imageIndex;
+		this.setForeground(Color.WHITE);
+	}
 	public View_JLabel_withBackgroundImage(int imageIndex) {
 		super();
 		this.imageIndex = imageIndex;

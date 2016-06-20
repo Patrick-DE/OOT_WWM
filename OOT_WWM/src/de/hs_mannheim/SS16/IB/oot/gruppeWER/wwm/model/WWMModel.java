@@ -22,9 +22,9 @@ public class WWMModel extends Observable {
 	private ArrayList<Model_Question> questions;
 	private ArrayList<Integer> prizes;
 	private ArrayList<Model_HighScoreEntry> highScoreEntries;
-	private Model_Joker fiftyFifty = new Model_JokerFiftyFifty();
-	private	Model_Joker audience = new Model_JokerAudience();
-	private Model_Joker telephone = new Model_JokerTelephone();
+	private Model_Joker jokerFiftyFifty = new Model_JokerFiftyFifty();
+	private	Model_Joker jokerAudience = new Model_JokerAudience();
+	private Model_Joker jokerTelephone = new Model_JokerTelephone();
 	private int questionIndex = -1;
 	private int questionAnswerTimeInSeconds = 30;
 	private int gameQuestionAmount = 15;
@@ -149,14 +149,15 @@ public class WWMModel extends Observable {
 			ObjectInputStream loadInput = new ObjectInputStream(
 					new FileInputStream("save/game" + loadIndex + ".wwm"));
 			questions = (ArrayList<Model_Question>) loadInput.readObject();
-			if (questions == null)
+			if(questions == null) {
 				loadQuestionsFromFile();
+			}
 			questionIndex = (int) loadInput.readInt();
 			questionIndex = (questionIndex == -2) ? -1 : questionIndex;
 			saveGamePlayTime = (long) loadInput.readLong();
-			fiftyFifty.setStatus(loadInput.readBoolean());
-			audience.setStatus(loadInput.readBoolean());
-			telephone.setStatus(loadInput.readBoolean());
+			jokerFiftyFifty.setStatus(loadInput.readBoolean());
+			jokerAudience.setStatus(loadInput.readBoolean());
+			jokerTelephone.setStatus(loadInput.readBoolean());
 			loadInput.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -184,7 +185,6 @@ public class WWMModel extends Observable {
 					calculateGameRunningTime();
 					setChanged();
 					notifyObservers();
-					
 				}
 			}, questionAnswerTimeInSeconds * 1000);
 			setChanged();
@@ -239,9 +239,9 @@ public class WWMModel extends Observable {
 			saveOutput.writeObject(questions);
 			saveOutput.writeInt(questionIndex - 1);
 			saveOutput.writeLong(getGameTime());
-			saveOutput.writeBoolean(fiftyFifty.getStatus());
-			saveOutput.writeBoolean(audience.getStatus());
-			saveOutput.writeBoolean(telephone.getStatus());
+			saveOutput.writeBoolean(jokerFiftyFifty.getStatus());
+			saveOutput.writeBoolean(jokerAudience.getStatus());
+			saveOutput.writeBoolean(jokerTelephone.getStatus());
 			saveOutput.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -275,36 +275,42 @@ public class WWMModel extends Observable {
 	public int getCorrectAnswerIndex() {
 		return questions.get(questionIndex).getRightAnswerIndex();
 	}
-	public int[] generateAudienceJokerResults(Model_Question question) {
-		if (audience.getStatus())
+	public String generateTelephoneJokerResults(Model_Question question) {
+		if (jokerTelephone.getStatus()) {
 			return null;
-		audience.setStatus(true);
-		if (!fiftyFifty.getStatus())
-			return ((Model_JokerAudience) audience).getAudienceResults(question, null);
-		else
-			return ((Model_JokerAudience) audience).getAudienceResults(question, generateFiftyFiftyJokerResults(question));
+		}
+		jokerTelephone.setStatus(true);
+		if(!jokerFiftyFifty.getStatus()) {
+		    return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, null);
+		}
+		else {
+		    return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, generateFiftyFiftyJokerResults(question));
+		}
+	}
+	public int[] generateAudienceJokerResults(Model_Question question) {
+		if(jokerAudience.getStatus()) {
+			return null;
+		}
+		jokerAudience.setStatus(true);
+		if(!jokerFiftyFifty.getStatus()) {
+			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, null);
+		}
+		else {
+			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, generateFiftyFiftyJokerResults(question));
+		}
 	}
 	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
-		fiftyFifty.setStatus(true);
-		return ((Model_JokerFiftyFifty) fiftyFifty).getFalseAnswerPositions(question);
+		jokerFiftyFifty.setStatus(true);
+		return ((Model_JokerFiftyFifty) jokerFiftyFifty).getFalseAnswerPositions(question);
 	}
 	private void resetTelephoneJoker () {
-		this.telephone.setStatus(false);
+		this.jokerTelephone.setStatus(false);
 	}
 	private void resetAudienceJoker () {
-		this.audience.setStatus(false);
+		this.jokerAudience.setStatus(false);
 	}
 	private void resetFiftyFiftyJoker () {
-		this.fiftyFifty.setStatus(false);
-	}
-	public String generateTelephoneJokerResults(Model_Question question) {
-		if (telephone.getStatus())
-			return null;
-		telephone.setStatus(true);
-		if (!fiftyFifty.getStatus())
-		    return ((Model_JokerTelephone) telephone).getTelephonAnswer(question, null);
-		else
-		    return ((Model_JokerTelephone) telephone).getTelephonAnswer(question, generateFiftyFiftyJokerResults(question));
+		this.jokerFiftyFifty.setStatus(false);
 	}
 	private void calculateGameRunningTime() {
 		this.gameEndTime = saveGamePlayTime + ((System.currentTimeMillis() - this.startTime) / 1000);
@@ -372,13 +378,13 @@ public class WWMModel extends Observable {
 		return prizes.get(index);
 	}
 	public boolean getFiftyFiftyStatus() {
-		return fiftyFifty.getStatus();
+		return jokerFiftyFifty.getStatus();
 	}
 	public boolean getTelephoneStatus() {
-		return telephone.getStatus();
+		return jokerTelephone.getStatus();
 	}
 	public boolean getAudienceStatus() {
-		return audience.getStatus();
+		return jokerAudience.getStatus();
 	}
 	public boolean[] getAllJokerStatus(){
 		boolean[] status = {this.getFiftyFiftyStatus(),this.getTelephoneStatus(),this.getAudienceStatus()};

@@ -18,7 +18,7 @@ public class Model_JokerTelephone extends Model_Joker {
 	 *                         the values of the fiftyFiftyJoker, if it was used. Otherwise null.
 	 * @return a String containing the answer of the telephoneJoker.
 	 */
-	public String getTelephonAnswer (Model_Question question, int[] fiftyFiftyValues) {
+	public String getTelephoneAnswer (Model_Question question, int[] fiftyFiftyValues) {
 		boolean knowsRightAnswer = false; // determines if Joker knows right answer or not
 		boolean readyToGiveAnswer = false; // determines, if Joker makes stupid comment or not
 		String[] dataPaths = {
@@ -90,7 +90,6 @@ public class Model_JokerTelephone extends Model_Joker {
 			else {
 				telephoneAnswer = possibleAnswers[1][0][(int) (Math.random() * possibleAnswers[1][0].length)];
 			}
-
 		} 
 		else if(question.getDifficultyValue() == 1) {
 			if((int) (100 * Math.random()) < 50) {
