@@ -37,7 +37,7 @@ public class WWMImageContainer {
 	}
 	
 	//MARK: - Methods
-	public void loadImages() {
+	private void loadImages() {
 		try {
 			image_buttonActivated = ImageIO.read(new File("data/images/image_buttonActivated.png"));
 			image_buttonDeactivated = ImageIO.read(new File("data/images/image_buttonDeactivated.png"));
