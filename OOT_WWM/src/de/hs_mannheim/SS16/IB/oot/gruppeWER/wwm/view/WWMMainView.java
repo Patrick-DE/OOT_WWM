@@ -49,6 +49,8 @@ public class WWMMainView extends WWMView {
 		questionWindow = new View_Window_Question(controller, model);
 		questionWindow.registerKeyboardAction(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
+				controller.soundContainer.stopSound("musicBackground");
+				controller.soundContainer.loopSound("musicIntro");
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -85,11 +87,16 @@ public class WWMMainView extends WWMView {
 	}
 	@Override public void setQuestion(Model_Question question) {
 		if(model.getQuestionIndex() < 15) {
+			controller.soundContainer.stopSound("musicBackground");
+			controller.soundContainer.loopSound("musicBackground");
 			questionWindow.setQuestion(question);
 		}
 	}
 	@Override public void provideAnswerFeedback(int answerIndex) {
+		controller.soundContainer.stopSound("musicBackground");
 		questionWindow.disableAllButtons();
+		//Set answer logged
+		controller.soundContainer.playSound("answerLogged");
 		questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 1);
 		Timer delayTimer = new Timer();
 		delayTimer.schedule(new TimerTask() {
@@ -173,10 +180,12 @@ public class WWMMainView extends WWMView {
 		new View_JDialog_FalseAnswer();
 	}
 	@Override public void displayEndOfGameDialog() {
+		controller.soundContainer.stopSound("musicBackground");
 		endGameWindow = new View_Window_EndOfGame(model);
 		endGameWindow.registerKeyboardAction(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				card.first(frmWwm.getContentPane());
+				controller.soundContainer.loopSound("musicIntro");
 				displayMainMenu();
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
