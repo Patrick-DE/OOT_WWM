@@ -1,5 +1,6 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.assets;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -26,7 +27,7 @@ public class WWMSoundContainer {
 	}
 	
 	//MARK: - Methods
-	public static void playSound(AudioInputStream stream) {
+	public void playSound(AudioInputStream stream) {
 	        try {
 	        	Clip clip = AudioSystem.getClip();
 				clip.open(stream);
@@ -38,13 +39,13 @@ public class WWMSoundContainer {
 	}
 	private void loadSounds() {
 		try {
-			answerLoggedStream = AudioSystem.getAudioInputStream(new FileInputStream("data/sounds/answerLogged.mp3"));
-			answerCorrectStream = AudioSystem.getAudioInputStream(new FileInputStream("data/sounds/answerCorrect.mp3"));
-			answerWrongStream = AudioSystem.getAudioInputStream(new FileInputStream("data/sounds/answerWrong.mp3"));
+			answerLoggedStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("data/sounds/answerLogged.wav")));
+			answerCorrectStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("data/sounds/answerCorrect.wav")));
+			answerWrongStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("data/sounds/answerWrong.wav")));
 			
-			jokerStream = AudioSystem.getAudioInputStream(new FileInputStream("data/sounds/jokerAudience.mp3"));
+			jokerStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("data/sounds/joker.wav")));
 			
-			backgroundmusicStream = AudioSystem.getAudioInputStream(new FileInputStream("data/sounds/backgroundmusic.mp3"));
+			backgroundmusicStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("data/sounds/backgroundmusic.wav")));
 		}
 		catch (IOException | UnsupportedAudioFileException e) {
 			e.printStackTrace();

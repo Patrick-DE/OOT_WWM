@@ -70,30 +70,35 @@ public class WWMController implements ActionListener {
 			}
 		} 
 		else if(arg0.getActionCommand().equals("Antwort1")) {
+			soundContainer.playSound(soundContainer.answerLoggedStream);
 			for(WWMView view : views) {
 				view.provideAnswerFeedback(1);
 			}
 			model.logInAnswer(1);
 		} 
 		else if(arg0.getActionCommand().equals("Antwort2")) {
+			soundContainer.playSound(soundContainer.answerLoggedStream);
 			for(WWMView view : views) {
 				view.provideAnswerFeedback(2);
 			}
 			model.logInAnswer(2);
 		} 
 		else if(arg0.getActionCommand().equals("Antwort3")) {
+			soundContainer.playSound(soundContainer.answerLoggedStream);
 			for(WWMView view : views) {
 				view.provideAnswerFeedback(3);
 			}
 			model.logInAnswer(3);
 		} 
 		else if(arg0.getActionCommand().equals("Antwort4")) {
+			soundContainer.playSound(soundContainer.answerLoggedStream);
 			for(WWMView view : views) {
 				view.provideAnswerFeedback(4);
 			}
 			model.logInAnswer(4);
 		} 
 		else if(arg0.getActionCommand().equals("Telefon")) {
+			soundContainer.playSound(soundContainer.jokerStream);
 			for(WWMView view : views) {
 				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
 				//Only one view will pass non-null parameters
@@ -101,6 +106,7 @@ public class WWMController implements ActionListener {
 			}
 		} 
 		else if(arg0.getActionCommand().equals("50/50")) {
+			soundContainer.playSound(soundContainer.jokerStream);
 			for(WWMView view : views) {
 				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
 				//Only one view will pass non-null parameters
@@ -108,6 +114,7 @@ public class WWMController implements ActionListener {
 			}
 		} 
 		else if (arg0.getActionCommand().equals("Publikum")) {
+			soundContainer.playSound(soundContainer.jokerStream);
 			for (WWMView view : views) {
 				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
 				//Only one view will pass non-null parameters
