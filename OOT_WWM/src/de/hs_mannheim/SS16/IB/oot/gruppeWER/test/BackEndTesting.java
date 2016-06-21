@@ -79,10 +79,8 @@ public class BackEndTesting {
 		// fifty fifty Joker is used
 		testing.generateFiftyFiftyJokerResults(testing.getQuestionAtIndex(0));
 		// Folder necessary to save the game is created
-		File createFolder = new File("E:\\save");
-		createFolder.mkdirs();
-		testing.saveGameToFile("E:\\", 0);
-		File file = new File("E:\\save\\game0.wwm");
+		testing.saveGameToFile("", 0);
+		File file = new File("save\\game0.wwm");
 		// Testing whether the file has been created properly by method saveGameToFile
 		assertTrue(file.isFile());
 		if(file.exists()) {
