@@ -134,7 +134,7 @@ public class Model_JokerTelephone extends Model_Joker {
 				}
 				do {
 					i = (int) (Math.random() * answerArray.length);
-				} while (i == question.getRightAnswerIndex() - 1 && answerArray[i] == null);
+				} while (i == question.getRightAnswerIndex() - 1 || answerArray[i] == null);
 
 				telephoneAnswer = replaceMarker(telephoneAnswer, answerArray[i]);
 			}
