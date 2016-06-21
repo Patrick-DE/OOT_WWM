@@ -97,14 +97,14 @@ public class WWMMainView extends WWMView {
 				//Answer was correct
 				if(model.getCorrectAnswerIndex() == answerIndex) {
 					//Play answerCorrect Sound
-					controller.soundContainer.playSound(controller.soundContainer.answerCorrectStream);
+					controller.soundContainer.playSound("answerCorrect");
 					//Color the chosen answer GREEN
 					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 2);
 				}
 				//Answer was wrong
 				else {
 					//Play answerWrong Sound
-					controller.soundContainer.playSound(controller.soundContainer.answerWrongStream);
+					controller.soundContainer.playSound("answerWrong");
 					//Color the chosen answer RED
 					questionWindow.changeAnswerButtonBackgroundImage(answerIndex, 3);
 					//Color the correct answer GREEN
