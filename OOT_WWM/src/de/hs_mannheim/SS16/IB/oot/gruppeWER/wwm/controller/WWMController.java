@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.assets.WWMImageContainer;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.View_ImageContainer;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.WWMMainView;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view.WWMView;
 
@@ -14,7 +14,7 @@ public class WWMController implements ActionListener {
 	//MARK: - Assets
 	private WWMModel model;
 	private ArrayList<WWMView> views;
-	public static View_ImageContainer imageContainer = new View_ImageContainer();
+	public static WWMImageContainer imageContainer = new WWMImageContainer();
 
 	//MARK: - Constructor
 	public WWMController (WWMModel model) {

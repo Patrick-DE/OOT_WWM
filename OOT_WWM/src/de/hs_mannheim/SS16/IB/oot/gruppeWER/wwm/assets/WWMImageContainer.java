@@ -1,4 +1,4 @@
-package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
+package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.assets;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class View_ImageContainer {
+public class WWMImageContainer {
 	
 	//MARK: - Assets
 	public BufferedImage image_buttonActivated;
@@ -32,7 +32,7 @@ public class View_ImageContainer {
 	public BufferedImage image_spacer;
 	
 	//MARK: - Constructor
-	public View_ImageContainer() {
+	public WWMImageContainer() {
 		loadImages();
 	}
 	
