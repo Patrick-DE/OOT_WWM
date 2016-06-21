@@ -1,8 +1,8 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.test;
-
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileSystem;
@@ -12,35 +12,34 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.*;
 
 public class BackEndTesting {
+	WWMModel testing;
 
+	@Before
+	public void setUp(){
+		testing = new WWMModel();
+	}
 
-	
-	
 	@Test
 	public void testLoadMainData() {
-		int[] prizes = { 50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000 };
+		int[] prizes = { 50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
 		// The former highscore file gets deleted, so that proper testing is possible!
-		if (new File("data/highscore.dat").exists()) {
-			FileSystem fs = FileSystems.getDefault();
-			Path path = fs.getPath("data/highscore.dat");
-			path.resolve("data/highscore.dat");
+		if (new File("C:\\Users\\Simon.Simon-PC\\git\\OOT_WWM\\OOT_WWM\\data\\highscore.dat").exists()) {
 			try {
-		    	Files.delete(path);
-			} catch (NoSuchFileException x) {
-		    System.err.format("%s: no such" + " file or directory%n", path);
-			} catch (DirectoryNotEmptyException x) {
-		    System.err.format("%s not empty%n", path);
-			} catch (IOException x) {
-		    // File permission problems are caught here.
-		    System.err.println(x);
+				Runtime.getRuntime().exec("cmd cd C:\\Users\\Simon.Simon-PC\\git\\OOT_WWM\\OOT_WWM\\data\\");
+				Runtime.getRuntime().exec("cmd del " + "highscore.dat" );
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		WWMModel testing = new WWMModel();
 		// Tests whether loadMainData reads the prizes correctly from the provided file saved in the workspace
 		for (int i = 0; i < 15; i++) {
 			assertEquals(prizes[i], testing.getPrizesAtPos(i));
@@ -53,12 +52,11 @@ public class BackEndTesting {
 		assertEquals("Simon", myHighscore.getName());
 		assertEquals(10, myHighscore.getPlayTime());
 		assertEquals(-1, myHighscore.getQuestionIndex());
-			
+
 	}
-	
+
 	@Test
 	public void testLoadQuestionsFromFile() {
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// From index 0 to 4 the questions should be classified as easy(difficulty 0), from 5 to 9 as moderate(1) and from 10 to 14 as hard(2)
 		Model_Question question;
@@ -71,13 +69,12 @@ public class BackEndTesting {
 			else{
 				assertEquals(2,question.getDifficultyValue());
 			}
-				
+
 		}
-			
+
 	}
 	@Test 
 	public void testSaveGameandLoadSaveGame(){
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// fifty fifty Joker is used
 		testing.generateFiftyFiftyJokerResults(testing.getQuestionAtIndex(0));
@@ -96,26 +93,24 @@ public class BackEndTesting {
 					assertTrue(testing.getAllJokerStatus()[i]);
 				else
 					assertFalse(testing.getAllJokerStatus()[i]);
-				
+
 			}
-			// question index has to equal 0 since it was incremented once from -1 when loadQuestionsFromFile was invoked
+			// question index has to equal 0 since it was incremented once from -1 when loadQuestionsFromSaveGame was invoked
 			assertEquals(0,testing.getQuestionIndex());
 		}
-		
+
 	}
 	@Test 
 	public void testRunGame(){
-		WWMModel testing = new WWMModel();
 		testing.runGame();
 		// Game status should be set to started(true)
 		assertTrue(testing.getGameStartedStatus());
 		// The answer time should still be 30 seconds
 		assertEquals(30,testing.getAnswerTime());
-				
+
 	}
 	@Test
 	public void testRestartGame(){
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// all jokers used --> status set to used true
 		testing.generateAudienceJokerResults(testing.getQuestionAtIndex(0));
@@ -133,7 +128,6 @@ public class BackEndTesting {
 	}
 	@Test
 	public void testDropOut(){
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		testing.dropOut();
 		// When the user decides to end the game, the gameFinishedStatus should be set to true
@@ -141,13 +135,13 @@ public class BackEndTesting {
 	}
 	@Test 
 	public void testValidateAnswer(){
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		int rightAnswerIndex = testing.getCorrectAnswerIndex();
 		// if correct answer is logged in, the game should continue
 		// the gameFinishedStatus should be false therefore
 		testing.validateAnswer(rightAnswerIndex);
 		assertFalse(testing.getGameFinishedStatus());
+		// correct answer index from next question
 		rightAnswerIndex = testing.getCorrectAnswerIndex();
 		int falseAnswerIndex;
 		if(rightAnswerIndex == 0)
@@ -160,7 +154,6 @@ public class BackEndTesting {
 	}
 	@Test 
 	public void testGenerateAudienceJokerResults(){
-		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		int[] results = testing.generateAudienceJokerResults(testing.getQuestionAtIndex(0));
 		int percentage = 0;
@@ -181,9 +174,40 @@ public class BackEndTesting {
 		assertEquals(100,percentage);
 		// Audience joker has been used --> status has to be set to true
 		assertTrue(testing.getAudienceStatus());
-		
-		
 	}
-	
+	@Test
+	public void testGenerateFiftyFiftyJokerResults(){
+		testing.loadQuestionsFromFile();
+		int rightAnswerIndex;
+		int[] falseAnswerPositions;
+		// Verify whether generateFiftyFiftyJokerResults returns array which does not contain rightAnswerIndex
+		for(int i = 0; i < 5; i++){
+			rightAnswerIndex = testing.getQuestionAtIndex(i).getRightAnswerIndex();
+			falseAnswerPositions = testing.generateFiftyFiftyJokerResults(testing.getQuestionAtIndex(i));
+			for(int j = 0; j < falseAnswerPositions.length; j++){
+				assertFalse(rightAnswerIndex == falseAnswerPositions[j]);
+			}
+		}
+
+	}
+	@Test
+	public void testGenerateTelephoneJoker(){
+		testing.loadQuestionsFromFile();
+		// only tests whether the status was set to true and whether the reult of the method is not null cause the results is completely reliant on chance and therefore not testable
+		assertNotNull(testing.generateTelephoneJokerResults(testing.getQuestionAtIndex(0)));
+		assertTrue(testing.getTelephoneStatus());
+		testing.restartGame();
+		testing.loadQuestionsFromFile();
+		// if 50/50 Joker was used before
+		testing.generateFiftyFiftyJokerResults(testing.getQuestionAtIndex(1));
+		assertNotNull(testing.generateTelephoneJokerResults(testing.getQuestionAtIndex(1)));
+	}
+
+	// Other jokers classes are equivalent and would throw NullPointerException as well
+	@Test(expected = NullPointerException.class)
+	public void testNullPointer(){
+		testing.generateAudienceJokerResults(null);
+	}
+
 
 }
