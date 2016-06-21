@@ -125,6 +125,8 @@ public class WWMMainView extends WWMView {
 	@Override public void displayAudienceJoker() {
 		questionWindow.setAudienceJokerUsed();
 		int[] audienceResults = model.generateAudienceJokerResults(model.getQuestionAtIndex(model.getQuestionIndex()));
+		//Only one view will pass non-null parameters
+		//Prevent the other views from opening empty windows
 		if(audienceResults != null) {
 			new View_Window_JokerAudience(audienceResults);
 		}
@@ -132,6 +134,8 @@ public class WWMMainView extends WWMView {
 	@Override public void displayTelephoneJoker() {
 		questionWindow.setTelephoneJokerUsed();
 		String callerResult = model.generateTelephoneJokerResults(model.getQuestionAtIndex(model.getQuestionIndex()));
+		//Only one view will pass non-null parameters
+		//Prevent the other views from opening empty windows
 		if(callerResult != null) {
 			new View_Window_JokerTelephone(callerResult);
 		}

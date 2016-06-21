@@ -93,16 +93,22 @@ public class WWMController implements ActionListener {
 		} 
 		else if(arg0.getActionCommand().equals("Telefon")) {
 			for(WWMView view : views) {
+				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
+				//Only one view will pass non-null parameters
 				view.displayTelephoneJoker();
 			}
 		} 
 		else if(arg0.getActionCommand().equals("50/50")) {
 			for(WWMView view : views) {
+				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
+				//Only one view will pass non-null parameters
 				view.displayFiftyFiftyJoker();
 			}
 		} 
 		else if (arg0.getActionCommand().equals("Publikum")) {
 			for (WWMView view : views) {
+				//This function may be called multiple times, since during the initial question multiple views in the views-array are applicable
+				//Only one view will pass non-null parameters
 				view.displayAudienceJoker();
 			}
 		} 
