@@ -19,14 +19,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
-public class View_JokerAudience extends JDialog {
+public class View_Window_JokerAudience extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 1599703298634307780L;
 	private final JPanel contentPanel = new View_JPanel_withBackgroundImage(2);
 
 	//MARK: - Assets
-	public View_JokerAudience(int[] audienceResults) {
+	public View_Window_JokerAudience(int[] audienceResults) {
 		getContentPane().setBackground(Color.BLACK);
 		setAlwaysOnTop(true);
 		setBounds(100, 100, 450, 300);

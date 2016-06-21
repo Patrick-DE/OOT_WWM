@@ -22,7 +22,7 @@ public class WWMModel extends Observable {
 	private ArrayList<Model_Question> questions;
 	private ArrayList<Integer> prizes;
 	private ArrayList<Model_HighScoreEntry> highScoreEntries;
-	private Model_Joker jokerFiftyFifty = new Model_JokerFiftyFifty();
+	private Model_JokerFiftyFifty jokerFiftyFifty = new Model_JokerFiftyFifty();
 	private	Model_Joker jokerAudience = new Model_JokerAudience();
 	private Model_Joker jokerTelephone = new Model_JokerTelephone();
 	private int questionIndex = -1;
@@ -276,31 +276,38 @@ public class WWMModel extends Observable {
 		return questions.get(questionIndex).getRightAnswerIndex();
 	}
 	public String generateTelephoneJokerResults(Model_Question question) {
-		if (jokerTelephone.getStatus()) {
+		jokerTelephone.setUsedAtQuestionIndex(questionIndex);
+		
+		if(jokerTelephone.getStatus()) {
 			return null;
 		}
 		jokerTelephone.setStatus(true);
-		if(!jokerFiftyFifty.getStatus()) {
-		    return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, null);
+		if(jokerTelephone.getUsedAtQuestionIndex() != jokerFiftyFifty.getUsedAtQuestionIndex()) {
+			return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, null);
 		}
+		//FiftyFifty Joker has been used at the same question
 		else {
-		    return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, generateFiftyFiftyJokerResults(question));
+			return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, generateFiftyFiftyJokerResults(question));
 		}
 	}
 	public int[] generateAudienceJokerResults(Model_Question question) {
+		jokerAudience.setUsedAtQuestionIndex(questionIndex);
+		
 		if(jokerAudience.getStatus()) {
 			return null;
 		}
 		jokerAudience.setStatus(true);
-		if(!jokerFiftyFifty.getStatus()) {
+		if(jokerAudience.getUsedAtQuestionIndex() != jokerFiftyFifty.getUsedAtQuestionIndex()) {
 			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, null);
 		}
+		//FiftyFifty Joker has been used at the same question
 		else {
 			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, generateFiftyFiftyJokerResults(question));
 		}
 	}
 	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
 		jokerFiftyFifty.setStatus(true);
+		jokerFiftyFifty.setUsedAtQuestionIndex(questionIndex);
 		return ((Model_JokerFiftyFifty) jokerFiftyFifty).getFalseAnswerPositions(question);
 	}
 	private void resetTelephoneJoker () {

@@ -125,7 +125,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		this.add(answerPanel, gbc_answerPanel);
 
 		//Button Panel Setup
-		buttonPanel = new JPanel(new GridLayout(1, 4));
+		buttonPanel = new JPanel(new GridLayout(1, 6));
 		buttonPanel.setOpaque(false);
 		
 		JButton btnBlank1 = new View_JButton_withBackgroundImage("", 9);

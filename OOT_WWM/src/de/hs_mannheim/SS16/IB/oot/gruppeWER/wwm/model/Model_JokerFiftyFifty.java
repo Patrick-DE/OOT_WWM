@@ -3,7 +3,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
 public class Model_JokerFiftyFifty extends Model_Joker {
 
 	//MARK: - Constructor
-	public Model_JokerFiftyFifty() { }
+	public Model_JokerFiftyFifty() {}
 	
 	//MARK: - Methods
 	public int[] getFalseAnswerPositions (Model_Question question) {
@@ -19,5 +19,5 @@ public class Model_JokerFiftyFifty extends Model_Joker {
 		default:
 			return new int[] {-1, -1};
 		}
- 	}
+ 	}	
 }
