@@ -122,7 +122,6 @@ public class Model_JokerTelephone extends Model_Joker {
 		}  
 		if(readyToGiveAnswer) {
 			if(knowsRightAnswer) {
-				telephoneAnswer += question.getAnswerAtIndex(question.getRightAnswerIndex());
 				telephoneAnswer = replaceMarker(telephoneAnswer, question.getAnswerAtIndex(question.getRightAnswerIndex()));
 			} else {
 				//Set wrong answer
@@ -137,7 +136,7 @@ public class Model_JokerTelephone extends Model_Joker {
 					i = (int) (Math.random() * answerArray.length);
 				} while (i == question.getRightAnswerIndex() - 1 && answerArray[i] == null);
 
-				telephoneAnswer += answerArray[i];
+				telephoneAnswer = replaceMarker(telephoneAnswer, answerArray[i]);
 			}
 		}     
 		return telephoneAnswer;
