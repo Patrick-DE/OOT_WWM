@@ -69,7 +69,7 @@ public class Model_JokerTelephone extends Model_Joker {
 		}
 		String telephoneAnswer = "";
 
-		if((int) (100 * Math.random()) < 50) {
+		if((int) (100 * Math.random()) < 90) {
 			readyToGiveAnswer = true;
 		}
 		else {
@@ -121,9 +121,10 @@ public class Model_JokerTelephone extends Model_Joker {
 			}
 		}  
 		if(readyToGiveAnswer) {
-			if(knowsRightAnswer)
+			if(knowsRightAnswer) {
 				telephoneAnswer += question.getAnswerAtIndex(question.getRightAnswerIndex());
-			else {
+				telephoneAnswer = replaceMarker(telephoneAnswer, question.getAnswerAtIndex(question.getRightAnswerIndex()));
+			} else {
 				//Set wrong answer
 				String[] answerArray = {question.getAnswerAtIndex(1), question.getAnswerAtIndex(2), question.getAnswerAtIndex(3), question.getAnswerAtIndex(4)};
 				int i;
@@ -141,4 +142,31 @@ public class Model_JokerTelephone extends Model_Joker {
 		}     
 		return telephoneAnswer;
 	}
+
+    private String replaceMarker(String stringWithMarker, String replacement) {
+        // marker := (ANTWORT)
+        String marker = "(ANTWORT)";
+        int i = findIndexOfMarker(stringWithMarker);
+        if (i != -1) {
+            if (i == 0)
+                return replacement + stringWithMarker.substring(i + marker.length(), stringWithMarker.length());
+            else
+                return stringWithMarker.substring(0, i) + replacement + stringWithMarker.substring(i + marker.length() , stringWithMarker.length());
+        } else {
+            return stringWithMarker;
+        }
+    }
+
+    private int findIndexOfMarker(String stringWithMarker) {
+        String marker = "(ANTWORT)";
+        if (stringWithMarker.length() < marker.length()) {
+            return -1;
+        } else {
+            for (int i = 0; i <= stringWithMarker.length() - marker.length(); i++) {
+                if (stringWithMarker.substring(i, i + marker.length()).equals(marker))
+                    return i;
+            }
+        return -1;
+        }
+    }
 }
