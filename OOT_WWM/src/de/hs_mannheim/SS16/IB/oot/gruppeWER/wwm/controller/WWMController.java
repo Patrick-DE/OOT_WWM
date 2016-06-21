@@ -38,7 +38,7 @@ public class WWMController implements ActionListener {
 	}
 	@Override public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Neues Spiel")) {
-			soundContainer.stopSound("musicIntroStream");
+			soundContainer.stopSound("musicIntro");
 			model.restartGame();
 			for (WWMView view : views) {
 				view.displayGameWindow();
