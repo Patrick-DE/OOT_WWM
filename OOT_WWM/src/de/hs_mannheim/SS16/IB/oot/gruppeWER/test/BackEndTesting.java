@@ -72,10 +72,8 @@ public class BackEndTesting {
 		// fifty fifty Joker is used
 		testing.generateFiftyFiftyJokerResults(testing.getQuestionAtIndex(0));
 		// Folder necessary to save the game is created
-		File createFolder = new File("E:\\save");
-		createFolder.mkdirs();
-		testing.saveGameToFile("E:\\", 0);
-		File file = new File("E:\\save\\game0.wwm");
+		testing.saveGameToFile("", 0);
+		File file = new File("save/game0.wwm");
 		// Testing whether the file has been created properly by method saveGameToFile
 		assertTrue(file.isFile());
 		if(file.exists()) {
@@ -91,7 +89,6 @@ public class BackEndTesting {
 			// question index has to equal 0 since it was incremented once from -1 when loadQuestionsFromFile was invoked
 			assertEquals(0,testing.getQuestionIndex());
 		}
-		
 	}
 	@Test public void testRunGame(){
 		WWMModel testing = new WWMModel();
@@ -99,8 +96,7 @@ public class BackEndTesting {
 		// Game status should be set to started(true)
 		assertTrue(testing.getGameStartedStatus());
 		// The answer time should still be 30 seconds
-		assertEquals(30,testing.getAnswerTime());
-				
+		assertEquals(30,testing.getAnswerTime());		
 	}
 	@Test public void testRestartGame(){
 		WWMModel testing = new WWMModel();
