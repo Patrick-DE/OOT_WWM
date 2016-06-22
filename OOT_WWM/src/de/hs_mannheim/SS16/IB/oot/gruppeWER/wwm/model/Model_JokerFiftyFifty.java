@@ -6,6 +6,11 @@ public class Model_JokerFiftyFifty extends Model_Joker {
 	public Model_JokerFiftyFifty() {}
 	
 	//MARK: - Methods
+	/**
+	 * @param question
+	 *                 current question to be answered
+	 * @return an integer array containing two false answer positions.
+	 */
 	public int[] getFalseAnswerPositions (Model_Question question) {
 		switch (question.getRightAnswerIndex()) {
 		case 1:
