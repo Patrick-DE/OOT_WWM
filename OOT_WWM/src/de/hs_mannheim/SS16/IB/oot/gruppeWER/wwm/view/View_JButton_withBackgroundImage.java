@@ -3,6 +3,8 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
@@ -171,7 +173,9 @@ public class View_JButton_withBackgroundImage extends JButton {
 			}
 			break;
 		}
-		super.paintComponent(g);
+		Graphics2D g2D = (Graphics2D) g;
+		g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		super.paintComponent(g2D);
 	}
 	@Override protected void paintBorder(Graphics g) {
 		super.paintBorder(g);

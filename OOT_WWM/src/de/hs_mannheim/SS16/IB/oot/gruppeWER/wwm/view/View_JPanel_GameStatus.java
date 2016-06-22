@@ -36,7 +36,7 @@ public class View_JPanel_GameStatus extends JPanel {
 	@Override protected void paintComponent(Graphics g) {
 		if(model.getQuestionIndex() < model.getAmountOfQuestions()) {
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+			g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 			if (WWMController.imageContainer.image_buttonSquared != null) {
 				g2d.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 			}
