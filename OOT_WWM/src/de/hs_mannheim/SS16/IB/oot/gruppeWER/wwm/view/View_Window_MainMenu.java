@@ -41,6 +41,7 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		setLayout(gridBagLayout);
 		
 		JPanel panelMainImage = new View_JPanel_withBackgroundImage(1);
+		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
 		gbc_panelMainImage.insets = new Insets(50, 50, 20, 50);
@@ -49,6 +50,7 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		add(panelMainImage, gbc_panelMainImage);
 		
 		JPanel panelMainMenuButtons = new JPanel();
+		panelMainMenuButtons.setOpaque(false);
 		GridBagConstraints gbc_panelMainMenuButtons = new GridBagConstraints();
 		gbc_panelMainMenuButtons.anchor = GridBagConstraints.BASELINE;
 		gbc_panelMainMenuButtons.fill = GridBagConstraints.BOTH;

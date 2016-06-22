@@ -80,8 +80,9 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_questionTextLabel.gridy = 1;
 		this.add(questionTextLabel, gbc_questionTextLabel);
 
-		//Answer Panel Setup
-		answerPanel = new JPanel(new GridLayout(2, 2));	
+		//Answer Button Panel Setup
+		answerPanel = new JPanel(new GridLayout(2, 2));
+		answerPanel.setOpaque(false);
 		
 		btnAnswer1 = new View_JButton_withBackgroundImage();
 		btnAnswer1.setActionCommand("Antwort1");
@@ -116,6 +117,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 
 		//Button Panel Setup
 		buttonPanel = new JPanel(new GridLayout(1, 6));
+		buttonPanel.setOpaque(false);
 		
 		JButton btnBlank1 = new View_JButton_withBackgroundImage("", 9);
 		buttonPanel.add(btnBlank1);

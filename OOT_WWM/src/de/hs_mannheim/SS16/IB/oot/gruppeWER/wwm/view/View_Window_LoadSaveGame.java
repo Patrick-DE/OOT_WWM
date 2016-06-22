@@ -56,6 +56,7 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 		add(lblChooseGameSave, gbc_lblWhleDieSpeicherstelle);
 		
 		JPanel panelSave = new JPanel();
+		panelSave.setOpaque(false);
 		GridBagConstraints gbc_panelSave = new GridBagConstraints();
 		gbc_panelSave.weighty = 0.9;
 		gbc_panelSave.fill = GridBagConstraints.BOTH;
