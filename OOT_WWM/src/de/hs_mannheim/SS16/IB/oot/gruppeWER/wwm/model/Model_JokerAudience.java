@@ -3,6 +3,16 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
 public class Model_JokerAudience extends Model_Joker {
 
 	//MARK: - Methods
+    /**
+     * this method generates the results for the audience joker.
+     * It returns an integer array with percentages for each possible answer 
+     * and simulates the opinion of the audience to the current question.
+     * @param question
+     *                 current question to be answered
+     * @param fiftyFiftyValues
+     *                         the results of the possibly used fifty fifty joker. 
+     * @return an integer array with the percentages for each possible answer.
+     */
 	public int[] getAudienceResults(Model_Question question, int[] fiftyFiftyValues) {
 		int[] audienceResults = new int[4];
 		if(question.getDifficultyValue() == 0) {
