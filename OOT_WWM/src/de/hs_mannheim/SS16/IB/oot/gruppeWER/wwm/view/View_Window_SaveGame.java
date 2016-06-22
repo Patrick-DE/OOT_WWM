@@ -54,6 +54,7 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 		
 		JLabel lblChoose = new JLabel("Wähle die Speicherstelle aus:");
 		lblChoose.setForeground(Color.WHITE);
+		lblChoose.setFont(lblChoose.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);

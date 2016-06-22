@@ -34,7 +34,6 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 	private JButton btnLoadButton8;
 	private WWMModel model;
 
-	
 	//MARK: - Constructor
 	public View_Window_LoadSaveGame(WWMModel model) {
 		//this.setBackground(Color.BLACK);
@@ -48,7 +47,7 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 		
 		JLabel lblChooseGameSave = new JLabel("Wähle die Ladestelle aus:");
 		lblChooseGameSave.setForeground(Color.WHITE);
-		lblChooseGameSave.setOpaque(false);
+		lblChooseGameSave.setFont(lblChooseGameSave.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
