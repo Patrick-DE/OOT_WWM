@@ -54,7 +54,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		gbc_lblEuro.gridx = 0;
 		gbc_lblEuro.gridy = 1;
 		add(lblEuro, gbc_lblEuro);
-		
+
 		//Panel for the Highscore Entry
 		JPanel highscoreEintrag = new View_JPanel_withBackgroundImage(2, new GridLayout(2, 1));
 		highscoreEintrag.setOpaque(false);
@@ -66,14 +66,14 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		gbc_highscoreEintrag.gridx = 0;
 		gbc_highscoreEintrag.gridy = 2;
 		add(highscoreEintrag, gbc_highscoreEintrag);
-		
+
 		//Label telling the user to enter 
 		JLabel lblEintragen = new JLabel("Tragen Sie sich in die Highscore Liste ein:");
 		lblEintragen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEintragen.setForeground(Color.WHITE);
 		lblEintragen.setFont(lblEuro.getFont().deriveFont(22.0f));
 		highscoreEintrag.add(lblEintragen);
-		
+
 		//Panel holding the second line items for the highscore entry panel
 		JPanel secondLineItems = new JPanel(new GridLayout(1, 3));
 		secondLineItems.setOpaque(false);
@@ -86,8 +86,18 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		lblName.setFont(lblName.getFont().deriveFont(22.0f));
 		secondLineItems.add(lblName);
 
-		//Second Line Item #2 -> textfield
+		//Second Line Item #2 -> textfield-panel
+		JPanel textFieldPanel = new JPanel(new GridLayout(3, 1));
+		textFieldPanel.setOpaque(false);
+		secondLineItems.add(textFieldPanel);
+
+		//Blank Item 1
+		JLabel lblBlank1 = new JLabel("");
+		textFieldPanel.add(lblBlank1);
+
+		//TextField
 		JTextField textField = new JTextField();
+		textField.setColumns(10);
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -95,8 +105,11 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 					model.highScoreAddEntry(textField.getText(), (int) model.getGameTime());
 			}
 		});
-		secondLineItems.add(textField);
-		textField.setColumns(10);
+		textFieldPanel.add(textField);
+
+		//Blank Item 1
+		JLabel lblBlank2 = new JLabel("");
+		textFieldPanel.add(lblBlank2);
 
 		//Second Line Item #3 -> the user's play-time
 		JLabel lblTime = new JLabel(model.getGameTime()/60 + "min " + + model.getGameTime()%60 + "s");
