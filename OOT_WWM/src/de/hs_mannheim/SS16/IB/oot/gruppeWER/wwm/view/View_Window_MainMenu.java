@@ -10,17 +10,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
-
 public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
-	
+
 	//MARK: - Assets
-	private JButton btnContinue;
-	private JButton btnNewGame;
-	private JButton btnSave;
-	private JButton btnLoad;
-	private JButton btnHighScore;
-	private JButton btnExit;
+	private View_JButton_withBackgroundImage btnContinue;
+	private View_JButton_withBackgroundImage btnNewGame;
+	private View_JButton_withBackgroundImage btnSave;
+	private View_JButton_withBackgroundImage btnLoad;
+	private View_JButton_withBackgroundImage btnHighScore;
+	private View_JButton_withBackgroundImage btnExit;
 	private WWMModel model;
 
 	//MARK: - Constructor
@@ -33,7 +31,7 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		gridBagLayout.columnWeights = new double[]{1.0};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1};
 		setLayout(gridBagLayout);
-		
+
 		JPanel panelMainImage = new View_JPanel_withBackgroundImage(1);
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
@@ -42,7 +40,7 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		gbc_panelMainImage.gridx = 0;
 		gbc_panelMainImage.gridy = 0;
 		add(panelMainImage, gbc_panelMainImage);
-		
+
 		JPanel panelMainMenuButtons = new JPanel();
 		panelMainMenuButtons.setOpaque(false);
 		GridBagConstraints gbc_panelMainMenuButtons = new GridBagConstraints();
@@ -53,34 +51,34 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		gbc_panelMainMenuButtons.insets = new Insets(0, 150, 50, 150);
 		add(panelMainMenuButtons, gbc_panelMainMenuButtons);
 		panelMainMenuButtons.setLayout(new GridLayout(6, 1, 0, 0));
-		
+
 		btnContinue = new View_JButton_withBackgroundImage("Weiterspielen");
 		btnContinue.addActionListener(controller);
 		panelMainMenuButtons.add(btnContinue);
-		
+
 		btnNewGame = new View_JButton_withBackgroundImage("Neues Spiel");
 		btnNewGame.addActionListener(controller);
 		panelMainMenuButtons.add(btnNewGame);
-		
+
 		btnSave = new View_JButton_withBackgroundImage("Speichern");
 		btnSave.addActionListener(controller);
 		panelMainMenuButtons.add(btnSave);
-		
-		
+
+
 		btnLoad = new View_JButton_withBackgroundImage("Laden");
 		btnLoad.addActionListener(controller);
 		panelMainMenuButtons.add(btnLoad);
-		
+
 		btnHighScore = new View_JButton_withBackgroundImage("Bestenliste");
 		btnHighScore.addActionListener(controller);
 		panelMainMenuButtons.add(btnHighScore);
-		
+
 		btnExit = new View_JButton_withBackgroundImage("Beenden");
 		btnExit.addActionListener(controller);
 		panelMainMenuButtons.add(btnExit);
 		updateMenuButtons();
 	}
-	
+
 	//MARK: - Methods
 	/**
 	 * Disables the save button and the continue button until the user has started a game 

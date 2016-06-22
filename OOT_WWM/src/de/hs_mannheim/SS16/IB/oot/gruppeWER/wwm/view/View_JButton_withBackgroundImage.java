@@ -1,33 +1,16 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.JButton;
-
-public class View_JButton_withBackgroundImage extends JButton {
+public class View_JButton_withBackgroundImage extends JButton implements MouseListener {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 945286255842321281L;
@@ -42,6 +25,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 	 */
 	View_JButton_withBackgroundImage(String label, int imageIndex) {
 		super(label);
+		this.addMouseListener(this);
 		this.imageIndex = imageIndex;
 
 		setContentAreaFilled(false);
@@ -55,6 +39,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 	 */
 	View_JButton_withBackgroundImage(int imageIndex) {
 		super();
+		this.addMouseListener(this);
 		this.imageIndex = imageIndex;
 
 		setContentAreaFilled(false);
@@ -64,6 +49,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 	}
 	View_JButton_withBackgroundImage(String label) {
 		super(label);
+		this.addMouseListener(this);
 		this.imageIndex = 0;
 
 		setContentAreaFilled(false);
@@ -73,6 +59,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 	}
 	View_JButton_withBackgroundImage() {
 		super();
+		this.addMouseListener(this);
 		this.imageIndex = 0;
 
 		setContentAreaFilled(false);
@@ -82,6 +69,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 	}
 	View_JButton_withBackgroundImage(Icon icon) {
 		super(icon);
+		this.addMouseListener(this);
 		this.imageIndex = 0;
 
 		setContentAreaFilled(false);
@@ -173,9 +161,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 			}
 			break;
 		}
-		Graphics2D g2D = (Graphics2D) g;
-		g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		super.paintComponent(g2D);
+		super.paintComponent(g);
 	}
 	@Override protected void paintBorder(Graphics g) {
 		super.paintBorder(g);
@@ -185,5 +171,23 @@ public class View_JButton_withBackgroundImage extends JButton {
 	}
 	public void changeImageIndex(int newImageIndex) {
 		this.imageIndex = newImageIndex;
+	}
+	@Override public void mouseClicked(MouseEvent e) {		
+	}
+	@Override public void mousePressed(MouseEvent e) {		
+	}
+	@Override public void mouseReleased(MouseEvent e) {	
+	}
+	@Override public void mouseEntered(MouseEvent e) {
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 0) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(1);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+	}
+	@Override public void mouseExited(MouseEvent e) {
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 1) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(0);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
 	}
 }
