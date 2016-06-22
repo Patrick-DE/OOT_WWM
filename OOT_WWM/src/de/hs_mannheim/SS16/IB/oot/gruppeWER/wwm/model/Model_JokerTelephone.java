@@ -142,6 +142,14 @@ public class Model_JokerTelephone extends Model_Joker {
 		return telephoneAnswer;
 	}
 
+	/**
+	 * this method replaces the sub String "(ANTWORT)" with the replacement from stringWithMarker.
+	 * @param stringWithMarker
+	 *                         the String, which can contain the sub String "(ANTWORT)"
+	 * @param replacement
+	 *                    the String, which will replace  the String "(ANTWORT)"
+	 * @return the String with the replacement. If String did not contain the sub String "(ANTWORT)" stringWithMarker will be returned.
+	 */
     private String replaceMarker(String stringWithMarker, String replacement) {
         // marker := (ANTWORT)
         String marker = "(ANTWORT)";
@@ -156,6 +164,12 @@ public class Model_JokerTelephone extends Model_Joker {
         }
     }
 
+    /**
+     * this method iterates the string and looks for the subString "(ANTWORT)" and returns the first index where the sub String was found 
+     * @param stringWithMarker
+     *                         String to be iterated
+     * @return the first index where "ANTWORT" was found. -1, if String does not not contain this sub String
+     */
     private int findIndexOfMarker(String stringWithMarker) {
         String marker = "(ANTWORT)";
         if (stringWithMarker.length() < marker.length()) {
