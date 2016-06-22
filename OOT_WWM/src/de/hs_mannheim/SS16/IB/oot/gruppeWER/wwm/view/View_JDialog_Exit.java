@@ -22,6 +22,9 @@ import javax.swing.SwingConstants;
 
 public class View_JDialog_Exit extends JDialog {
 
+	//MARK: - Assets
+	private static final long serialVersionUID = -7174067867935134294L;
+
 	//MARK: - Constructor
 	public View_JDialog_Exit(WWMController controller) {
 		this.setTitle("Speichern und Beenden");
@@ -35,12 +38,10 @@ public class View_JDialog_Exit extends JDialog {
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		//Create and add the label
 		JLabel lblBeendenOhneSpeichern = new JLabel("Beenden ohne Speichern?");
-		lblBeendenOhneSpeichern.setOpaque(false);
 		lblBeendenOhneSpeichern.setForeground(Color.WHITE);
 		lblBeendenOhneSpeichern.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBeendenOhneSpeichern.setFont(lblBeendenOhneSpeichern.getFont().deriveFont(22.0f));
@@ -50,7 +51,6 @@ public class View_JDialog_Exit extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
-		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		//Create and add the buttons
 		//Button "ABBRECHEN"

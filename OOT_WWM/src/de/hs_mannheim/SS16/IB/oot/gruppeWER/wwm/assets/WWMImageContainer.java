@@ -27,10 +27,12 @@ public class WWMImageContainer {
 	public BufferedImage image_ButtonDropout;
 	
 	public BufferedImage image_background;
+	public BufferedImage image_QuestionWindowBackground;
+	public BufferedImage image_EndOfGameBackground;
 	public BufferedImage image_wwmBadge;
 	public BufferedImage image_buttonSquared;
 	public BufferedImage image_blank;
-	public BufferedImage image_QuestionWindowBackground;
+	
 	
 	//MARK: - Constructor
 	public WWMImageContainer() {
@@ -59,6 +61,7 @@ public class WWMImageContainer {
 
 			image_background = ImageIO.read(new File("data/images/image_background.png"));
 			image_QuestionWindowBackground = ImageIO.read(new File("data/images/image_QuestionWindowBackground.png"));
+			image_EndOfGameBackground = ImageIO.read(new File("data/images/image_EndOfGameBackground.png"));
 			image_wwmBadge =  ImageIO.read(new File("data/images/image_wwmBadge.png"));
 			image_buttonSquared =  ImageIO.read(new File("data/images/image_buttonSquared.png"));
 			image_blank =  ImageIO.read(new File("data/images/image_blank.png"));

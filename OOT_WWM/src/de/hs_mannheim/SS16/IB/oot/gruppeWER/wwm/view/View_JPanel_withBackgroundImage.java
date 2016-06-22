@@ -56,6 +56,11 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 				g.drawImage(WWMController.imageContainer.image_QuestionWindowBackground, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 4: 
+			if(WWMController.imageContainer.image_EndOfGameBackground != null) {
+				g.drawImage(WWMController.imageContainer.image_EndOfGameBackground, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_background != null) {
 				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);

@@ -20,6 +20,10 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 public class View_JDialog_SaveOverride extends JDialog {
 
+	//MARK: - Assets
+	private static final long serialVersionUID = 7288019291673213552L;
+
+	//MARK: - Constructor
 	View_JDialog_SaveOverride(WWMModel model, String path, int index) {
 		this.setTitle("Warnung");
 		this.setResizable(false);

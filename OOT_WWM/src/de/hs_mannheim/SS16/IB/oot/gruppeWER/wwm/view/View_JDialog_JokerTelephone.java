@@ -35,10 +35,8 @@ public class View_JDialog_JokerTelephone extends JDialog {
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		labelPanel.setOpaque(false);
 		//Create and add the label
 		JLabel telephoneAnswerLabel = new JLabel("<HTML><CENTER>" + telephoneAnswer +  "</CENTER></HTML>");
 		telephoneAnswerLabel.setForeground(Color.WHITE);
@@ -50,7 +48,6 @@ public class View_JDialog_JokerTelephone extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPane = new View_JPanel_withBackgroundImage();
-		buttonPane.setOpaque(false);
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
 

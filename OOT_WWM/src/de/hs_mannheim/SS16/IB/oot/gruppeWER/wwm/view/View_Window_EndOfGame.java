@@ -18,13 +18,11 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Assets
-	private JTextField textField;
-	private JLabel lblEuro;
-	private JLabel lblTime;
+	private static final long serialVersionUID = -3259538374945872250L;
 
 	//MARK: - Constructor
 	public View_Window_EndOfGame(WWMModel model) {
-		//this.setBackground(Color.BLACK);
+		super(4);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
@@ -33,19 +31,17 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		setLayout(gridBagLayout);
 
 		JLabel lblCong = new JLabel("Herzlichen Glückwunsch!");
-		lblCong.setOpaque(false);
 		lblCong.setForeground(Color.WHITE);
 		lblCong.setFont(lblCong.getFont().deriveFont(24.0f));
-		GridBagConstraints gbc_lblHerzlichenGlckwunsch = new GridBagConstraints();
-		gbc_lblHerzlichenGlckwunsch.weighty = 0.3;
-		gbc_lblHerzlichenGlckwunsch.gridwidth = 0;
-		gbc_lblHerzlichenGlckwunsch.insets = new Insets(0, 0, 5, 0);
-		gbc_lblHerzlichenGlckwunsch.gridx = 0;
-		gbc_lblHerzlichenGlckwunsch.gridy = 0;
-		add(lblCong, gbc_lblHerzlichenGlckwunsch);
+		GridBagConstraints gbc_lblCong = new GridBagConstraints();
+		gbc_lblCong.weighty = 0.3;
+		gbc_lblCong.gridwidth = 0;
+		gbc_lblCong.insets = new Insets(0, 0, 5, 0);
+		gbc_lblCong.gridx = 0;
+		gbc_lblCong.gridy = 0;
+		add(lblCong, gbc_lblCong);
 
-		lblEuro = new JLabel("Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
-		lblEuro.setOpaque(false);
+		JLabel lblEuro = new JLabel("Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
 		lblEuro.setForeground(Color.WHITE);
 		lblEuro.setFont(lblEuro.getFont().deriveFont(24.0f));
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
@@ -57,7 +53,6 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		add(lblEuro, gbc_lblEuro);
 
 		JLabel lblName = new JLabel("Name:");
-		lblName.setOpaque(false);
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(lblName.getFont().deriveFont(22.0f));
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -70,7 +65,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		gbc_lblName.gridy = 2;
 		add(lblName, gbc_lblName);
 
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				if (textField.getText().length() > 1)
@@ -87,8 +82,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		add(textField, gbc_textField);
 		textField.setColumns(10);
 
-		lblTime = new JLabel(model.getGameTime() + "s");
-		lblTime.setOpaque(false);
+		JLabel lblTime = new JLabel(model.getGameTime() + "s");
 		lblTime.setForeground(Color.WHITE);
 		lblTime.setFont(lblTime.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblTime = new GridBagConstraints();

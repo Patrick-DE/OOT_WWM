@@ -3,14 +3,12 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import javax.swing.JLabel;
@@ -22,6 +20,9 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 
 public class View_JDialog_DropOut extends JDialog {
+
+	//MARK: - Assets
+	private static final long serialVersionUID = -7123708486453711236L;
 
 	//MARK: - Constructor
 	public View_JDialog_DropOut(WWMModel model) {
@@ -35,13 +36,11 @@ public class View_JDialog_DropOut extends JDialog {
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		//Create and add the label
 		JLabel lblAussteigen = new JLabel("Aussteigen?");
 		lblAussteigen.setForeground(Color.WHITE);
-		lblAussteigen.setOpaque(false);
 		lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAussteigen.setFont(lblAussteigen.getFont().deriveFont(22.0f));
 		labelPanel.add(lblAussteigen);
@@ -50,7 +49,6 @@ public class View_JDialog_DropOut extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
-		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		//Create and add the buttons
 		//Button "NO"
