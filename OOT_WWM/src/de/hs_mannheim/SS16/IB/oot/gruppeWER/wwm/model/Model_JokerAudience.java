@@ -1,5 +1,10 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
 
+/**
+ * 
+ * @author Anusan Ranjan
+ * this class models the audience joker
+ */
 public class Model_JokerAudience extends Model_Joker {
 
 	//MARK: - Methods

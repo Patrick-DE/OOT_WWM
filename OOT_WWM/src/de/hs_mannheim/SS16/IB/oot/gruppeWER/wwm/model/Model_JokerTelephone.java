@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * 
+ * @author Anusan Ranjan
+ * this class models the telephone joker
+ */
 public class Model_JokerTelephone extends Model_Joker {
 
 	//MARK: - Methods
