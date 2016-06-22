@@ -44,7 +44,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		add(lblCong, gbc_lblCong);
 
 		JLabel lblEuro;
-		if(model.getGameEndFalseAnswer() || model.getQuestionIndex()==15 && model.getGameFinishedStatus())
+		if(model.getGameEndFalseAnswer() || (model.getQuestionIndex()==15 && model.getGameFinishedStatus()))
 			lblEuro = new View_JLabel_withBackgroundImage(1, "Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");			
 		else lblEuro = new View_JLabel_withBackgroundImage(1, "Sie haben " + model.getPrizesAtPos(model.getQuestionIndex()) + "€ gewonnen!");
 		lblEuro.setHorizontalAlignment(SwingConstants.CENTER);
