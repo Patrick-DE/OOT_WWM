@@ -261,6 +261,11 @@ public class WWMModel extends Observable {
 			}
 		}, 2 * 1000);
 	}
+	/**
+	 * this method checks, if the logged answer is right and determines, whether the game goes on or the game ends.
+	 * @param answerIndex
+	 *                    the index of the logged answer, Value is between 1 and 4
+	 */
 	public void validateAnswer(int answerIndex) {
 		if (answerIndex == questions.get(questionIndex).getRightAnswerIndex()) {
 			runGame();
@@ -272,9 +277,20 @@ public class WWMModel extends Observable {
 			notifyObservers();
 		}
 	}
+	/**
+	 * 
+	 * @return index of right answer of current question. Value is between 1 and 4.
+	 */
 	public int getCorrectAnswerIndex() {
 		return questions.get(questionIndex).getRightAnswerIndex();
 	}
+	/**
+	 * this method generates a String as answer for the the telephone joker.
+	 * It can contain the right answer, the false answer or no information.
+	 * @param question
+	 *                 current question to be answered
+	 * @return the answer of the telephone joker
+	 */
 	public String generateTelephoneJokerResults(Model_Question question) {
 		jokerTelephone.setUsedAtQuestionIndex(questionIndex);
 		
@@ -290,6 +306,12 @@ public class WWMModel extends Observable {
 			return ((Model_JokerTelephone) jokerTelephone).getTelephoneAnswer(question, jokerFiftyFifty.getFalseAnswerPositions(question));
 		}
 	}
+	/**
+	 * this method generates the results of the audience joker.
+	 * @param question
+	 *                 current question to be answered
+	 * @return an integer array with the percentages for each answer at its specified index
+	 */
 	public int[] generateAudienceJokerResults(Model_Question question) {
 		jokerAudience.setUsedAtQuestionIndex(questionIndex);
 		
@@ -305,6 +327,12 @@ public class WWMModel extends Observable {
 			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, jokerFiftyFifty.getFalseAnswerPositions(question));
 		}
 	}
+	/**
+	 * this method generates the results of the fifty fifty joker.
+	 * @param question
+	 *                 current question to be answered
+	 * @return the indices of two false answers in an integer array
+	 */
 	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
 		jokerFiftyFifty.setStatus(true);
 		jokerFiftyFifty.setUsedAtQuestionIndex(questionIndex);
@@ -322,6 +350,13 @@ public class WWMModel extends Observable {
 	private void calculateGameRunningTime() {
 		this.gameEndTime = saveGamePlayTime + ((System.currentTimeMillis() - this.startTime) / 1000);
 	}
+	/**
+	 * this method saves the score of a player in highscore.dat
+	 * @param name
+	 *            name of the player
+	 * @param timeInSeconds
+	 *                      the time the player needed to finish the game
+	 */
 	public void highScoreAddEntry(String name, int timeInSeconds) {
 		gameStart = false;
 		highScoreEntries.add(new Model_HighScoreEntry(name, questionIndex, timeInSeconds));
@@ -336,9 +371,17 @@ public class WWMModel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	/**
+	 * 
+	 * @return the list with the high scores
+	 */
 	public ArrayList<Model_HighScoreEntry> getHighScoreEntries() {
 		return highScoreEntries;
 	}
+	/**
+	 * 
+	 * @return the current secured prize by the player in current game.
+	 */
 	public int generatePrizeAtSecurityTier() {
 		if (questionIndex < 4)
 			return 0;
