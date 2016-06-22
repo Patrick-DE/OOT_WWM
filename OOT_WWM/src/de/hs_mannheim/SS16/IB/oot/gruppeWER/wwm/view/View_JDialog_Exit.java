@@ -13,6 +13,7 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,12 +23,14 @@ public class View_JDialog_Exit extends JDialog {
 
 	//MARK: - Constructor
 	public View_JDialog_Exit(WWMController controller) {
-		getContentPane().setBackground(Color.BLACK);
+		this.setTitle("Speichern und Beenden");
+		this.setResizable(false);
+		this.setBounds(100, 100, 450, 100);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
+		this.setAlwaysOnTop(true);
+		this.setModal(true);
+		
 		getContentPane().setLayout(new BorderLayout());
-		setTitle("Speichern und Beenden");
-		setModal(true);
-		setAlwaysOnTop(true);
-		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
@@ -46,7 +49,7 @@ public class View_JDialog_Exit extends JDialog {
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
 		buttonPanel.setOpaque(false);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		//Create and add the buttons
 		//Button "ABBRECHEN"
 		JButton btnCancel = new View_JButton_withBackgroundImage("Abbrechen");
@@ -78,7 +81,7 @@ public class View_JDialog_Exit extends JDialog {
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 		//Finish creating the Dialogue
-		pack();
+		//pack();
 		this.setVisible(true);
 	}
 }

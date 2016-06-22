@@ -116,7 +116,7 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 	@Override public void actionPerformed(ActionEvent e) {
 		int saveIndex = Integer.parseInt(e.getActionCommand());
 		if (saveGameExists(path, saveIndex)) {
-			new View_JDialog_SaveGame(model, path, saveIndex);
+			new View_JDialog_SaveOverride(model, path, saveIndex);
 		} else {
 			model.saveGameToFile(path, saveIndex);
 		}

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,14 +17,19 @@ import javax.swing.border.EmptyBorder;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
-public class View_JDialog_SaveGame extends JDialog {
+public class View_JDialog_SaveOverride extends JDialog {
 
-	View_JDialog_SaveGame(WWMModel model, String path, int index) {
+	View_JDialog_SaveOverride(WWMModel model, String path, int index) {
+		this.setTitle("Warnung");
+		this.setResizable(false);
+		this.setBounds(100, 100, 450, 100);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
+		this.setForeground(Color.WHITE);
+		this.setAlwaysOnTop(true);
+		this.setModal(true);
+		
 		getContentPane().setLayout(new BorderLayout());
-		setTitle("Warnung");
-		setForeground(Color.WHITE);
-		setBounds(100, 100, 450, 300);
-
+		
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -38,7 +44,7 @@ public class View_JDialog_SaveGame extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPane = new View_JPanel_withBackgroundImage();
-		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 		//Create and add the buttons
 		//Button "ABBRECHEN"
 		JButton btnCancel = new View_JButton_withBackgroundImage("Abbrechen");
@@ -63,7 +69,7 @@ public class View_JDialog_SaveGame extends JDialog {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		//Finish creating the Dialogue
-		pack();
+		//pack();
 		this.setVisible(true);
 	}
 }

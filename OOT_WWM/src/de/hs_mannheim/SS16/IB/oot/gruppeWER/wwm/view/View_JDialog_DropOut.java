@@ -15,6 +15,7 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,15 +25,18 @@ public class View_JDialog_DropOut extends JDialog {
 
 	//MARK: - Constructor
 	public View_JDialog_DropOut(WWMModel model) {
-		getContentPane().setBackground(Color.BLACK);
+		this.setTitle("Aussteigen");
+		this.setResizable(false);
+		this.setBounds(100, 100, 450, 100);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
+		this.setAlwaysOnTop(true);
+		
 		getContentPane().setLayout(new BorderLayout());
-		setTitle("Aussteigen");
-		setBounds(100, 100, 450, 300);
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setOpaque(false);
+		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		//Create and add the label
 		JLabel lblAussteigen = new JLabel("Aussteigen?");
@@ -46,7 +50,7 @@ public class View_JDialog_DropOut extends JDialog {
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
 		buttonPanel.setOpaque(false);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		//Create and add the buttons
 		//Button "NO"
 		JButton btnNo = new View_JButton_withBackgroundImage("Nein");
@@ -70,7 +74,7 @@ public class View_JDialog_DropOut extends JDialog {
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 		//Finish creating the Dialogue
-		pack();
+		//pack();
 		this.setVisible(true);
 	}
 }
