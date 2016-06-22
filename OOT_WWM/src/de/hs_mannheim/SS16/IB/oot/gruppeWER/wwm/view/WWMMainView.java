@@ -142,7 +142,7 @@ public class WWMMainView extends WWMView {
 		//Only one view will pass non-null parameters
 		//Prevent the other views from opening empty windows
 		if(audienceResults != null) {
-			new View_Dialog_JokerAudience(audienceResults);
+			new View_JDialog_JokerAudience(audienceResults);
 		}
 	}
 	@Override public void displayTelephoneJoker() {
@@ -151,7 +151,7 @@ public class WWMMainView extends WWMView {
 		//Only one view will pass non-null parameters
 		//Prevent the other views from opening empty windows
 		if(callerResult != null) {
-			new View_Dialog_JokerTelephone(callerResult);
+			new View_JDialog_JokerTelephone(callerResult);
 		}
 	}
 	@Override public void displayFiftyFiftyJoker() {

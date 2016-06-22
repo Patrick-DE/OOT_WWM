@@ -44,7 +44,7 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		panelMainImage.setOpaque(false);
 		GridBagConstraints gbc_panelMainImage = new GridBagConstraints();
 		gbc_panelMainImage.fill = GridBagConstraints.BOTH;
-		gbc_panelMainImage.insets = new Insets(0, 0, 0, 0);
+		gbc_panelMainImage.insets = new Insets(50, 50, 20, 50);
 		gbc_panelMainImage.gridx = 0;
 		gbc_panelMainImage.gridy = 0;
 		add(panelMainImage, gbc_panelMainImage);

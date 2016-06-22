@@ -23,7 +23,7 @@ public class View_JDialog_SaveOverride extends JDialog {
 	View_JDialog_SaveOverride(WWMModel model, String path, int index) {
 		this.setTitle("Warnung");
 		this.setResizable(false);
-		this.setBounds(100, 100, 500, 100);
+		this.setBounds(100, 100, 500, 150);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setForeground(Color.WHITE);
 		this.setAlwaysOnTop(true);

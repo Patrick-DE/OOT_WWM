@@ -18,13 +18,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-public class View_Dialog_JokerTelephone extends JDialog {
+public class View_JDialog_JokerTelephone extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 6013656282755272097L;
 
 	//MARK: - Assets
-	public View_Dialog_JokerTelephone(String telephoneAnswer) {
+	public View_JDialog_JokerTelephone(String telephoneAnswer) {
 		this.setTitle("Telefonjoker");
 		this.setResizable(false);
 		this.setBounds(100, 100, 500, 150);

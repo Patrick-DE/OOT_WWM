@@ -20,14 +20,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
-public class View_Dialog_JokerAudience extends JDialog {
+public class View_JDialog_JokerAudience extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 1599703298634307780L;
 	private final JPanel contentPanel = new View_JPanel_withBackgroundImage(2);
 
 	//MARK: - Assets
-	public View_Dialog_JokerAudience(int[] audienceResults) {
+	public View_JDialog_JokerAudience(int[] audienceResults) {
 		this.setTitle("Publikumsjoker");
 		this.setResizable(false);
 		this.setBounds(100, 100, 450, 300);
