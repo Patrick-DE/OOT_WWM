@@ -59,6 +59,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		JLabel lblName = new JLabel("Name:");
 		lblName.setOpaque(false);
 		lblName.setForeground(Color.WHITE);
+		lblName.setFont(lblName.getFont().deriveFont(22.0f));
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.weighty = 0.2;
@@ -89,6 +90,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		lblTime = new JLabel(model.getGameTime() + "s");
 		lblTime.setOpaque(false);
 		lblTime.setForeground(Color.WHITE);
+		lblTime.setFont(lblTime.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblTime = new GridBagConstraints();
 		gbc_lblTime.gridwidth = 0;
 		gbc_lblTime.weighty = 0.3;

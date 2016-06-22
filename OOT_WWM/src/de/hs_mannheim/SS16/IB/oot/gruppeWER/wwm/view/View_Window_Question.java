@@ -56,29 +56,29 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		//Game Status Panel Setup
 		gameStatusPanel = new View_JPanel_GameStatus(this.model);
 		
-		GridBagConstraints gbc_paneGameInfo = new GridBagConstraints();
-		gbc_paneGameInfo.gridwidth = 1;
-		gbc_paneGameInfo.weightx = 1.0;
-		gbc_paneGameInfo.fill = GridBagConstraints.BOTH;
-		gbc_paneGameInfo.weighty = 0;
-		gbc_paneGameInfo.insets = new Insets(0, 0, 5, 0);
-		gbc_paneGameInfo.gridx = 0;
-		gbc_paneGameInfo.gridy = 0;
-		this.add(gameStatusPanel, gbc_paneGameInfo);
+		GridBagConstraints gbc_gameStatusPanel = new GridBagConstraints();
+		gbc_gameStatusPanel.gridwidth = 1;
+		gbc_gameStatusPanel.weightx = 1.0;
+		gbc_gameStatusPanel.fill = GridBagConstraints.BOTH;
+		gbc_gameStatusPanel.weighty = 0;
+		gbc_gameStatusPanel.insets = new Insets(0, 0, 5, 0);
+		gbc_gameStatusPanel.gridx = 0;
+		gbc_gameStatusPanel.gridy = 0;
+		this.add(gameStatusPanel, gbc_gameStatusPanel);
 
 		//Question Text Panel Setup
 		questionTextLabel = new View_JLabel_withBackgroundImage();
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		GridBagConstraints gbc_labelQuestion = new GridBagConstraints();
-		gbc_labelQuestion.fill = GridBagConstraints.BOTH;
-		gbc_labelQuestion.gridwidth = 0;
-		gbc_labelQuestion.weighty = 1;
-		gbc_labelQuestion.weightx = 1.0;
-		gbc_labelQuestion.insets = new Insets(5, 0, 5, 0);
-		gbc_labelQuestion.gridx = 0;
-		gbc_labelQuestion.gridy = 1;
-		this.add(questionTextLabel, gbc_labelQuestion);
+		GridBagConstraints gbc_questionTextLabel = new GridBagConstraints();
+		gbc_questionTextLabel.fill = GridBagConstraints.BOTH;
+		gbc_questionTextLabel.gridwidth = 0;
+		gbc_questionTextLabel.weighty = 1;
+		gbc_questionTextLabel.weightx = 1.0;
+		gbc_questionTextLabel.insets = new Insets(5, 20, 5, 20);
+		gbc_questionTextLabel.gridx = 0;
+		gbc_questionTextLabel.gridy = 1;
+		this.add(questionTextLabel, gbc_questionTextLabel);
 
 		//Answer Panel Setup
 		answerPanel = new JPanel(new GridLayout(2, 2));
@@ -110,7 +110,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_answerPanel.gridheight = 1;
 		gbc_answerPanel.weighty = 0.6;
 		gbc_answerPanel.weightx = 1.0;
-		gbc_answerPanel.insets = new Insets(5, 0, 5, 0);
+		gbc_answerPanel.insets = new Insets(5, 20, 5, 20);
 		gbc_answerPanel.gridx = 0;
 		gbc_answerPanel.gridy = 2;
 		this.add(answerPanel, gbc_answerPanel);

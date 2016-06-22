@@ -44,7 +44,6 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		setLayout(gridBagLayout);
 
 		JPanel panel_1 = new View_JPanel_withBackgroundImage(2);
-		panel_1.setBackground(Color.BLACK);
 		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 0, 0);
@@ -58,7 +57,7 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		panel_1.setLayout(new GridLayout(1, 3, 0, 0));
 
 		JLabel lblName = new JLabel("Name");
-		lblName.setFont(lblName.getFont().deriveFont(20.0f));
+		lblName.setFont(lblName.getFont().deriveFont(22.0f));
 		lblName.setForeground(Color.WHITE);
 		lblName.setOpaque(false);
 		lblName.setVerticalAlignment(SwingConstants.TOP);
@@ -66,7 +65,7 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		panel_1.add(lblName);
 
 		JLabel lblTime = new JLabel("Zeit (s)");
-		lblTime.setFont(lblTime.getFont().deriveFont(20.0f));
+		lblTime.setFont(lblTime.getFont().deriveFont(22.0f));
 		lblTime.setForeground(Color.WHITE);
 		lblTime.setOpaque(false);
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,7 +73,7 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		panel_1.add(lblTime);
 
 		JLabel lblQuestionamount = new JLabel("Frageanzahl");
-		lblQuestionamount.setFont(lblQuestionamount.getFont().deriveFont(20.0f));
+		lblQuestionamount.setFont(lblQuestionamount.getFont().deriveFont(22.0f));
 		lblQuestionamount.setForeground(Color.WHITE);
 		lblQuestionamount.setOpaque(false);
 		lblQuestionamount.setVerticalAlignment(SwingConstants.TOP);
@@ -108,8 +107,8 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		lblName_1 = new JLabel("",JLabel.CENTER);
 		lblName_1.setForeground(Color.WHITE);
 		lblName_1.setOpaque(false);
-		lblName_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblName_1.setFont(lblName_1.getFont().deriveFont(15.0f));
+		lblName_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblName_1.setFont(lblName_1.getFont().deriveFont(20.0f));
 		lblName_1.setVerticalAlignment(SwingConstants.TOP);
 		lblName_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblName_1);
@@ -117,8 +116,8 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		lblTime_1 = new JLabel("");
 		lblTime_1.setForeground(Color.WHITE);
 		lblTime_1.setOpaque(false);
-		lblTime_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTime_1.setFont(lblTime_1.getFont().deriveFont(15.0f));
+		lblTime_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblTime_1.setFont(lblTime_1.getFont().deriveFont(20.0f));
 		lblTime_1.setVerticalAlignment(SwingConstants.TOP);
 		lblTime_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblTime_1);
@@ -126,8 +125,8 @@ public class View_Window_HighScore extends View_JPanel_withBackgroundImage {
 		lblQuestioncount = new JLabel("");
 		lblQuestioncount.setForeground(Color.WHITE);
 		lblQuestioncount.setOpaque(false);
-		lblQuestioncount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblQuestioncount.setFont(lblQuestioncount.getFont().deriveFont(15.0f));
+		lblQuestioncount.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblQuestioncount.setFont(lblQuestioncount.getFont().deriveFont(20.0f));
 		lblQuestioncount.setVerticalAlignment(SwingConstants.TOP);
 		lblQuestioncount.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblQuestioncount);
