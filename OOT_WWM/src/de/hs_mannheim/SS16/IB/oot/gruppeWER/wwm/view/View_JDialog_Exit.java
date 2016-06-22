@@ -2,6 +2,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -28,7 +29,7 @@ public class View_JDialog_Exit extends JDialog {
 		this.setBounds(100, 100, 450, 100);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setAlwaysOnTop(true);
-		this.setModal(true);
+		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
 		
 		getContentPane().setLayout(new BorderLayout());
 
@@ -42,6 +43,7 @@ public class View_JDialog_Exit extends JDialog {
 		lblBeendenOhneSpeichern.setOpaque(false);
 		lblBeendenOhneSpeichern.setForeground(Color.WHITE);
 		lblBeendenOhneSpeichern.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBeendenOhneSpeichern.setFont(lblBeendenOhneSpeichern.getFont().deriveFont(20.0f));
 		labelPanel.add(lblBeendenOhneSpeichern);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

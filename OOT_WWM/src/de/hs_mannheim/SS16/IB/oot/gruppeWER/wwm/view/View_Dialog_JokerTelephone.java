@@ -40,9 +40,10 @@ public class View_Dialog_JokerTelephone extends JDialog {
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		labelPanel.setOpaque(false);
 		//Create and add the label
-		JLabel telephoneAnswerLabel = new JLabel("<HTML>" + telephoneAnswer +  "</HTML>");
+		JLabel telephoneAnswerLabel = new JLabel("<HTML><CENTER>" + telephoneAnswer +  "</CENTER></HTML>");
 		telephoneAnswerLabel.setForeground(Color.WHITE);
 		telephoneAnswerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		telephoneAnswerLabel.setFont(telephoneAnswerLabel.getFont().deriveFont(20.0f));
 		labelPanel.add(telephoneAnswerLabel);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

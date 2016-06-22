@@ -55,7 +55,7 @@ public class View_JPanel_GameStatus extends JPanel {
 			}
 
 			//Draw the Prize Tier String
-			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 45));
+			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 75));
 			FontMetrics fm = g2d.getFontMetrics();
 			//Set Position
 			int x = ((getWidth() - fm.stringWidth(model.getPrizesAtPos(model.getQuestionIndex()) + "€")) / 2);
@@ -65,7 +65,7 @@ public class View_JPanel_GameStatus extends JPanel {
 			g2d.drawString(model.getPrizesAtPos(model.getQuestionIndex()) + "€", x, y);
 
 			//Draw the Security Tier String
-			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 20));
+			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 40));
 			fm = g2d.getFontMetrics();		
 			//Set Position
 			x = ((getWidth() - fm.stringWidth(model.generatePrizeAtSecurityTier() + "€")) / 2);
@@ -75,7 +75,7 @@ public class View_JPanel_GameStatus extends JPanel {
 			g2d.drawString(model.generatePrizeAtSecurityTier() + "€", x, y);
 
 			//Draw the Question Tier String
-			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 25));
+			g2d.setFont(new Font(g.getFont().getName(), Font.PLAIN, 50));
 			fm = g2d.getFontMetrics();
 			//Set Position
 			x = (getWidth() / 6 - fm.stringWidth(model.getQuestionIndex() + "/" + model.getAmountOfQuestions()) / 2);

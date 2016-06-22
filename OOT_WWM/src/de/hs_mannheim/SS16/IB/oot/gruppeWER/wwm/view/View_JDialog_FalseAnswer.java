@@ -2,6 +2,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -22,10 +23,10 @@ public class View_JDialog_FalseAnswer extends JDialog {
 	public View_JDialog_FalseAnswer() {
 		this.setTitle("Falsche Antwort");
 		this.setResizable(false);
-		this.setBounds(100, 100, 450, 100);
+		this.setBounds(100, 100, 450, 150);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setAlwaysOnTop(true);
-		this.setModal(true);
+		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
 		
 		getContentPane().setLayout(new BorderLayout());
 		
@@ -33,11 +34,12 @@ public class View_JDialog_FalseAnswer extends JDialog {
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
 		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		labelPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		//Create and add the label
-		JLabel lblFalseAnswer = new JLabel("<HTML>" + "Sie haben die Frage nicht (richtig) beantwortet." + "</HTML>");
+		JLabel lblFalseAnswer = new JLabel("<HTML><CENTER>" + "Sie haben die Frage nicht (richtig) beantwortet." + "</CENTER></HTML>");
 		lblFalseAnswer.setForeground(Color.WHITE);
 		lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFalseAnswer.setFont(lblFalseAnswer.getFont().deriveFont(20.0f));
 		labelPanel.add(lblFalseAnswer);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

@@ -43,6 +43,7 @@ public class View_JDialog_DropOut extends JDialog {
 		lblAussteigen.setForeground(Color.WHITE);
 		lblAussteigen.setOpaque(false);
 		lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAussteigen.setFont(lblAussteigen.getFont().deriveFont(20.0f));
 		labelPanel.add(lblAussteigen);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

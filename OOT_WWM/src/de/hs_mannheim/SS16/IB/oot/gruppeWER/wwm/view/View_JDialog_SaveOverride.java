@@ -2,6 +2,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -26,7 +27,7 @@ public class View_JDialog_SaveOverride extends JDialog {
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setForeground(Color.WHITE);
 		this.setAlwaysOnTop(true);
-		this.setModal(true);
+		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
 		
 		getContentPane().setLayout(new BorderLayout());
 		
@@ -38,6 +39,7 @@ public class View_JDialog_SaveOverride extends JDialog {
 		JLabel lblSpielstandberschreiben = new JLabel("Spielstand überschreiben?");
 		lblSpielstandberschreiben.setForeground(Color.WHITE);
 		lblSpielstandberschreiben.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSpielstandberschreiben.setFont(lblSpielstandberschreiben.getFont().deriveFont(20.0f));
 		labelPanel.add(lblSpielstandberschreiben);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);
