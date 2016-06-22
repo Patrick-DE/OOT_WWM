@@ -52,10 +52,11 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 		gridBagLayout.rowWeights = new double[] {0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblChoose = new JLabel("Wähle die Speicherstelle aus:");
-		lblChoose.setForeground(Color.WHITE);
+		JLabel lblChoose = new View_JLabel_withBackgroundImage(1, "Wähle die Speicherstelle aus:");
+		lblChoose.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChoose.setFont(lblChoose.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
+		gbc_lblWhleDieSpeicherstelle.fill = GridBagConstraints.BOTH;
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
 		gbc_lblWhleDieSpeicherstelle.gridx = 0;

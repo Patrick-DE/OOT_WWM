@@ -74,7 +74,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_questionTextLabel.fill = GridBagConstraints.BOTH;
 		gbc_questionTextLabel.gridwidth = 0;
 		gbc_questionTextLabel.weighty = 1;
-		gbc_questionTextLabel.weightx = 1.0;
+		gbc_questionTextLabel.weightx = 1;
 		gbc_questionTextLabel.insets = new Insets(5, 75, 5, 75);
 		gbc_questionTextLabel.gridx = 0;
 		gbc_questionTextLabel.gridy = 1;
