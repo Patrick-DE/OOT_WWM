@@ -21,6 +21,7 @@ public class WWMImageContainer {
 	public BufferedImage image_jokerAudienceActivated;
 	public BufferedImage image_jokerAudienceDeactivated;
 
+	public BufferedImage image_buttonHover;
 	public BufferedImage image_buttonLogged;
 	public BufferedImage image_buttonCorrect;
 	public BufferedImage image_buttonWrong;
@@ -53,6 +54,7 @@ public class WWMImageContainer {
 			image_jokerAudienceActivated = ImageIO.read(new File("data/images/joker_audienceActivated.png"));
 			image_jokerAudienceDeactivated = ImageIO.read(new File("data/images/joker_audienceDeactivated.png"));
 
+			image_buttonHover = ImageIO.read(new File("data/images/image_buttonHover.png"));
 			image_buttonLogged = ImageIO.read(new File("data/images/image_buttonLogged.png"));
 			image_buttonCorrect = ImageIO.read(new File("data/images/image_buttonCorrect.png"));
 			image_buttonWrong = ImageIO.read(new File("data/images/image_buttonWrong.png"));

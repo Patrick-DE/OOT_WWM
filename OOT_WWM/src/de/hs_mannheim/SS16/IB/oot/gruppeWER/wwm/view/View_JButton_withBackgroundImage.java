@@ -150,6 +150,11 @@ public class View_JButton_withBackgroundImage extends JButton implements MouseLi
 				g.drawImage(WWMController.imageContainer.image_blank, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 10:
+			if(WWMController.imageContainer.image_buttonHover != null) {
+				g.drawImage(WWMController.imageContainer.image_buttonHover, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_buttonActivated != null && WWMController.imageContainer.image_buttonDeactivated != null) {
 				if (isEnabled()) {
@@ -180,12 +185,12 @@ public class View_JButton_withBackgroundImage extends JButton implements MouseLi
 	}
 	@Override public void mouseEntered(MouseEvent e) {
 		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 0) {
-			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(1);
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(10);
 			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
 		}
 	}
 	@Override public void mouseExited(MouseEvent e) {
-		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 1) {
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 10) {
 			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(0);
 			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
 		}
