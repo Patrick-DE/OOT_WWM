@@ -55,10 +55,11 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 
 		//Game Status Panel Setup
 		gameStatusPanel = new View_JPanel_GameStatus(this.model);
+		gameStatusPanel.setOpaque(false);
 		
 		GridBagConstraints gbc_gameStatusPanel = new GridBagConstraints();
 		gbc_gameStatusPanel.gridwidth = 1;
-		gbc_gameStatusPanel.weightx = 1.0;
+		gbc_gameStatusPanel.weightx = 1;
 		gbc_gameStatusPanel.fill = GridBagConstraints.BOTH;
 		gbc_gameStatusPanel.weighty = 0;
 		gbc_gameStatusPanel.insets = new Insets(0, 0, 5, 0);

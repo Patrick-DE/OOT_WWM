@@ -1,6 +1,7 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +24,10 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 	 * @param label -> Set the button text
 	 * @param imageIndex -> Set up a specified background image (index starts at 1, 0 will use the default image)
 	 */
+	View_JPanel_withBackgroundImage(int imageIndex, GridLayout layout) {
+		super(layout);
+		this.imageIndex = imageIndex;
+	}
 	View_JPanel_withBackgroundImage(int imageIndex) {
 		super();
 		this.imageIndex = imageIndex;
@@ -54,11 +59,6 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 		case 3: 
 			if(WWMController.imageContainer.image_QuestionWindowBackground != null) {
 				g.drawImage(WWMController.imageContainer.image_QuestionWindowBackground, 0, 0, getWidth(), getHeight(), this);
-			}
-			break;
-		case 4: 
-			if(WWMController.imageContainer.image_EndOfGameBackground != null) {
-				g.drawImage(WWMController.imageContainer.image_EndOfGameBackground, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
 		default:
