@@ -39,8 +39,9 @@ public class BackEndTesting {
 		for (int i = 0; i < 15; i++) {
 			assertEquals(prizes[i], testing.getPrizesAtPos(i));
 		}
-		testing.highScoreAddEntry("Simon", 10);
 		testing.loadMainData();
+		// adds one highscoreEntry 
+		testing.highScoreAddEntry("Simon", 10);
 		// Tests whether the HighScoreEntries are read correctly from a file
 		ArrayList<Model_HighScoreEntry> highScoreEntries = testing.getHighScoreEntries();
 		Model_HighScoreEntry myHighscore = highScoreEntries.get(0);
