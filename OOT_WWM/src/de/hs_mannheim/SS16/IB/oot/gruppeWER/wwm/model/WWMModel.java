@@ -390,11 +390,11 @@ public class WWMModel extends Observable {
 	 * @return the current secured prize by the player in current game.
 	 */
 	public int generatePrizeAtSecurityTier() {
-		if (questionIndex < 4)
+		if (questionIndex <= 4)
 			return 0;
-		else if (questionIndex < 9)
+		else if (questionIndex <= 9)
 			return 500;
-		else if (questionIndex < 15)
+		else if (questionIndex <= 15)
 			return 16000;
 		else
 			return 1000000;
