@@ -23,9 +23,9 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 	private View_JButton_withBackgroundImage btnAnswer2;
 	private View_JButton_withBackgroundImage btnAnswer3;
 	private View_JButton_withBackgroundImage btnAnswer4;
-	private JButton btnTelephone;
-	private JButton btnFiftyFifty;
-	private JButton btnAudience;
+	private View_JButton_withBackgroundImage btnTelephone;
+	private View_JButton_withBackgroundImage btnFiftyFifty;
+	private View_JButton_withBackgroundImage btnAudience;
 	private JButton btnDropOut;
 
 	private View_JPanel_GameStatus gameStatusPanel;
@@ -165,16 +165,22 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		
 		gameStatusPanel.repaint();
 		gameStatusPanel.animationRestart(true);
-		if (model.getTelephoneStatus()) {
+		if(model.getTelephoneStatus()) {
 			btnTelephone.setEnabled(false);
+			btnTelephone.changeImageIndex(4);
+			btnTelephone.repaint();
 		}
-		if (model.getFiftyFiftyStatus()) {
+		if(model.getFiftyFiftyStatus()) {
 			btnFiftyFifty.setEnabled(false);
+			btnFiftyFifty.changeImageIndex(5);
+			btnFiftyFifty.repaint();
 		}
-		if (model.getAudienceStatus()) {
+		if(model.getAudienceStatus()) {
 			btnAudience.setEnabled(false);
+			btnAudience.changeImageIndex(6);
+			btnAudience.repaint();
 		}
-		if (fiftyFiftyUsed) {
+		if(fiftyFiftyUsed) {
 			fiftyFiftyUsed = false;
 
 			btnAnswer1.setEnabled(true);
