@@ -27,7 +27,7 @@ public class View_JDialog_DropOut extends JDialog {
 	public View_JDialog_DropOut(WWMModel model) {
 		this.setTitle("Aussteigen");
 		this.setResizable(false);
-		this.setBounds(100, 100, 450, 100);
+		this.setBounds(100, 100, 500, 100);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setAlwaysOnTop(true);
 		
@@ -43,7 +43,7 @@ public class View_JDialog_DropOut extends JDialog {
 		lblAussteigen.setForeground(Color.WHITE);
 		lblAussteigen.setOpaque(false);
 		lblAussteigen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAussteigen.setFont(lblAussteigen.getFont().deriveFont(20.0f));
+		lblAussteigen.setFont(lblAussteigen.getFont().deriveFont(22.0f));
 		labelPanel.add(lblAussteigen);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

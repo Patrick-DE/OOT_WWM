@@ -23,7 +23,7 @@ public class View_JDialog_FalseAnswer extends JDialog {
 	public View_JDialog_FalseAnswer() {
 		this.setTitle("Falsche Antwort");
 		this.setResizable(false);
-		this.setBounds(100, 100, 450, 150);
+		this.setBounds(100, 100, 500, 150);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setAlwaysOnTop(true);
 		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
@@ -39,7 +39,7 @@ public class View_JDialog_FalseAnswer extends JDialog {
 		JLabel lblFalseAnswer = new JLabel("<HTML><CENTER>" + "Sie haben die Frage nicht (richtig) beantwortet." + "</CENTER></HTML>");
 		lblFalseAnswer.setForeground(Color.WHITE);
 		lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFalseAnswer.setFont(lblFalseAnswer.getFont().deriveFont(20.0f));
+		lblFalseAnswer.setFont(lblFalseAnswer.getFont().deriveFont(22.0f));
 		labelPanel.add(lblFalseAnswer);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

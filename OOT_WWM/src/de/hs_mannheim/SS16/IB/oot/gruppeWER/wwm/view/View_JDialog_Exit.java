@@ -26,7 +26,7 @@ public class View_JDialog_Exit extends JDialog {
 	public View_JDialog_Exit(WWMController controller) {
 		this.setTitle("Speichern und Beenden");
 		this.setResizable(false);
-		this.setBounds(100, 100, 450, 100);
+		this.setBounds(100, 100, 500, 100);
 		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
 		this.setAlwaysOnTop(true);
 		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
@@ -43,7 +43,7 @@ public class View_JDialog_Exit extends JDialog {
 		lblBeendenOhneSpeichern.setOpaque(false);
 		lblBeendenOhneSpeichern.setForeground(Color.WHITE);
 		lblBeendenOhneSpeichern.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBeendenOhneSpeichern.setFont(lblBeendenOhneSpeichern.getFont().deriveFont(20.0f));
+		lblBeendenOhneSpeichern.setFont(lblBeendenOhneSpeichern.getFont().deriveFont(22.0f));
 		labelPanel.add(lblBeendenOhneSpeichern);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);

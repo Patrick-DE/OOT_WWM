@@ -35,6 +35,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		JLabel lblCong = new JLabel("Herzlichen Glückwunsch!");
 		lblCong.setOpaque(false);
 		lblCong.setForeground(Color.WHITE);
+		lblCong.setFont(lblCong.getFont().deriveFont(24.0f));
 		GridBagConstraints gbc_lblHerzlichenGlckwunsch = new GridBagConstraints();
 		gbc_lblHerzlichenGlckwunsch.weighty = 0.3;
 		gbc_lblHerzlichenGlckwunsch.gridwidth = 0;
@@ -46,6 +47,7 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		lblEuro = new JLabel("Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
 		lblEuro.setOpaque(false);
 		lblEuro.setForeground(Color.WHITE);
+		lblEuro.setFont(lblEuro.getFont().deriveFont(24.0f));
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
 		gbc_lblEuro.weighty = 0.3;
 		gbc_lblEuro.gridwidth = 0;

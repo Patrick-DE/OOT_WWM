@@ -58,7 +58,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setForeground(Color.WHITE);
-		this.setFont(this.getFont().deriveFont(20.0f));
+		this.setFont(this.getFont().deriveFont(22.0f));
 	}
 	View_JButton_withBackgroundImage(String label) {
 		super(label);
@@ -67,7 +67,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setForeground(Color.WHITE);
-		this.setFont(this.getFont().deriveFont(20.0f));
+		this.setFont(this.getFont().deriveFont(22.0f));
 	}
 	View_JButton_withBackgroundImage() {
 		super();
@@ -76,7 +76,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setForeground(Color.WHITE);
-		this.setFont(this.getFont().deriveFont(20.0f));
+		this.setFont(this.getFont().deriveFont(22.0f));
 	}
 	View_JButton_withBackgroundImage(Icon icon) {
 		super(icon);
@@ -84,7 +84,7 @@ public class View_JButton_withBackgroundImage extends JButton {
 
 		setContentAreaFilled(false);
 		setBorderPainted(false);
-		this.setFont(this.getFont().deriveFont(20.0f));
+		this.setFont(this.getFont().deriveFont(22.0f));
 	}
 
 	//MARK: - Methods
