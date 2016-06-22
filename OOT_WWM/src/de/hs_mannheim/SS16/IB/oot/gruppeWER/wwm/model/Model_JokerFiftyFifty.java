@@ -1,5 +1,9 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
-
+/**
+ * 
+ * @author Anusan Ranjan
+ * this class models the fifty fifty joker
+ */
 public class Model_JokerFiftyFifty extends Model_Joker {
 
 	//MARK: - Constructor

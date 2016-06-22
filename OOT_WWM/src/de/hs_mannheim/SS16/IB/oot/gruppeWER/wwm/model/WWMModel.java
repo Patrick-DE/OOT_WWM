@@ -16,6 +16,13 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * 
+ * @author Anusan Ranjan
+ * this class models the complete background process of the game consisting of loading the questions and given high scores.
+ * It validates all answers logged in by the players, sets the score, generates the results of the jokers, counts the playing
+ * and determines the end of the game.
+ */
 public class WWMModel extends Observable {
 
 	//MARK: - Assets

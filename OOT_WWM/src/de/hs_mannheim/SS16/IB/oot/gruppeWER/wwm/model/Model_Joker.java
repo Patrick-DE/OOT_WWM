@@ -1,5 +1,9 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model;
-
+/**
+ * 
+ * @author Anusan Ranjan
+ * this class models the abstract joker class. All jokers in this game concrete this class.
+ */
 public abstract class Model_Joker {
 
 	//MARK: - Assets
