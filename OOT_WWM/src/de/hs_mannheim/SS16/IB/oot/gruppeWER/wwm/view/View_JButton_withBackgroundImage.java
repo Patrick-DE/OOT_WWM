@@ -155,6 +155,26 @@ public class View_JButton_withBackgroundImage extends JButton implements MouseLi
 				g.drawImage(WWMController.imageContainer.image_buttonHover, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 11:
+			if(WWMController.imageContainer.image_jokerTelephoneHover != null) {
+				g.drawImage(WWMController.imageContainer.image_jokerTelephoneHover, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		case 12:
+			if(WWMController.imageContainer.image_jokerFiftyFiftyHover != null) {
+				g.drawImage(WWMController.imageContainer.image_jokerFiftyFiftyHover, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		case 13:
+			if(WWMController.imageContainer.image_jokerAudienceHover != null) {
+				g.drawImage(WWMController.imageContainer.image_jokerAudienceHover, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
+		case 14:
+			if(WWMController.imageContainer.image_ButtonDropoutHover != null) {
+				g.drawImage(WWMController.imageContainer.image_ButtonDropoutHover, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_buttonActivated != null && WWMController.imageContainer.image_buttonDeactivated != null) {
 				if (isEnabled()) {
@@ -184,14 +204,55 @@ public class View_JButton_withBackgroundImage extends JButton implements MouseLi
 	@Override public void mouseReleased(MouseEvent e) {	
 	}
 	@Override public void mouseEntered(MouseEvent e) {
+		//Button Displays Normal Button
 		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 0) {
 			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(10);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Telephone Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 4) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(11);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays FiftyFift Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 5) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(12);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Audience Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 6) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(13);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Dropout Image
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 7) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(14);
 			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
 		}
 	}
 	@Override public void mouseExited(MouseEvent e) {
 		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 10) {
 			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(0);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Telephone Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 11) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(4);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays FiftyFift Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 12) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(5);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Audience Joker
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 13) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(6);
+			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
+		}
+		//Button Displays Dropout Image
+		if(((View_JButton_withBackgroundImage)e.getComponent()).isEnabled() && ((View_JButton_withBackgroundImage)e.getComponent()).imageIndex == 14) {
+			((View_JButton_withBackgroundImage)e.getComponent()).changeImageIndex(7);
 			((View_JButton_withBackgroundImage)e.getComponent()).repaint();
 		}
 	}
