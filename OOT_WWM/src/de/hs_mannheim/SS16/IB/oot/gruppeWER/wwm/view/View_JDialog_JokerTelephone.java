@@ -18,13 +18,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-public class View_Dialog_JokerTelephone extends JDialog {
+public class View_JDialog_JokerTelephone extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 6013656282755272097L;
 
 	//MARK: - Assets
-	public View_Dialog_JokerTelephone(String telephoneAnswer) {
+	public View_JDialog_JokerTelephone(String telephoneAnswer) {
 		this.setTitle("Telefonjoker");
 		this.setResizable(false);
 		this.setBounds(100, 100, 500, 150);
@@ -35,10 +35,8 @@ public class View_Dialog_JokerTelephone extends JDialog {
 
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		labelPanel.setOpaque(false);
 		//Create and add the label
 		JLabel telephoneAnswerLabel = new JLabel("<HTML><CENTER>" + telephoneAnswer +  "</CENTER></HTML>");
 		telephoneAnswerLabel.setForeground(Color.WHITE);
@@ -50,7 +48,6 @@ public class View_Dialog_JokerTelephone extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPane = new View_JPanel_withBackgroundImage();
-		buttonPane.setOpaque(false);
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
 

@@ -32,7 +32,6 @@ public class View_JPanel_GameStatus extends JPanel {
 	//MARK: - Constructor
 	public View_JPanel_GameStatus(WWMModel model) {
 		super();
-		setOpaque(false);
 
 		this.model = model;
 		this.standardAnimation = true;

@@ -32,7 +32,6 @@ public class View_JDialog_FalseAnswer extends JDialog {
 		
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setOpaque(false);
 		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		//Create and add the label
@@ -46,7 +45,6 @@ public class View_JDialog_FalseAnswer extends JDialog {
 
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
-		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		//Create and add the buttons

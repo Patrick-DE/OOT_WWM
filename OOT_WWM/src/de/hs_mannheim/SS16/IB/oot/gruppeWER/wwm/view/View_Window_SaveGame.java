@@ -29,14 +29,14 @@ import java.awt.Graphics;
 public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implements ActionListener{
 	
 	//MARK: - Assets
-	private JButton btnSaveButton1;
-	private JButton btnSaveButton2;
-	private JButton btnSaveButton3;
-	private JButton btnSaveButton4;
-	private JButton btnSaveButton5;
-	private JButton btnSaveButton6;
-	private JButton btnSaveButton7;
-	private JButton btnSaveButton8;
+	private View_JButton_withBackgroundImage btnSaveButton1;
+	private View_JButton_withBackgroundImage btnSaveButton2;
+	private View_JButton_withBackgroundImage btnSaveButton3;
+	private View_JButton_withBackgroundImage btnSaveButton4;
+	private View_JButton_withBackgroundImage btnSaveButton5;
+	private View_JButton_withBackgroundImage btnSaveButton6;
+	private View_JButton_withBackgroundImage btnSaveButton7;
+	private View_JButton_withBackgroundImage btnSaveButton8;
 	private WWMModel model;
 	private String path;
 
@@ -46,16 +46,17 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 		this.model = model;
 		this.path = path;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] {0, 0};
+		gridBagLayout.rowHeights = new int[] {0, 0, 0};
+		gridBagLayout.columnWeights = new double[] {1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[] {0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblChoose = new JLabel("Wähle die Speicherstelle aus:");
-		lblChoose.setForeground(Color.WHITE);
+		JLabel lblChoose = new View_JLabel_withBackgroundImage(1, "Wähle die Speicherstelle aus:");
+		lblChoose.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChoose.setFont(lblChoose.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
+		gbc_lblWhleDieSpeicherstelle.fill = GridBagConstraints.BOTH;
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
 		gbc_lblWhleDieSpeicherstelle.gridx = 0;
@@ -69,6 +70,7 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 		gbc_panelSave.fill = GridBagConstraints.BOTH;
 		gbc_panelSave.gridx = 0;
 		gbc_panelSave.gridy = 1;
+		gbc_panelSave.insets = new Insets(20, 20, 50, 20);
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		
@@ -129,29 +131,53 @@ public class View_Window_SaveGame extends View_JPanel_withBackgroundImage implem
 		return false;
 	}
 	public void updateSaveWindow() {
-		btnSaveButton1.setForeground(Color.RED);
-		btnSaveButton2.setForeground(Color.RED);
-		btnSaveButton3.setForeground(Color.RED);
-		btnSaveButton4.setForeground(Color.RED);
-		btnSaveButton5.setForeground(Color.RED);
-		btnSaveButton6.setForeground(Color.RED);
-		btnSaveButton7.setForeground(Color.RED);
-		btnSaveButton8.setForeground(Color.RED);
-		if (saveGameExists(path, 1))
-			btnSaveButton1.setForeground(Color.GREEN);
-		if (saveGameExists(path, 2))
-			btnSaveButton2.setForeground(Color.GREEN);
-		if (saveGameExists(path, 3))
-			btnSaveButton3.setForeground(Color.GREEN);
-		if (saveGameExists(path, 4))
-			btnSaveButton4.setForeground(Color.GREEN);
-		if (saveGameExists(path, 5))
-			btnSaveButton5.setForeground(Color.GREEN);
-		if (saveGameExists(path, 6))
-			btnSaveButton6.setForeground(Color.GREEN);
-		if (saveGameExists(path, 7))
-			btnSaveButton7.setForeground(Color.GREEN);
-		if (saveGameExists(path, 8))
-			btnSaveButton8.setForeground(Color.GREEN);
+		btnSaveButton1.changeImageIndex(2);
+		btnSaveButton1.repaint();
+		btnSaveButton2.changeImageIndex(2);
+		btnSaveButton2.repaint();
+		btnSaveButton3.changeImageIndex(2);
+		btnSaveButton3.repaint();
+		btnSaveButton4.changeImageIndex(2);
+		btnSaveButton4.repaint();
+		btnSaveButton5.changeImageIndex(2);
+		btnSaveButton5.repaint();
+		btnSaveButton6.changeImageIndex(2);
+		btnSaveButton6.repaint();
+		btnSaveButton7.changeImageIndex(2);
+		btnSaveButton7.repaint();
+		btnSaveButton8.changeImageIndex(2);
+		btnSaveButton8.repaint();
+		if(saveGameExists(path, 1)) {
+			btnSaveButton1.changeImageIndex(3);
+			btnSaveButton1.repaint();
+		}
+		if(saveGameExists(path, 2)) {
+			btnSaveButton2.changeImageIndex(3);
+			btnSaveButton2.repaint();
+		}
+		if(saveGameExists(path, 3)) {
+			btnSaveButton3.changeImageIndex(3);
+			btnSaveButton3.repaint();
+		}
+		if(saveGameExists(path, 4)) {
+			btnSaveButton4.changeImageIndex(3);
+			btnSaveButton4.repaint();
+		}
+		if(saveGameExists(path, 5)) {
+			btnSaveButton5.changeImageIndex(3);
+			btnSaveButton5.repaint();
+		}
+		if(saveGameExists(path, 6)) {
+			btnSaveButton6.changeImageIndex(3);
+			btnSaveButton6.repaint();
+		}
+		if(saveGameExists(path, 7)) {
+			btnSaveButton7.changeImageIndex(3);
+			btnSaveButton7.repaint();
+		}
+		if(saveGameExists(path, 8)) {
+			btnSaveButton8.changeImageIndex(3);
+			btnSaveButton8.repaint();
+		}
 	}	
 }

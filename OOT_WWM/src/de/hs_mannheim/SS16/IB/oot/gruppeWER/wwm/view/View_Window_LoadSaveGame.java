@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
@@ -45,10 +46,11 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblChooseGameSave = new JLabel("Wähle die Ladestelle aus:");
-		lblChooseGameSave.setForeground(Color.WHITE);
+		JLabel lblChooseGameSave = new View_JLabel_withBackgroundImage(1, "Wähle die Ladestelle aus:");
+		lblChooseGameSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChooseGameSave.setFont(lblChooseGameSave.getFont().deriveFont(22.0f));
 		GridBagConstraints gbc_lblWhleDieSpeicherstelle = new GridBagConstraints();
+		gbc_lblWhleDieSpeicherstelle.fill = GridBagConstraints.BOTH;
 		gbc_lblWhleDieSpeicherstelle.weighty = 0.1;
 		gbc_lblWhleDieSpeicherstelle.insets = new Insets(0, 0, 5, 0);
 		gbc_lblWhleDieSpeicherstelle.gridx = 0;
@@ -62,6 +64,7 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 		gbc_panelSave.fill = GridBagConstraints.BOTH;
 		gbc_panelSave.gridx = 0;
 		gbc_panelSave.gridy = 1;
+		gbc_panelSave.insets = new Insets(20, 20, 50, 20);
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		

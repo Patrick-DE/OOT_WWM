@@ -27,9 +27,11 @@ public class WWMImageContainer {
 	public BufferedImage image_ButtonDropout;
 	
 	public BufferedImage image_background;
+	public BufferedImage image_QuestionWindowBackground;
 	public BufferedImage image_wwmBadge;
 	public BufferedImage image_buttonSquared;
-	public BufferedImage image_spacer;
+	public BufferedImage image_blank;
+	
 	
 	//MARK: - Constructor
 	public WWMImageContainer() {
@@ -57,9 +59,10 @@ public class WWMImageContainer {
 			image_ButtonDropout = ImageIO.read(new File("data/images/image_buttonDropout.png"));
 
 			image_background = ImageIO.read(new File("data/images/image_background.png"));
+			image_QuestionWindowBackground = ImageIO.read(new File("data/images/image_QuestionWindowBackground.png"));
 			image_wwmBadge =  ImageIO.read(new File("data/images/image_wwmBadge.png"));
 			image_buttonSquared =  ImageIO.read(new File("data/images/image_buttonSquared.png"));
-			image_spacer =  ImageIO.read(new File("data/images/image_spacer.png"));
+			image_blank =  ImageIO.read(new File("data/images/image_blank.png"));
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
