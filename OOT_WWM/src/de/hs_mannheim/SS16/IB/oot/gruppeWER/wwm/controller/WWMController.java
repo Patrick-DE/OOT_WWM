@@ -54,16 +54,19 @@ public class WWMController implements ActionListener {
 			}
 		} 
 		else if(arg0.getActionCommand().equals("Speichern")) {
+			soundContainer.stopSound("musicIntro");
 			for(WWMView view : views) {
 				view.displaySaveDialog();
 			}
 		} 
 		else if(arg0.getActionCommand().equals("Laden")) {
+			soundContainer.stopSound("musicIntro");
 			for(WWMView view : views) {
 				view.displayLoadDialog();
 			}
 		} 
 		else if(arg0.getActionCommand().equals("Bestenliste")) {
+			soundContainer.stopSound("musicIntro");
 			for(WWMView view : views) {
 				view.displayHighScoreWindow();
 			}
