@@ -45,6 +45,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JLabel lblPer1 = new JLabel("" + audienceResults[0] + " %");
+			lblPer1.setFont(lblPer1.getFont().deriveFont(22.0f));
 			lblPer1.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblPer1 = new GridBagConstraints();
 			gbc_lblPer1.weighty = 0.1;
@@ -56,6 +57,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblPer2 = new JLabel("" + audienceResults[1] + " %");
+			lblPer2.setFont(lblPer2.getFont().deriveFont(22.0f));
 			lblPer2.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblPer2 = new GridBagConstraints();
 			gbc_lblPer2.weighty = 0.1;
@@ -67,6 +69,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblPer3 = new JLabel("" + audienceResults[2] + " %");
+			lblPer3.setFont(lblPer3.getFont().deriveFont(22.0f));
 			lblPer3.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblPer3 = new GridBagConstraints();
 			gbc_lblPer3.weighty = 0.1;
@@ -78,6 +81,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblPer4 = new JLabel("" + audienceResults[3] + " %");
+			lblPer4.setFont(lblPer4.getFont().deriveFont(22.0f));
 			lblPer4.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblPer4 = new GridBagConstraints();
 			gbc_lblPer4.weighty = 0.1;
@@ -145,6 +149,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblA = new JLabel("A");
+			lblA.setFont(lblA.getFont().deriveFont(22.0f));
 			lblA.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblA = new GridBagConstraints();
 			gbc_lblA.weighty = 0.1;
@@ -156,6 +161,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblB = new JLabel("B");
+			lblB.setFont(lblB.getFont().deriveFont(22.0f));
 			lblB.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblB = new GridBagConstraints();
 			gbc_lblB.weighty = 0.1;
@@ -167,6 +173,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblC = new JLabel("C");
+			lblC.setFont(lblC.getFont().deriveFont(22.0f));
 			lblC.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblC = new GridBagConstraints();
 			gbc_lblC.weighty = 0.1;
@@ -178,6 +185,7 @@ public class View_JDialog_JokerAudience extends JDialog {
 		}
 		{
 			JLabel lblD = new JLabel("D");
+			lblD.setFont(lblD.getFont().deriveFont(22.0f));
 			lblD.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblD = new GridBagConstraints();
 			gbc_lblD.weighty = 0.1;
