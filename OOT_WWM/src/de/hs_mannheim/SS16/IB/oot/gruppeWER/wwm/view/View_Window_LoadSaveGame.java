@@ -62,6 +62,7 @@ public class View_Window_LoadSaveGame extends View_JPanel_withBackgroundImage im
 		gbc_panelSave.fill = GridBagConstraints.BOTH;
 		gbc_panelSave.gridx = 0;
 		gbc_panelSave.gridy = 1;
+		gbc_panelSave.insets = new Insets(20, 20, 50, 20);
 		add(panelSave, gbc_panelSave);
 		panelSave.setLayout(new GridLayout(4, 2, 0, 0));
 		
