@@ -6,16 +6,10 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.controller.WWMController;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 
 import java.awt.GridBagLayout;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.awt.GridLayout;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {

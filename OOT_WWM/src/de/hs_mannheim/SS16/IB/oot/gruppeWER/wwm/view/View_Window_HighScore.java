@@ -6,21 +6,15 @@ import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.Model_HighScoreEntry;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.WWMModel;
 import java.awt.GridBagLayout;
 
-import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 

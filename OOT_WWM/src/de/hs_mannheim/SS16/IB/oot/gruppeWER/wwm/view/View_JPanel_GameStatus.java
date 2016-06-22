@@ -3,17 +3,12 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -42,13 +37,6 @@ public class View_JPanel_GameStatus extends JPanel {
 		if(model.getQuestionIndex() < model.getAmountOfQuestions()) {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-			int w = getWidth();
-			int h = getHeight();
-			//        Color color1 = Color.BLUE;
-			//        Color color2 = new Color(108,210,232);
-			//        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
-			//        g2d.setPaint(gp);
-			//        g2d.fillRect(0, 0, w, h);
 			if (WWMController.imageContainer.image_buttonSquared != null) {
 				g2d.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 			}
