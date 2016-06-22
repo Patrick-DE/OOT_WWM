@@ -2,6 +2,7 @@ package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -9,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,21 +21,25 @@ public class View_JDialog_FalseAnswer extends JDialog {
 
 	//MARK: - Constructor
 	public View_JDialog_FalseAnswer() {
-		getContentPane().setBackground(Color.BLACK);
+		this.setTitle("Falsche Antwort");
+		this.setResizable(false);
+		this.setBounds(100, 100, 500, 150);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
+		this.setAlwaysOnTop(true);
+		this.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
+		
 		getContentPane().setLayout(new BorderLayout());
-		setTitle("Falsche Antwort");
-		setBounds(100, 100, 450, 300);
-
+		
 		//Create a JPanel for the label
 		JPanel labelPanel = new View_JPanel_withBackgroundImage(2);
-		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		labelPanel.setOpaque(false);
-		labelPanel.setLayout(new GridLayout(1, 0, 0, 0));
+		labelPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		labelPanel.setLayout(new GridLayout(1, 1, 0, 0));
 		//Create and add the label
-		JLabel lblFalseAnswer = new JLabel("Sie haben die Frage nicht (richtig) beantwortet.");
+		JLabel lblFalseAnswer = new JLabel("<HTML><CENTER>" + "Sie haben die Frage nicht (richtig) beantwortet." + "</CENTER></HTML>");
 		lblFalseAnswer.setForeground(Color.WHITE);
-		lblFalseAnswer.setOpaque(false);
 		lblFalseAnswer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFalseAnswer.setFont(lblFalseAnswer.getFont().deriveFont(22.0f));
 		labelPanel.add(lblFalseAnswer);
 		//Add the panel to the contentPane
 		getContentPane().add(labelPanel, BorderLayout.CENTER);
@@ -41,12 +47,12 @@ public class View_JDialog_FalseAnswer extends JDialog {
 		//Create a JPanel for the buttons
 		JPanel buttonPanel = new View_JPanel_withBackgroundImage();
 		buttonPanel.setOpaque(false);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
 		//Create and add the buttons
 		//Button "OK"
 		JButton okButton = new View_JButton_withBackgroundImage("OK");
 		okButton.addActionListener(new ActionListener() {
-
 			@Override public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
@@ -59,7 +65,7 @@ public class View_JDialog_FalseAnswer extends JDialog {
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 		//Finish creating the Dialogue
-		pack();
+		//pack();
 		this.setVisible(true);
 	}
 }

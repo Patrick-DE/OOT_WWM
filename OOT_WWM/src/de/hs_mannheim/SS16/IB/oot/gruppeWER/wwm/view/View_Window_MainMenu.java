@@ -56,9 +56,9 @@ public class View_Window_MainMenu extends View_JPanel_withBackgroundImage {
 		gbc_panelMainMenuButtons.fill = GridBagConstraints.BOTH;
 		gbc_panelMainMenuButtons.gridx = 0;
 		gbc_panelMainMenuButtons.gridy = 2;
+		gbc_panelMainMenuButtons.insets = new Insets(0, 150, 50, 150);
 		add(panelMainMenuButtons, gbc_panelMainMenuButtons);
 		panelMainMenuButtons.setLayout(new GridLayout(6, 1, 0, 0));
-		
 		
 		btnContinue = new View_JButton_withBackgroundImage("Weiterspielen");
 		btnContinue.addActionListener(controller);

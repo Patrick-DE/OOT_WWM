@@ -26,16 +26,19 @@ public class View_JLabel_withBackgroundImage extends JLabel {
 		super(label);
 		this.imageIndex = imageIndex;
 		this.setForeground(Color.WHITE);
+		this.setFont(this.getFont().deriveFont(24.0f));
 	}
 	public View_JLabel_withBackgroundImage(int imageIndex) {
 		super();
 		this.imageIndex = imageIndex;
 		this.setForeground(Color.WHITE);
+		this.setFont(this.getFont().deriveFont(24.0f));
 	}
 	public View_JLabel_withBackgroundImage() {
 		super();
 		this.imageIndex = 0;
 		this.setForeground(Color.WHITE);
+		this.setFont(this.getFont().deriveFont(24.0f));
 	}
 
 	//MARK: - Methods

@@ -13,34 +13,36 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
-public class View_Window_JokerAudience extends JDialog {
+public class View_Dialog_JokerAudience extends JDialog {
 
 	//MARK: - Assets
 	private static final long serialVersionUID = 1599703298634307780L;
 	private final JPanel contentPanel = new View_JPanel_withBackgroundImage(2);
 
 	//MARK: - Assets
-	public View_Window_JokerAudience(int[] audienceResults) {
-		getContentPane().setBackground(Color.BLACK);
-		setAlwaysOnTop(true);
-		setBounds(100, 100, 450, 300);
+	public View_Dialog_JokerAudience(int[] audienceResults) {
 		this.setTitle("Publikumsjoker");
+		this.setResizable(false);
+		this.setBounds(100, 100, 450, 300);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - this.getWidth()/2, Toolkit.getDefaultToolkit().getScreenSize().height/2 - this.getHeight()/2);
+		this.setAlwaysOnTop(true);
+		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPanel.setOpaque(false);
-		contentPanel.setBackground(Color.BLACK);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
-		gbl_contentPanel.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.columnWidths = new int[] {0, 0, 0, 0, 0};
+		gbl_contentPanel.rowHeights = new int[] {0, 0, 0, 0};
+		gbl_contentPanel.columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.rowWeights = new double[] {0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JLabel lblPer1 = new JLabel("" + audienceResults[0] + " %");
