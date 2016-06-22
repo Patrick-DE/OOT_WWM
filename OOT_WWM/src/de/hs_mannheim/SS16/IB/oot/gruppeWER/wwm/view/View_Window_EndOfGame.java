@@ -43,7 +43,10 @@ public class View_Window_EndOfGame extends View_JPanel_withBackgroundImage {
 		gbc_lblCong.gridy = 0;
 		add(lblCong, gbc_lblCong);
 
-		JLabel lblEuro = new View_JLabel_withBackgroundImage(1, "Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
+		JLabel lblEuro;
+		if(model.getGameEndRightAnswer())
+			lblEuro = new View_JLabel_withBackgroundImage(1, "Sie haben " + model.getPrizesAtPos(model.getQuestionIndex()) + "€ gewonnen!");
+		else lblEuro = new View_JLabel_withBackgroundImage(1, "Sie haben " + model.generatePrizeAtSecurityTier() + "€ gewonnen!");
 		lblEuro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEuro.setFont(lblEuro.getFont().deriveFont(24.0f));
 		GridBagConstraints gbc_lblEuro = new GridBagConstraints();
