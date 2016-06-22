@@ -17,12 +17,8 @@ import org.junit.Test;
 import de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.model.*;
 
 public class BackEndTesting {
-
-
 	
-	
-	@Test
-	public void testLoadMainData() {
+	@Test public void testLoadMainData() {
 		int[] prizes = { 50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000 };
 		// The former highscore file gets deleted, so that proper testing is possible!
 		if (new File("data/highscore.dat").exists()) {
@@ -52,12 +48,9 @@ public class BackEndTesting {
 		Model_HighScoreEntry myHighscore = highScoreEntries.get(0);
 		assertEquals("Simon", myHighscore.getName());
 		assertEquals(10, myHighscore.getPlayTime());
-		assertEquals(-1, myHighscore.getQuestionIndex());
-			
+		assertEquals(-1, myHighscore.getQuestionIndex());	
 	}
-	
-	@Test
-	public void testLoadQuestionsFromFile() {
+	@Test public void testLoadQuestionsFromFile() {
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// From index 0 to 4 the questions should be classified as easy(difficulty 0), from 5 to 9 as moderate(1) and from 10 to 14 as hard(2)
@@ -70,13 +63,10 @@ public class BackEndTesting {
 				assertEquals(1,question.getDifficultyValue());
 			else{
 				assertEquals(2,question.getDifficultyValue());
-			}
-				
-		}
-			
+			}	
+		}		
 	}
-	@Test 
-	public void testSaveGameandLoadSaveGame(){
+	@Test public void testSaveGameandLoadSaveGame(){
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// fifty fifty Joker is used
@@ -103,8 +93,7 @@ public class BackEndTesting {
 		}
 		
 	}
-	@Test 
-	public void testRunGame(){
+	@Test public void testRunGame(){
 		WWMModel testing = new WWMModel();
 		testing.runGame();
 		// Game status should be set to started(true)
@@ -113,8 +102,7 @@ public class BackEndTesting {
 		assertEquals(30,testing.getAnswerTime());
 				
 	}
-	@Test
-	public void testRestartGame(){
+	@Test public void testRestartGame(){
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		// all jokers used --> status set to used true
@@ -131,16 +119,14 @@ public class BackEndTesting {
 		//the game should not have ended yet
 		assertFalse(testing.getGameFinishedStatus());
 	}
-	@Test
-	public void testDropOut(){
+	@Test public void testDropOut(){
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		testing.dropOut();
 		// When the user decides to end the game, the gameFinishedStatus should be set to true
 		assertTrue(testing.getGameFinishedStatus());	
 	}
-	@Test 
-	public void testValidateAnswer(){
+	@Test public void testValidateAnswer(){
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		int rightAnswerIndex = testing.getCorrectAnswerIndex();
@@ -158,8 +144,7 @@ public class BackEndTesting {
 		testing.validateAnswer(falseAnswerIndex);
 		assertTrue(testing.getGameFinishedStatus());
 	}
-	@Test 
-	public void testGenerateAudienceJokerResults(){
+	@Test public void testGenerateAudienceJokerResults(){
 		WWMModel testing = new WWMModel();
 		testing.loadQuestionsFromFile();
 		int[] results = testing.generateAudienceJokerResults(testing.getQuestionAtIndex(0));
@@ -180,10 +165,6 @@ public class BackEndTesting {
 		}
 		assertEquals(100,percentage);
 		// Audience joker has been used --> status has to be set to true
-		assertTrue(testing.getAudienceStatus());
-		
-		
+		assertTrue(testing.getAudienceStatus());		
 	}
-	
-
 }
