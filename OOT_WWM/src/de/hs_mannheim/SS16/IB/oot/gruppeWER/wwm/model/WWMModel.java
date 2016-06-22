@@ -302,7 +302,7 @@ public class WWMModel extends Observable {
 		}
 		//FiftyFifty Joker has been used at the same question
 		else {
-			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, generateFiftyFiftyJokerResults(question));
+			return ((Model_JokerAudience) jokerAudience).getAudienceResults(question, jokerFiftyFifty.getFalseAnswerPositions(question));
 		}
 	}
 	public int[] generateFiftyFiftyJokerResults(Model_Question question) {
