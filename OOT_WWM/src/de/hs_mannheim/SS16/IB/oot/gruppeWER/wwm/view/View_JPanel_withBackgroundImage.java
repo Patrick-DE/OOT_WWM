@@ -51,6 +51,11 @@ public class View_JPanel_withBackgroundImage extends JPanel {
 				g.drawImage(WWMController.imageContainer.image_buttonSquared, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 3: 
+			if(WWMController.imageContainer.image_QuestionWindowBackground != null) {
+				g.drawImage(WWMController.imageContainer.image_QuestionWindowBackground, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_background != null) {
 				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);

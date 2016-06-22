@@ -59,6 +59,11 @@ public class View_JLabel_withBackgroundImage extends JLabel {
 				g.drawImage(WWMController.imageContainer.image_background, 0, 0, getWidth(), getHeight(), this);
 			}
 			break;
+		case 3: 
+			if(WWMController.imageContainer.image_blank != null) {
+				g.drawImage(WWMController.imageContainer.image_blank, 0, 0, getWidth(), getHeight(), this);
+			}
+			break;
 		default:
 			if(WWMController.imageContainer.image_buttonActivated != null) {
 				g.drawImage(WWMController.imageContainer.image_buttonActivated, 0, 0, getWidth(), getHeight(), this);

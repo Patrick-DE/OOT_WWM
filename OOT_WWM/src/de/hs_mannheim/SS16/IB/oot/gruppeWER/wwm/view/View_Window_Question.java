@@ -1,12 +1,12 @@
 package de.hs_mannheim.SS16.IB.oot.gruppeWER.wwm.view;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -29,7 +29,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 	private JButton btnDropOut;
 
 	private View_JPanel_GameStatus gameStatusPanel;
-	private View_JLabel_withBackgroundImage questionTextLabel;
+	private JLabel questionTextLabel;
 	private JPanel answerPanel;
 	private JPanel buttonPanel;
 
@@ -41,7 +41,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 
 	//MARK: - Constructor
 	public View_Window_Question(WWMController controller, WWMModel model) {
-		this.setBackground(Color.BLACK);
+		super(3);
 		
 		this.model = model;
 		this.controller = controller;
@@ -67,7 +67,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		this.add(gameStatusPanel, gbc_gameStatusPanel);
 
 		//Question Text Panel Setup
-		questionTextLabel = new View_JLabel_withBackgroundImage();
+		questionTextLabel = new View_JLabel_withBackgroundImage(3);
 		questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		GridBagConstraints gbc_questionTextLabel = new GridBagConstraints();
@@ -75,7 +75,7 @@ public class View_Window_Question extends View_JPanel_withBackgroundImage {
 		gbc_questionTextLabel.gridwidth = 0;
 		gbc_questionTextLabel.weighty = 1;
 		gbc_questionTextLabel.weightx = 1.0;
-		gbc_questionTextLabel.insets = new Insets(5, 20, 5, 20);
+		gbc_questionTextLabel.insets = new Insets(5, 75, 5, 75);
 		gbc_questionTextLabel.gridx = 0;
 		gbc_questionTextLabel.gridy = 1;
 		this.add(questionTextLabel, gbc_questionTextLabel);
