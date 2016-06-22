@@ -258,6 +258,10 @@ public class WWMModel extends Observable {
 	}
 
 	//MARK: - Helper Methods
+	public boolean getGameEndRightAnswer() {
+		return gameEndRightAnswer;
+	}
+	
 	public void logInAnswer(int answerIndex) {
 		//Run timer to allow for the chosen answer to be logged before it is validated 
 		questionTimer.cancel();
