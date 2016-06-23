@@ -394,7 +394,7 @@ public class WWMModel extends Observable {
 			return 0;
 		else if (questionIndex <= 9)
 			return 500;
-		else if (questionIndex <= 15)
+		else if (questionIndex <= 14)
 			return 16000;
 		else
 			return 1000000;
